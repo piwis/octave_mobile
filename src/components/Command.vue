@@ -225,7 +225,7 @@
                             this.$socket.emit("sendGyro", {
                                 "forward":  this.posY === this.lastPosY ? 0.0 : this.posY,
                                 "upOrDown": this.top / 2,
-                                "rotation": this.normalizeX === this.lastPosX ? 0.0 : this.normalizeX
+                                "rotation": this.normalizeX
                             })
 
                             this.lastPosX = this.normalizeX
