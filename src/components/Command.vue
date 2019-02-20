@@ -50,7 +50,7 @@
         </transition-group>
 
         Avance : {{this.posY}} <br>
-        Gauche ou droite : {{this.posY}} <br>
+        Gauche ou droite : {{this.normalizeX}} <br>
         Montrer : {{this.top / 2}} <br>
     </div>
 
