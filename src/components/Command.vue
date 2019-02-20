@@ -232,23 +232,8 @@
                                 }
                             }
 
-                            console.log("Salut");
                             this.$socket.emit("sendGyro", {
-                                "duration": "0.5",
-                                "actions": [
-                                    {
-                                        "actionType": ".sparkGimbalRotation",
-                                        "actionName": ".forward",
-                                        "speed": this.posY === this.lastPosY ? 0.0 : this.posY
-                                    },
-                                    // objectRotation,
-                                    {
-                                        "actionType": ".sparkGimbalRotation",
-                                        "actionName": ".top",
-                                        "speed": this.top / 2
-                                    },
-
-                                ]
+                                "forward":  this.posY === this.lastPosY ? 0.0 : this.posY,
                             })
 
 
