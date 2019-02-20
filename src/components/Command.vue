@@ -185,7 +185,7 @@
                     if (window.orientation === 90 || window.orientation === -90) {
                         this.landscapeOrientation = true;
                     } else {
-                        this.landscapeOrientation = false;
+                           this.landscapeOrientation = false;
                     }
                 }, false);
             },
@@ -216,7 +216,7 @@
 
                             if (this.posX > 0.5) {
                                 // EMIT GAUCHE
-                                this.normalizeX = UMath.normalize(this.posX, 0.5, 1);
+                                this.normalizeX = -2 * (UMath.normalize(this.posX, 0.5, 1));
                                 objectRotation = {
                                     "actionType": ".sparkGimbalEvent",
                                     "actionName": ".clockwise",
