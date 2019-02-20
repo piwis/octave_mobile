@@ -216,7 +216,7 @@
 
                             if (this.posX > 0.5) {
                                 // EMIT GAUCHE
-                                this.normalizeX = UMath.normalize(this.posX, 1, 0.5);
+                                this.normalizeX = UMath.normalize(this.posX, 0.5, 1);
                                 objectRotation = {
                                     "actionType": ".sparkGimbalEvent",
                                     "actionName": ".clockwise",
@@ -234,8 +234,9 @@
 
                             this.$socket.emit("sendGyro", {
                                 "forward":  this.posY === this.lastPosY ? 0.0 : this.posY,
+                                "upOrDown": this.top / 2,
+                                "rotation": this.normalizeX
                             })
-
 
                             this.lastPosX = this.normalizeX
                             this.lastPosY = this.posY
