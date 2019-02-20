@@ -210,10 +210,7 @@
                                 this.posX = UMath.normalize(data.do.beta, -180, 180);
                             }
 
-
-
                             let objectRotation = null;
-
                             if (this.posX > 0.5) {
                                 // EMIT GAUCHE
                                 this.normalizeX = -1 * (UMath.normalize(this.posX, 1, 0.5));
@@ -366,11 +363,9 @@
         fill: url(#SVGID_1_);
         enable-background: new;
     }
-
     .st1 {
         fill: #FF767D;
     }
-
     .st2 {
         fill: #FFFFFF;
     }

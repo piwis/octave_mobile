@@ -1,12 +1,5 @@
 <template>
     <div class="introduction-tuto">
-
-        <!--<span class="slider-numbers">{{ counter }} / 4</span>-->
-        <!--<svg width="236" height="118" viewBox="0 0 236 118" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-        <!--<path d="M236 12.4453C236 5.5799 230.42 -2.43905e-07 223.555 -5.44002e-07L12.4453 -9.77189e-06C5.57991 -1.0072e-05 1.50149e-05 5.57989 1.47148e-05 12.4453L1.06448e-05 105.555C1.03447e-05 112.42 5.57991 118 12.4453 118L223.555 118C230.42 118 236 112.42 236 105.555L236 12.4453ZM231.506 85.6192C231.506 87.1942 230.2 88.5 228.625 88.5C227.05 88.5 225.859 87.1942 225.859 85.6192C225.859 84.0441 227.05 82.7383 228.625 82.7383C230.2 82.7383 231.506 84.0441 231.506 85.6192ZM230.238 50.0117L230.238 67.9883C230.238 68.8234 229.46 69.4863 228.625 69.4863C227.79 69.4863 227.127 68.8234 227.127 67.9883L227.127 50.0117C227.127 49.1766 227.79 48.5137 228.625 48.5137C229.46 48.5137 230.238 49.1766 230.238 50.0117ZM214.682 4.83984L214.682 113.16L19.7051 113.16L19.7051 4.83984L214.682 4.83984ZM14.8652 51.625L14.8652 66.375C14.8652 69.0593 12.7097 71.2148 10.0254 71.2148C7.34108 71.2148 5.18556 69.0593 5.18556 66.375L5.18556 51.625C5.18556 48.9407 7.34108 46.7852 10.0254 46.7852C12.7097 46.7852 14.8652 48.9407 14.8652 51.625Z"-->
-        <!--fill="#323232"/>-->
-        <!--</svg>-->
-
         <transition-group name="fade" mode="out-in" class="transition-slide">
 
             <div key="1" v-show="userRotateScreen">
@@ -88,14 +81,22 @@
 </g>
 </svg>
 
-
             </div>
             <div key="2" v-show="!userRotateScreen" class="sliders">
                 <div class="slideshow">
+
                     <div class="slide">
-                        <p>
-                            Avancer
+                        <p class="title light">
+                            Avancer Salut
                         </p>
+                        <div class="content">
+                            <p class="bold">
+                                Incline ton smarthphone vers l'avant
+                            </p>
+                            <div class="light">
+                                Plus tu penches, plus je vais vite !
+                            </div>
+                        </div>
 
                         <div class="lottie">
                             <svg width="200" height="145" viewBox="0 0 200 145" fill="none"
@@ -188,14 +189,13 @@
 
                         <div class="lottie">
                             <div class="dots-battery">
-                                <div class="dots-battery--item pulse"></div>
+                                <div class="dots-battery--item"></div>
                                 <div class="dots-battery--item"></div>
                                 <div class="dots-battery--item"></div>
                                 <div class="dots-battery--item"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="slide">
+
                         <div class="stop-drone" @click="goToNextView">
                             <span class="stop-arrow">
                                 <span>Arrêter</span>
@@ -229,8 +229,8 @@
                             </span>
                             </div>
                         </div>
-
                     </div>
+
 
                 </div>
                 <button class="boxnav__item boxnav__item--prev">
@@ -290,6 +290,8 @@
 
         data() {
             return {
+                userDragToTop: false,
+                userDragToBottom: false,
                 userRotateScreen: true,
                 lookAtScreen: true,
                 sliderBuild: false,
@@ -313,7 +315,6 @@
                 //this.$router.push('introduction')
             }
         },
-
         methods: {
 
             startIntroduction() {
@@ -383,7 +384,7 @@
                                 this.leftAndRight = false
                                 this.unlockLeftAndRight = false;
                                 gn.end()
-                                this.$socket.emit("turnIntroduction", true)
+                                this.$socket.emit("movingIntroduction", true)
                                 this.slide.navigate('right')
                                 this.slide.navigateDots(2)
 
@@ -405,7 +406,7 @@
             checkLeftAndRight() {
 
             },
-            initDragAndDrop() {
+            initDragAndDrop: function () {
                 // TweenMax.staggerTo(".dots-battery--item", 1, {
                 //     onStart:function() {
                 //     },
@@ -469,7 +470,38 @@
                     tl.progress(percent)
                     if (percent > 0.5 && percent < 1) {
                         // DESCENTE
+                        thatDrag.userDragToBottom = true
                     } else if (percent < 0.5) {
+                        thatDrag.userDragToTop = true
+                    }
+                    if (that.userDragToTop && that.userDragToBottom) {
+                        // Next Slide pour
+                        thatDrag.$socket.emit("movingIntroduction", true)
+                        thatDrag.slide.navigate('right')
+                        thatDrag.slide.navigateDots(3)
+                        setTimeout(() => {
+                            console.log("Salut");
+                            TweenMax.staggerTo(".dots-battery--item", 1, {
+                                onStart: function () {
+                                    console.log("Dtos");
+                                },
+                                delay: 1,
+                                backgroundColor: "transparent",
+                                onComplete: function () {
+                                },
+                            }, 1)
+
+                            setTimeout(() => {
+                                TweenMax.to(".dots-battery",0.5,{
+                                    autoAlpha:0
+                                });
+                                TweenMax.to(".stop-drone",0.5,{
+                                    autoAlpha:1
+                                });
+                            }, 5000)
+
+                        }, 500)
+
                     }
                     // emit
                 };
@@ -672,10 +704,13 @@
         display: flex;
         flex-flow: column;
         align-items: flex-end;
+        opacity: 0;
+        visibility: hidden;
         #stop-drone-svg {
             margin: 0;
         }
         .stop-arrow {
+
             display: flex;
             position: relative;
             right: 17px;
@@ -855,9 +890,11 @@
             @include f-muli-bold
         }
     }
+
     .up {
         top: 30%;
     }
+
     .bottom {
         bottom: 20%;
     }

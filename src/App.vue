@@ -6,7 +6,7 @@
         <router-view></router-view>
       </transition>
     </main>
-    <Background/>
+    <Background />
   </div>
 </template>
 

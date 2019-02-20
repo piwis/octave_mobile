@@ -41,10 +41,10 @@
             nextView() {
 
                 this.isereHasRead = false;
+                alert("Salut")
                 this.$socket.emit("isereNextView", true)
 
             },
-
             startIntroduction() {
                 this.$socket.emit("isereView", true)
                 this.$router.push('introduction-tuto')
