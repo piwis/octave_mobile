@@ -19,8 +19,6 @@
 <script>
 
 
-    import Events from "../../../static/datas/eventsOfCourse/index";
-
     export default {
         name: 'introduction-view',
 
@@ -38,14 +36,14 @@
 
             startIntroduction() {
                 this.$root.$emit('bg', true)
-                this.$socket.emit(Events.lookAtScreen, true)
+                this.$socket.emit("lookAtScreen", true)
                 this.$router.push('headphone')
             }
 
         },
 
         mounted() {
-            this.$socket.emit(Events.userPhone, true)
+            this.$socket.emit("userPhone", true)
 
 
         }

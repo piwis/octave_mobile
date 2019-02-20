@@ -17,7 +17,6 @@
 <script>
 
 
-    import Events from "../../../static/datas/eventsOfCourse/index";
 
     export default {
         name: 'isere-view',
@@ -43,13 +42,13 @@
         methods: {
 
             startIntroduction() {
-                this.$socket.emit(Events.isereView, true)
+                this.$socket.emit("isereView", true)
                 this.$router.push('introduction-tuto')
             }
         },
 
         mounted() {
-            this.$socket.emit(Events.startIntroduction, true)
+            this.$socket.emit("startIntroduction", true)
 
 
         }

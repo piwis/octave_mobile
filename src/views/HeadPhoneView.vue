@@ -28,10 +28,7 @@
 </template>
 
 <script>
-
-
-    import Events from "../../../static/datas/eventsOfCourse/index";
-
+    
     export default {
         name: 'headPhone-view',
 
@@ -48,7 +45,7 @@
 
         methods: {
             startIntroduction() {
-                this.$socket.emit(Events.isereView, true)
+                this.$socket.emit("isereView", true)
                 this.$router.push('isere')
             }
         },

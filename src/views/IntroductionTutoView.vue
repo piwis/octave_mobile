@@ -277,8 +277,6 @@
 
 <script>
 
-
-    import Events from "../../../static/datas/eventsOfCourse/index";
     import {Draggable} from 'gsap/Draggable'
     import {TweenMax} from 'gsap'
     import Slideshow from "../utils/Slider";
@@ -321,7 +319,7 @@
             startIntroduction() {
                 this.lookAtScreen = false;
                 this.useHeadPhone = true;
-                this.$socket.emit(Events.startIntroduction, true)
+                this.$socket.emit("startIntroduction", true)
             },
             nextSlide() {
                 this.counter++;

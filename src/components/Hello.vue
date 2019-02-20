@@ -12,8 +12,6 @@ Welcome to Your Vue.js App
 <script>
     import * as UMath from '../utils/UMath';
 
-    import Events from "../../../static/datas/eventsOfCourse/index"
-
     var GyroNorm = require('gyronorm');
 
     export default {
@@ -23,7 +21,7 @@ Welcome to Your Vue.js App
         sockets: {
             connect() {
                 // Fired when the socket connects.
-                this.$socket.emit(Events.scanQrCode, true)
+                this.$socket.emit("scanQrCode", true)
             },
             disconnect() {
                 this.isConnected = false;
@@ -40,7 +38,7 @@ Welcome to Your Vue.js App
         },
         methods: {
             startIntroduction() {
-                this.$socket.emit(Events.startIntroduction, true)
+                this.$socket.emit("startIntroduction", true)
             },
 
             rotationScreen() {

@@ -29,9 +29,6 @@
 
 <script>
 
-
-    import Events from "../../../static/datas/eventsOfCourse/index";
-
     export default {
         name: 'understand-introduction-view',
 
