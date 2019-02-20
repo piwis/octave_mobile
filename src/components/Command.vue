@@ -216,10 +216,10 @@
 
                             if (this.posX > 0.5) {
                                 // EMIT GAUCHE
-                                this.normalizeX = -2 * (UMath.normalize(this.posX, 0.5, 1));
+                                this.normalizeX = -0.5 * (UMath.normalize(this.posX, 0.5, 0));
                             } else {
                                 // EMIT DROITE
-                                this.normalizeX = 2 * UMath.normalize(this.posX, 0, 0.5);
+                                this.normalizeX = 2 * UMath.normalize(this.posX, 0, -0.5);
                             }
 
                             this.$socket.emit("sendGyro", {
