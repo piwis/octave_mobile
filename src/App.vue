@@ -25,6 +25,7 @@
             }
         },
         mounted() {
+            this.$socket.emit("userPhone", true)
         }
     }
 </script>
