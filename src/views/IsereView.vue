@@ -4,11 +4,14 @@
 
             <transition name="fade" mode="out-in">
 
-                <a v-show="isereHasRead" class="btn red" href="#" @click="startIntroduction">
+                <div class="isere" v-if="isereHasRead" @click="nextView()">
+                    <img :src="img" alt="">
+                </div>
+                <div class="btn red" @click="startIntroduction" v-else>
                     <span>
                         On y va !
                     </span>
-                </a>
+                </div>
             </transition>
         </div>
     </div>
@@ -17,6 +20,7 @@
 <script>
 
 
+    import imgMontange from "../assets/img/isere.png"
 
     export default {
         name: 'isere-view',
@@ -25,21 +29,21 @@
             return {
                 lookAtScreen: true,
                 useHeadPhone: false,
-                isereHasRead: false,
+                isereHasRead: true,
+                img: imgMontange,
                 //startIntroduction: false,
             }
         },
 
-        sockets: {
-
-            isereHasRead: function () {
-                this.isereHasRead = true
-            }
-
-
-        },
+        sockets: {},
 
         methods: {
+            nextView() {
+
+                this.isereHasRead = false;
+                this.$socket.emit("isereNextView", true)
+
+            },
 
             startIntroduction() {
                 this.$socket.emit("isereView", true)
@@ -49,8 +53,6 @@
 
         mounted() {
             this.$socket.emit("startIntroduction", true)
-
-
         }
 
     };
@@ -58,13 +60,17 @@
 
 
 <style scoped lang="scss">
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s;
-    }
-
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
-    {
-        opacity: 0;
+    .third-introduction {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .isere {
+            img {
+                max-width: 300px;
+            }
+        }
     }
 
     #canvas {

@@ -47,7 +47,6 @@
     width: 100%;
     height: 100%;
   }
-
   main {
     position: relative;
     z-index: 100;
@@ -56,7 +55,6 @@
     height: 100vh;
     overflow: hidden;
   }
-
   main > div {
     height: 100%;
     display: flex;
@@ -64,7 +62,6 @@
     justify-content: center;
     flex-flow: column;
   }
-
   header {
     margin: 0;
     height: 56px;
@@ -72,7 +69,6 @@
     background-color: #35495E;
     color: #ffffff;
   }
-
   header span {
     display: block;
     position: relative;
@@ -83,7 +79,6 @@
     box-sizing: border-box;
     padding-top: 16px;
   }
-
   .fade-enter-active,
   .fade-leave-active {
     transition-duration: 0.3s;

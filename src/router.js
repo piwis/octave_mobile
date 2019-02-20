@@ -25,7 +25,7 @@ export default new Router({
         },
         {
             path: '/qrcode',
-            name: 'Introduction',
+            name: 'qrcode',
             component: QRCode
         },
         {

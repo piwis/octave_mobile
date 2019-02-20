@@ -35,9 +35,14 @@
         methods: {
 
             startIntroduction() {
-                this.$root.$emit('bg', true)
-                this.$socket.emit("lookAtScreen", true)
-                this.$router.push('headphone')
+                alert('Salut')
+                this.$root.$emit('bg', true);
+                this.$socket.emit("useHeadPhone", true);
+                // this.$socket.emit("lookAtScreen", true);
+                this.$router.push('headphone');
+            },
+            useHeadPhone() {
+
             }
 
         },
