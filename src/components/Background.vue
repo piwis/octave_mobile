@@ -137,10 +137,6 @@
                 }, 100)
             })
 
-            // this.initCanvas();
-            // this.canvasImg(bgBlue);
-            // this.draw()
-
         }
         ,
     }

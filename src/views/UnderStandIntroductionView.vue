@@ -30,7 +30,7 @@
 <script>
 
 
-    import Events from "../../../pwa/static/datas/eventsOfCourse/index";
+    import Events from "../../../static/datas/eventsOfCourse/index";
 
     export default {
         name: 'understand-introduction-view',

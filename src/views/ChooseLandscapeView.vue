@@ -18,7 +18,6 @@
 </template>
 
 <script>
-    import Events from "../../../pwa/static/datas/eventsOfCourse/index";
     import Landscape from '@/components/chooseAnLandscape'
     import {TweenMax} from "gsap"
     import img1 from "@/assets/img/territoires/oisans-choose.png"

@@ -12,7 +12,7 @@ Welcome to Your Vue.js App
 <script>
     import * as UMath from '../utils/UMath';
 
-    import Events from "../../../pwa/static/datas/eventsOfCourse/index"
+    import Events from "../../../static/datas/eventsOfCourse/index"
 
     var GyroNorm = require('gyronorm');
 

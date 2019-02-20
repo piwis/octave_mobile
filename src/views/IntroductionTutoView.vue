@@ -278,7 +278,7 @@
 <script>
 
 
-    import Events from "../../../pwa/static/datas/eventsOfCourse/index";
+    import Events from "../../../static/datas/eventsOfCourse/index";
     import {Draggable} from 'gsap/Draggable'
     import {TweenMax} from 'gsap'
     import Slideshow from "../utils/Slider";
