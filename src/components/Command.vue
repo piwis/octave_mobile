@@ -222,6 +222,8 @@
                                 this.normalizeX = 2 * UMath.normalize(this.posX, 0, 0.5);
                             }
 
+                            console.log(this.normalizeX)
+
                             this.$socket.emit("sendGyro", {
                                 "forward":  this.posY === this.lastPosY ? 0.0 : this.posY,
                                 "upOrDown": this.top / 2,
