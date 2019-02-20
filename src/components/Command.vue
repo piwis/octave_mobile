@@ -219,7 +219,7 @@
                                 this.normalizeX = -0.5 * (UMath.normalize(this.posX, 0.5, 0));
                             } else {
                                 // EMIT DROITE
-                                this.normalizeX = UMath.normalize(this.posX, 0, 0.5);
+                                this.normalizeX = 2 * UMath.normalize(this.posX, 0, 0.5);
                             }
 
                             this.$socket.emit("sendGyro", {
