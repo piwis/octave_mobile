@@ -137,9 +137,9 @@
                 }, 100)
             })
 
-            this.initCanvas();
-            this.canvasImg(bgBlue);
-            this.draw()
+            // this.initCanvas();
+            // this.canvasImg(bgBlue);
+            // this.draw()
 
         }
         ,
