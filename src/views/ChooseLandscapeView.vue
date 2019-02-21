@@ -71,6 +71,7 @@
             return {
                 show: false,
                 cityChoosen: null,
+                cityId: null,
                 svg: imgRigth,
                 loader: false,
                 citys: [
@@ -113,7 +114,6 @@
                 }, 3000)
             },
             AnLandScapeHasChoosen(id) {
-                this.$socket.emit("chooseLandscape", id)
                 this.show = !this.show
                 this.cityChoosen = this.citys[id];
             },
@@ -183,6 +183,8 @@
 
 
                         that.cityChoosen = that.citys[index];
+                        that.cityId = index;
+
                         TweenLite.to([this.target, "#circle-vol"], 0.5, {
                             y: 320 * y, onComplete: () => {
                                 tl.progress(y)
@@ -224,12 +226,14 @@
 
             goToDrone() {
 
-                this.loader = true;
+                console.log(this.cityId);
+                this.$socket.emit("chooseLandscape", this.cityId)
+                /*this.loader = true;
                 // On attand le emit du drone
                 setTimeout(() => {
                     this.$socket.emit("loadDrone", true)
                     this.$router.push("commande-drone")
-                }, 2000)
+                }, 2000)*/
 
             }
 
