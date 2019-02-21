@@ -41,7 +41,7 @@
                         <img :src="cityChoosen.img" alt="" v-else>
                     </transition>
 
-                    <span class="btn green" @click="goToDrone">On y va !</span>
+                    <a class="btn green" @click="goToDrone">On y va !</a>
                 </div>
             </div>
         </transition>
@@ -226,14 +226,14 @@
 
             goToDrone() {
 
-                console.log(this.cityId);
+
+                this.loader = true;
                 this.$socket.emit("chooseLandscape", this.cityId)
+                this.$socket.emit("loadDrone", true)
                 // On attand le emit du drone
                 setTimeout(() => {
-                    this.loader = true;
                     setTimeout(() => {
-                        this.$socket.emit("loadDrone", true)
-                        this.$router.push("commande-drone")
+                        //this.$router.push("commande-drone")
                     }, 2000)
                 }, 2000)
 
