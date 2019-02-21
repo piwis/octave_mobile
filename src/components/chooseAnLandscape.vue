@@ -8,7 +8,7 @@
             <div v-else key="2" class="choose-an-landscape--content">
                 <span class="choose-an-landscape--close" @click="disablePopup">Retour</span>
                 <span class="choose-an-landscape--img" :style="{ 'background-image': 'url(' + this.city.img + ')' }"> </span>
-                <span class="btn blue" @click="goToConnectDrone">On y va</span>
+                <span class="btn blue" @click="goToConnectDrone">On y v</span>
             </div>
         </transition>
 
@@ -43,6 +43,7 @@
                 // Réponse du drone en haut dans socket
                 // Simulation connexion
                 setTimeout(() => {
+
                     this.$socket.emit("loadDrone", true)
                     this.$router.push("commande-drone")
                 },1000)
@@ -53,6 +54,7 @@
 
         },
         mounted() {
+
 
         }
     }

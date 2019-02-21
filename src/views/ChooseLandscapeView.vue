@@ -228,12 +228,14 @@
 
                 console.log(this.cityId);
                 this.$socket.emit("chooseLandscape", this.cityId)
-                /*this.loader = true;
                 // On attand le emit du drone
                 setTimeout(() => {
-                    this.$socket.emit("loadDrone", true)
-                    this.$router.push("commande-drone")
-                }, 2000)*/
+                    this.loader = true;
+                    setTimeout(() => {
+                        this.$socket.emit("loadDrone", true)
+                        this.$router.push("commande-drone")
+                    }, 2000)
+                }, 2000)
 
             }
 
