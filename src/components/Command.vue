@@ -330,14 +330,6 @@
         top: 0;
         width: 100%;
         height: 100%;
-        &--close {
-            background: red;
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
     }
 
     p {
@@ -387,6 +379,10 @@
         opacity: 0.8;
         fill: url(#SVGID_1_);
         enable-background: new;
+    }
+    .drag-left, .stop-drone , .icon-tuto {
+        opacity: 0;
+        visibility: hidden;
     }
     .st1 {
         fill: #FF767D;

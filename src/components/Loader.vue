@@ -7,7 +7,7 @@
             <stop  offset="0.729" style="stop-color:#FF7F81;stop-opacity:0"/>
             <stop  offset="1" style="stop-color:#FF7F81"/>
         </linearGradient>
-        <path class="st0" d="M11,0c84.1,242.7,338.1,419,638.4,419s554.3-176.3,638.4-419"/>
+        <path class="st0 draw" d="M11,0c84.1,242.7,338.1,419,638.4,419s554.3-176.3,638.4-419"/>
         </svg>
 
         <p>{{this.texte}}</p>
@@ -17,8 +17,9 @@
 
 <script>
 
-    export default {
+    import {TimelineMax} from "gsap"
 
+    export default {
 
         name: 'choose-an-landscape',
         props: ['text'],
@@ -56,6 +57,25 @@
         },
         mounted() {
 
+            if (this.texte === "Je me prépare ...") {
+                var tl = new TimelineMax();
+                tl.fromTo(".draw", 10, {drawSVG: 0}, {drawSVG: "40%"}, 0);
+                setTimeout(() => {
+                    tl.stop();
+                    TweenMax.to(".draw", 2, {drawSVG: "50%"}, 0);
+                }, 1000)
+                // DRONE START
+            } else {
+                var tl = new TimelineMax();
+                tl.fromTo(".draw", 10, {drawSVG: 0}, {drawSVG: "40%"}, 0);
+                setTimeout(() => {
+                    tl.stop();
+                    TweenMax.to(".draw", 2, {drawSVG: "50%"}, 0);
+
+                // DRONE FINISH
+                }, 1000)
+            }
+
         }
     }
 </script>
@@ -63,6 +83,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
     @import '../assets/scss/utils/variables';
+
     .choose-an-landscape {
         background: white;
         position: fixed;
@@ -79,6 +100,7 @@
             top: 0;
         }
     }
+
     load {
         position: absolute;
         left: 0;
@@ -97,6 +119,7 @@
         left: 0;
         top: 0;
     }
+
     .st0 {
         fill: none;
         stroke: url(#SVGID_1_);

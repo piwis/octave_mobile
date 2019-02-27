@@ -129,4 +129,10 @@
   .bold {
     @include f-muli-bold;
   }
+  .dots-item {
+    &.pulse {
+      box-shadow: 0px 0px 50.6px 4.4px rgba(36, 27, 214, 0.65);
+
+    }
+  }
 </style>

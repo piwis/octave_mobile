@@ -103,6 +103,7 @@ class Slide {
 
                     if (action === "show" && this.DOM.el.querySelector(".lottie") !== null) {
                         console.log(this.settings.pos);
+
                         if (this.settings.pos === 3) {
                             this.lottie.play();
 
@@ -170,16 +171,11 @@ class Navigation {
         this.DOM.el.classList[isCurrent ? 'add' : 'remove']('slide--current');
     }
 
-    setCurrentDots(val, isCurrent = true) {
-        this.DOM.dots.forEach((item,index) => {
-            item.classList.remove('current');
-        })
+    setCurrent(val, isCurrent = true) {
+        this.DOM.dots[val].classList[isCurrent ? 'add' : 'remove']('pulse');
         this.DOM.dots[val].classList.add('current');
     }
 
-    setTotal(val) {
-        this.DOM.pagination.total.innerHTML = val;
-    }
 
     initEvents() {
         this.DOM.prevCtrl.addEventListener('click', () => this.settings.prev());
@@ -215,7 +211,6 @@ export default class Slideshow {
         // The total number of slides.
         this.slidesTotal = this.slides.length;
 
-        this.navigation.setTotal(this.slidesTotal);
         this.current = 0;
         this.init();
     }
@@ -246,7 +241,8 @@ export default class Slideshow {
         this.closeDetailsBoxes().then(() => {
             // Update the current page element.
 
-            this.navigation.setCurrentDots(nextSlidePos, true);
+            this.navigation.setCurrent(this.current, false);
+            this.navigation.setCurrent(nextSlidePos, true);
             Promise.all([this.slides[this.current].hide(), this.slides[nextSlidePos].show()])
                 .then(() => {
                     // Update current.
@@ -280,14 +276,13 @@ export default class Slideshow {
         // Close the details boxes (if open) and then hide the current slide and show the next/previous one.
         this.closeDetailsBoxes().then(() => {
             // Update the current page element.
-            this.navigation.setCurrent(nextSlidePos + 1, direction);
-            this.navigation.setCurrentDots(nextSlidePos, true);
+            this.navigation.setCurrent(this.current, false);
+            this.navigation.setCurrent(nextSlidePos, true);
 
             Promise.all([this.slides[this.current].hide(direction), this.slides[nextSlidePos].show(direction)])
                 .then(() => {
                     console.log("Dans la promse");
                     // Update current.
-                    this.navigation.setCurrentDots(this.current, false);
                     this.slides[this.current].setCurrent(false);
                     this.current = nextSlidePos;
                     this.slides[this.current].setCurrent();

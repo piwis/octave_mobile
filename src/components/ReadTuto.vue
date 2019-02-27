@@ -1,6 +1,8 @@
 <template>
     <div class="read-tuto">
 
+        <p class="icon-close" @click="closeTuto">
+        </p>
         <div class="slideshow">
             <div class="slide">
                 <p class="title bold">
@@ -13,7 +15,7 @@
                 <p class="title bold">
                     Tourner
                 </p>
-                <div class="lottie">
+                <div class="lottie lottie-turn">
 
                 </div>
             </div>
@@ -28,7 +30,7 @@
                 </linearGradient>
                 <path class="drag-vol-trait" d="M31,39h15.9c0,0,44.4,89.9,44.4,180c0,90.4-44.4,181-44.4,181H31c0,0,44.4-90.4,44.4-180.9
                     C75.4,129.1,31,39,31,39z"/>
-                <g id="circle-vol">
+                <g id="circle-vol2">
                     <circle class="st1_up" cx="39" cy="39" r="39"/>
                     <path class="st2" d="M39.1,15.5c0.3,0,0.6,0.1,0.9,0.4l14.5,14.5c0.4,0.5,0.4,1.3-0.1,1.7s-1.1,0.4-1.6,0L39.1,18.4L25.4,32.1
                         c-0.5,0.5-1.2,0.5-1.7,0s-0.5-1.2,0-1.7l14.6-14.5C38.4,15.6,38.7,15.5,39.1,15.5z"/>
@@ -106,16 +108,8 @@
             </svg>
 
         </button>
-        <nav class="boxnav">
-            <div class="boxnav__item boxnav__item--label">
-                <span class="boxnav__label boxnav__label--current">1</span>
-                <span class="espace">/</span>
-                <span class="boxnav__label boxnav__label--total"></span>
-            </div>
-
-        </nav>
         <ul>
-            <li class="dots-item current"></li>
+            <li class="dots-item current pulse"></li>
             <li class="dots-item"></li>
             <li class="dots-item"></li>
             <li class="dots-item"></li>
@@ -144,6 +138,12 @@
             showTuto() {
                 this.readTuto = true;
             },
+            closeTuto() {
+                TweenMax.to('.read-tuto', 1, {
+                    autoAlpha:0,
+                })
+                // EMIT CLOSE TUTO
+            },
             initDragAndDrop: function () {
                 // TweenMax.staggerTo(".dots-battery--item", 1, {
                 //     onStart:function() {
@@ -164,7 +164,7 @@
 
                 var tl = new TimelineMax({paused: true})
                 //.from(".path2",1,{drawSVG:"0%",stroke:'orange',ease:Linear.easeNone})
-                    .to('#circle-vol', 1, {
+                    .to('#circle-vol2', 1, {
                         bezier: {
                             type: "quadratic",
                             values: [
@@ -189,12 +189,11 @@
                 var StartX, StartY;
 
                 this.drag = Draggable.create(D, {
-                    trigger: "#circle-vol",
+                    trigger: "#circle-vol2",
                     type: 'x,y',
                     throwProps: true,
                     onThrowUpdate: true,
                     onRelease: function () {
-                        console.log("Salut");
                     },
                     bounds: {minY: 0, maxY: 300},
                     onDrag: function () {
@@ -251,6 +250,10 @@
     }
 
     .lottie {
+        &-turn {
+            max-width: 370px;
+            max-height: 330px;
+        }
         &-avance {
             max-width: 350px;
             max-height: 300px;
@@ -260,7 +263,6 @@
             max-width: 200px;
         }
         &-exit {
-            max-width: 100px;
             visibility: hidden;
             opacity: 0;
             bottom: 20px;
@@ -356,13 +358,27 @@
 
     .boxnav__item--prev, .boxnav__item--next {
         position: absolute;
-        top: 0;
-        left: 0;
         z-index: 10000;
     }
 
     .boxnav__item--next {
-        left: 40px;
+        top: 50%;
+        right: 30px;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+    }
+    .boxnav__item--prev {
+        top: 50%;
+        left: 30px;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
 
     }
 
@@ -604,7 +620,7 @@
         align-items: center;
         justify-content: center;
         position: absolute;
-        left: 0;
+        left: 30px;
         max-height: 405px;
         height: 100%;
         top: 50%;
@@ -673,6 +689,28 @@
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-miterlimit: 10;
+    }
+
+    .icon-close {
+        margin: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        width: 40px;
+        height: 40px;
+        z-index: 1000;
+        border-radius: 40px;
+        line-height: 1;
+        font-size: 30px;
+        background-image: url("data:image/svg+xml,%3Csvg width='40px' height='40px' viewBox='0 0 40 40' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='croix' fill='%234F65EB' fill-rule='nonzero'%3E%3Cpath d='M20.0330579,0.12231405 C9.07864959,0.12231405 0.198347107,9.00261653 0.198347107,19.9570248 C0.198347107,30.9114331 9.07864959,39.7917355 20.0330579,39.7917355 C30.9874661,39.7917355 39.8677686,30.9114331 39.8677686,19.9570248 C39.8677686,14.6965324 37.7780461,9.65149614 34.0583163,5.93176632 C30.3385865,2.2120365 25.2935502,0.12231405 20.0330579,0.12231405 Z M33.5867769,33.5371901 C27.1166427,40.003477 16.9797159,40.9986759 9.37557275,35.9141396 C1.77142959,30.8296033 -1.18196317,21.0815175 2.32164051,12.6316498 C5.82524419,4.18178208 14.8099926,-0.616342779 23.7809626,1.1717288 C32.7519326,2.95980037 39.2104579,10.8360404 39.2066116,19.9834711 C39.2130744,25.0669079 37.1956989,29.9438182 33.6,33.5371901 L33.5867769,33.5371901 Z' id='Shape'%3E%3C/path%3E%3Cpath d='M28.6082645,12.5256198 C28.3520022,12.2779149 27.9455184,12.2779149 27.6892562,12.5256198 L20.3735537,19.8347107 L13.0413223,12.5256198 C12.7787427,12.3459471 12.4254286,12.3787781 12.2004505,12.6037563 C11.9754723,12.8287344 11.9426413,13.1820485 12.122314,13.4446281 L19.3057851,20.631405 L12.122314,27.8181818 C11.9426413,28.0807614 11.9754723,28.4340755 12.2004505,28.6590536 C12.4254286,28.8840318 12.7787427,28.9168628 13.0413223,28.7371901 L20.3570248,21.414876 L27.6892562,28.7371901 C27.9518358,28.9168628 28.3051499,28.8840318 28.530128,28.6590536 C28.7551062,28.4340755 28.7879372,28.0807614 28.6082645,27.8181818 L21.4214876,20.631405 L28.6082645,13.4446281 C28.8559694,13.1883659 28.8559694,12.7818821 28.6082645,12.5256198 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 
 </style>

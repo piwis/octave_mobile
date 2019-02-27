@@ -274,6 +274,7 @@
         },
 
         mounted() {
+
             this.initDrag();
         }
 
