@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './registerServiceWorker'
+import VueNativeNotification from 'vue-native-notification'
 
 
 import VueSocketIO from 'vue-socket.io'
@@ -16,6 +17,9 @@ Vue.use(new VueSocketIO({
     vuex: {
     }
 }))
+Vue.use(VueNativeNotification, {
+    requestOnNotify: true
+})
 
 /* eslint-disable no-new */
 // new Vue({

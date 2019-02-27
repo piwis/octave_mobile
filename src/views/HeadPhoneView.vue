@@ -70,8 +70,8 @@
         margin: 0 auto 10px auto;
     }
     .btn {
-        /*width: ;*/
-        margin-top: 30px;
+        width: 140px;
+        margin-top: 40px;
     }
     .st0{fill:#FFB4B6;}
     .st1{fill:#FF7F81;}

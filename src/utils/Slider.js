@@ -1,17 +1,17 @@
-
 import {TweenMax} from 'gsap';
 import lottie from 'lottie-web';
 
-// import drag from "../assets/json/drag_2.json";
-// import clique from "../assets/json/clique_2.json";
-// import scroll from "../assets/json/scroll_2.json";
-// import quitter from "../assets/json/quitter.json";
-// let jsonLottie = [
-//     drag,
-//     clique,
-//     scroll,
-//     quitter
-// ]
+import avancer from "../assets/json/avancer.json";
+import tourner from "../assets/json/tourner.json";
+import rentrer from "../assets/json/rentrer.json";
+import energie from "../assets/json/niveau_energie.json";
+
+let jsonLottie = [
+    avancer,
+    tourner,
+    rentrer,
+    energie,
+]
 
 class Slide {
     constructor(el, settings) {
@@ -20,22 +20,38 @@ class Slide {
 
         this.settings = {
             detailsEl: null,
-            onHideDetails: () => {return false;}
+            onHideDetails: () => {
+                return false;
+            }
         }
+
         Object.assign(this.settings, settings);
 
 
+        if(this.settings.pos === 0) {
+            this.lottie2 = lottie.loadAnimation({
+                container: document.querySelector(".lottie-exit"),
+                renderer: 'svg',
+                autoplay: false,
+                loop: true,
+                animationData: jsonLottie[2]
+            })
+        }
         this.DOM.titleWrap = this.DOM.el.querySelector('.slide-item-number');
 
         this.DOM.bodyMovin = this.DOM.el.querySelector('.lottie');
-
-        // this.lottie = lottie.loadAnimation({
-        //     container: this.DOM.bodyMovin,
-        //     renderer: 'svg',
-        //     autoplay: false,
-        //     loop:true,
-        //     animationData: jsonLottie[settings.pos]
-        // })
+        if (this.DOM.bodyMovin) {
+            this.lottie = lottie.loadAnimation({
+                container: this.DOM.bodyMovin,
+                renderer: 'svg',
+                autoplay: false,
+                loop: this.settings.pos === 3 || this.settings.pos === 2 ? false : true,
+                animationData: jsonLottie[settings.pos]
+            })
+            if (this.settings.pos === 0) {
+                this.lottie.play();
+            }
+        }
         // Some config values.
         this.config = {
             animation: {
@@ -46,27 +62,33 @@ class Slide {
     }
 
     stopLottie() {
-        //this.lottie.stop();
+        this.lottie.stop();
 
     }
+
     playLottie() {
-        // this.lottie.play();
+        this.lottie.play();
     }
+
     // Sets the current class.
     setCurrent(isCurrent = true) {
         this.DOM.el.classList[isCurrent ? 'add' : 'remove']('slide--current');
     }
+
     // Hide the slide.
     hide(direction) {
         return this.toggle('hide', direction);
     }
+
     // Show the slide.
     show(direction) {
         return this.toggle('show', direction);
     }
+
     // Show/Hide the slide.
     toggle(action, direction) {
         return new Promise((resolve, reject) => {
+
 
             let revealerOpts = {
                 delay: action === 'hide' ? 0 : this.config.animation.duration / 2,
@@ -79,31 +101,55 @@ class Slide {
                 opacity: action === 'hide' ? 0 : 1,
                 onComplete: () => {
 
-                    if(action === "show") {
-                        this.playLottie()
+                    if (action === "show" && this.DOM.el.querySelector(".lottie") !== null) {
+                        console.log(this.settings.pos);
+                        if (this.settings.pos === 3) {
+                            this.lottie.play();
 
-                    } else {
+                            setTimeout(() => {
+                                TweenMax.to(['.lottie-battery',".niveau .title"], 0.3, {
+                                    autoAlpha: 0,
+                                    onComplete: () => {
+                                        TweenMax.to('.lottie-exit',0.3,{
+                                            autoAlpha: 1,
+                                            onComplete: () => {
+                                                this.lottie2.play()
+                                            },
+                                        })
+                                    },
+                                })
+                            }, 6000)
+                        } else {
+                            this.lottie.play();
+                        }
+                    } else if (this.DOM.el.querySelector(".lottie") !== null) {
                         this.stopLottie()
                     }
+
                     resolve();
                 }
             });
 
         });
     }
-    // Show the details boxes.
+
 }
 
-// The navigation class. Controls the .boxnav animations (e.g. pagination animation).
 class Navigation {
     constructor(el, settings, slide) {
         this.DOM = {el: el};
 
         this.slide = slide;
         this.settings = {
-            next: () => {return false;},
-            prev: () => {return false;},
-            nextDots: () => {return false;}
+            next: () => {
+                return false;
+            },
+            prev: () => {
+                return false;
+            },
+            nextDots: () => {
+                return false;
+            }
         }
         Object.assign(this.settings, settings);
 
@@ -119,19 +165,22 @@ class Navigation {
         };
         this.initEvents();
     }
-    // Updates the current page element value.
-    // Animate the element up, update the value and finally animate it in from bottom up.
+
     setCurrent(isCurrent = true) {
         this.DOM.el.classList[isCurrent ? 'add' : 'remove']('slide--current');
     }
+
     setCurrentDots(val, isCurrent = true) {
+        this.DOM.dots.forEach((item,index) => {
+            item.classList.remove('current');
+        })
         this.DOM.dots[val].classList.add('current');
     }
-    // Sets the total pages value.
+
     setTotal(val) {
         this.DOM.pagination.total.innerHTML = val;
     }
-    // Initialize the events on the next/prev controls.
+
     initEvents() {
         this.DOM.prevCtrl.addEventListener('click', () => this.settings.prev());
         this.DOM.nextCtrl.addEventListener('click', () => this.settings.next());
@@ -152,13 +201,13 @@ export default class Slideshow {
         // The slides.
         this.slides = [];
         // Initialize/Create the slides instances.
-        Array.from(this.DOM.el.querySelectorAll('.slide')).forEach((slideEl,pos) => this.slides.push(new Slide(slideEl, {
+        Array.from(this.DOM.el.querySelectorAll('.slide')).forEach((slideEl, pos) => this.slides.push(new Slide(slideEl, {
             pos,
             // this slide's details element.
             //detailsEl: this.DOM.details[pos],
             // When clicking the close details ctrl button call the closeDetailsBoxes function.
             onHideDetails: () => {
-                if ( this.isAnimating ) return;
+                if (this.isAnimating) return;
                 this.isAnimating = true;
                 this.closeDetailsBoxes().then(() => this.isAnimating = false);
             }
@@ -166,32 +215,29 @@ export default class Slideshow {
         // The total number of slides.
         this.slidesTotal = this.slides.length;
 
-        // Set the total number of slides in the navigation box.
         this.navigation.setTotal(this.slidesTotal);
-        // At least 2 slides to continue...
-        /*if ( this.slidesTotal < 2 ) {
-            return false;
-        }*/
-        // Current slide position.
         this.current = 0;
-        // Initialize the slideshow.
         this.init();
     }
+
     // Set the current slide and initialize some events.
     init() {
         this.slides[this.current].setCurrent();
         this.initEvents();
     }
+
     initEvents() {
     }
+
     openDetailsBoxes() {
-        if ( this.isAnimating ) return;
+        if (this.isAnimating) return;
         this.isAnimating = true;
     }
+
     navigateDots(index) {
         // If animating return.
-        if ( this.isAnimating ) return;
-        if(index === this.current) return;
+        if (this.isAnimating) return;
+        if (index === this.current) return;
         this.isAnimating = true;
 
         // The next/prev slide´s position.
@@ -219,27 +265,29 @@ export default class Slideshow {
             resolve()
         });
     }
+
     // Navigate the slideshow.
     navigate(direction) {
         // If animating return.
-        if ( this.isAnimating ) return;
+        if (this.isAnimating) return;
         this.isAnimating = true;
 
         // The next/prev slide´s position.
         const nextSlidePos = direction === 'right' ?
-            this.current < this.slidesTotal-1 ? this.current+1 : 0 :
-            this.current > 0 ? this.current-1 : this.slidesTotal-1;
+            this.current < this.slidesTotal - 1 ? this.current + 1 : 0 :
+            this.current > 0 ? this.current - 1 : this.slidesTotal - 1;
 
         // Close the details boxes (if open) and then hide the current slide and show the next/previous one.
         this.closeDetailsBoxes().then(() => {
             // Update the current page element.
-            this.navigation.setCurrent(nextSlidePos+1, direction);
+            this.navigation.setCurrent(nextSlidePos + 1, direction);
             this.navigation.setCurrentDots(nextSlidePos, true);
 
             Promise.all([this.slides[this.current].hide(direction), this.slides[nextSlidePos].show(direction)])
                 .then(() => {
                     console.log("Dans la promse");
                     // Update current.
+                    this.navigation.setCurrentDots(this.current, false);
                     this.slides[this.current].setCurrent(false);
                     this.current = nextSlidePos;
                     this.slides[this.current].setCurrent();

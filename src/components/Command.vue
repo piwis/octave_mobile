@@ -43,15 +43,13 @@
                     <BackDrone v-show="backHome" @clicked="goHome"></BackDrone>
                 </transition>
             </div>
-            <ReadTuto key="2" v-else-if="droneBack && !droneBackHome"/>
             <div key="3" v-else-if="droneBack && droneBackHome" class="droneBack">
                 <Loader text="Je rentre ..."></Loader>
             </div>
         </transition-group>
 
-        Avance : {{this.posY}} <br>
-        Gauche ou droite : {{this.normalizeX}} <br>
-        Montrer : {{this.top / 2}} <br>
+        <ReadTuto class="read-tuto"/>
+
     </div>
 
 </template>
@@ -175,6 +173,15 @@
                         tl.progress(.5)
                     }
                 })
+                TweenMax.to('.drag-left',1, {
+                    autoAlpha: 1,
+                })
+                TweenMax.to('.stop-drone',1, {
+                    autoAlpha: 1,
+                })
+                TweenMax.to('.icon-tuto',1, {
+                    autoAlpha: 1,
+                })
 
             },
             rotationScreen() {
@@ -185,7 +192,7 @@
                     if (window.orientation === 90 || window.orientation === -90) {
                         this.landscapeOrientation = true;
                     } else {
-                           this.landscapeOrientation = false;
+                        this.landscapeOrientation = false;
                     }
                 }, false);
             },
@@ -263,8 +270,23 @@
                 }
             },
             showTutoFunction() {
-                this.droneBack = true
 
+                TweenMax.to('.read-tuto', 1, {
+                    autoAlpha:1,
+                })
+                this.$socket.emit("readTuto", true)
+                this.gn.stop()
+            },
+            hideTuto() {
+
+                TweenMax.to('.read-tuto', 1, {
+                    autoAlpha:0,
+                })
+
+            },
+            backTuto() {
+                this.droneBack = false
+                // this.gn.start()
             }
 
 
@@ -295,7 +317,10 @@
         }
     }
 
-    #circle-vol {
+    .read-tuto {
+        opacity: 0;
+        visibility: hidden;
+        background: rgba(242, 246, 255, 0.4);
     }
 
     .choose-an-landscape {

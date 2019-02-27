@@ -86,43 +86,17 @@
                 <div class="slideshow">
 
                     <div class="slide">
-                        <p class="title light">
-                            Avancer Salut
+                        <p class="title bold">
+                            Avancer
                         </p>
-                        <div class="content">
-                            <p class="bold">
-                                Incline ton smarthphone vers l'avant
-                            </p>
-                            <div class="light">
-                                Plus tu penches, plus je vais vite !
-                            </div>
-                        </div>
-
-                        <div class="lottie">
-                            <svg width="200" height="145" viewBox="0 0 200 145" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M180.5 85C178.5 79 175.271 74.5 169.453 74.5L30.5469 74.5C24.7287 74.5 21.6016 79.5 20 85.0469L1.266e-05 133.953C1.24057e-05 139.771 4.72874 144.5 10.5469 144.5L189.453 144.5C195.271 144.5 200 139.771 200 133.953L180.5 85ZM190.285 128C190.285 129.335 189.179 130.441 187.844 130.441C186.509 130.441 185.5 129.335 185.5 128C185.5 126.665 186.509 125.559 187.844 125.559C189.179 125.559 190.285 126.665 190.285 128ZM178.5 98.5L184 113.5C184 114.208 184.5 114.5 183.5 115C183 115.5 181.73 114.938 181.73 114.23L176 99.5C176 98.7923 175.5 98 176.5 97.5C177.5 97 178 98 178.5 98.5ZM161.934 78.6016L181.934 140.398L16.6992 140.398L36.6992 78.6016L161.934 78.6016ZM26.5 100L21.5 113C20.5 115.5 18 117 15.5 116C13.3984 115.159 13.5 113.275 13.5 111L19.5 97.5C20.5 95.5 22 93.9286 24.5 95C28 96.5 27 98.3984 26.5 100Z"
-                                      fill="#323232"/>
-                                <path d="M99.5 57V3M99.5 3L89 13.5M99.5 3L110 13.5" stroke="black"
-                                      stroke-width="3"/>
-                            </svg>
+                        <div class="lottie lottie-avance">
                         </div>
                     </div>
                     <div class="slide">
-                        <p>
-                            {{this.testX}} <br>
-                            Clique pour sélectionner une île
-                            {{this.posX}}
+                        <p class="title bold">
+                            Tourner
                         </p>
-
-                        <div class="lottie">
-                            <svg width="204" height="181" viewBox="0 0 204 181" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M182.255 51.4772C180.854 46.2491 175.466 43.1386 170.238 44.5394L9.4771 87.6152C4.24905 89.0161 1.13847 94.4037 2.53933 99.6318L21.5378 170.535C22.9387 175.763 28.3264 178.874 33.5544 177.473L194.315 134.397C199.544 132.996 202.654 127.609 201.253 122.381L182.255 51.4772ZM193.763 108.117C194.085 109.316 193.357 110.577 192.157 110.898C190.958 111.22 189.785 110.468 189.463 109.269C189.142 108.069 189.782 106.832 190.982 106.511C192.181 106.189 193.442 106.917 193.763 108.117ZM185.532 81.2599L189.2 94.9491C189.371 95.5851 188.914 96.2487 188.278 96.4191C187.642 96.5895 187.002 96.2199 186.831 95.584L183.163 81.8947C182.993 81.2588 183.362 80.6187 183.998 80.4483C184.634 80.2779 185.362 80.6239 185.532 81.2599ZM164.469 50.0355L186.571 132.522L38.0952 172.306L15.993 89.8195L164.469 50.0355ZM21.8537 126.434L24.8634 137.666C25.4111 139.711 24.2095 141.792 22.1653 142.34C20.1212 142.887 18.04 141.686 17.4922 139.641L14.4826 128.409C13.9348 126.365 15.1365 124.284 17.1806 123.736C19.2247 123.188 21.306 124.39 21.8537 126.434Z"
-                                      fill="#323232"/>
-                                <path d="M140 27C127.121 8.13441 89.0909 -18.2774 40 27M40 27V18.6149M40 27H49.0909"
-                                      stroke="black" stroke-width="3"/>
-                            </svg>
+                        <div class="lottie lottie-turn">
 
                         </div>
                     </div>
@@ -131,14 +105,14 @@
                             <svg version="1.1" id="drag-vol" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      viewBox="0 0 91.3 405" style="enable-background:new 0 0 91.3 405;" xml:space="preserve">
                 <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="860.15" y1="-5614.0601" x2="860.15" y2="-5253.0601" gradientTransform="matrix(1 0 0 -1 -799 -5214.0601)">
-                    <stop  offset="0" style="stop-color:#FF7F81;stop-opacity:0"/>
-                    <stop  offset="0.5" style="stop-color:#FF7F81"/>
-                    <stop  offset="1" style="stop-color:#FF7F81;stop-opacity:0"/>
+                    <stop  offset="0" style="stop-color:#5F86FF;stop-opacity:0"/>
+                    <stop  offset="0.5" style="stop-color:#5F86FF"/>
+                    <stop  offset="1" style="stop-color:#5F86FF;stop-opacity:0"/>
                 </linearGradient>
                 <path class="drag-vol-trait" d="M31,39h15.9c0,0,44.4,89.9,44.4,180c0,90.4-44.4,181-44.4,181H31c0,0,44.4-90.4,44.4-180.9
                     C75.4,129.1,31,39,31,39z"/>
                 <g id="circle-vol">
-                    <circle class="st1" cx="39" cy="39" r="39"/>
+                    <circle class="st1_up" cx="39" cy="39" r="39"/>
                     <path class="st2" d="M39.1,15.5c0.3,0,0.6,0.1,0.9,0.4l14.5,14.5c0.4,0.5,0.4,1.3-0.1,1.7s-1.1,0.4-1.6,0L39.1,18.4L25.4,32.1
                         c-0.5,0.5-1.2,0.5-1.7,0s-0.5-1.2,0-1.7l14.6-14.5C38.4,15.6,38.7,15.5,39.1,15.5z"/>
                     <path class="st2" d="M39,62.5c-0.3,0-0.6-0.1-0.9-0.4L23.6,47.6c-0.4-0.5-0.3-1.3,0.2-1.7c0.4-0.3,1-0.3,1.5,0L39,59.6l13.7-13.7
@@ -181,54 +155,14 @@
                         </div>
 
                     </div>
-                    <div class="slide">
-                        <span class="light uppercase">Fin de l'experience</span>
-                        <p class="bold">
-                            Les voyages me fatiguent assez-vite, <br> Je te préviendrais quand je devrais rentrer
+                    <div class="slide niveau">
+
+                        <p class="title bold">
+                            Niveau d'énergie
                         </p>
 
-                        <div class="lottie">
-                            <div class="dots-battery">
-                                <div class="dots-battery--item"></div>
-                                <div class="dots-battery--item"></div>
-                                <div class="dots-battery--item"></div>
-                                <div class="dots-battery--item"></div>
-                            </div>
-                        </div>
-
-                        <div class="stop-drone" @click="goToNextView">
-                            <span class="stop-arrow">
-                                <span>Arrêter</span>
-                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                     viewBox="0 0 67.7 68.2" style="enable-background:new 0 0 67.7 68.2;" xml:space="preserve">
-                                <g>
-                                    <defs>
-                                        <rect id="SVGID_1_" x="0.3" y="0.6" width="67" height="67"/>
-                                    </defs>
-                                    <clipPath id="SVGID_2_">
-                                        <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-                                    </clipPath>
-                                    <polyline class="st23" points="33.8,50 49.8,66.1 65.9,50 	"/>
-                                    <path class="st23" d="M1.8,2.1c0,0,48,0.4,48,48.4v15.6"/>
-                                </g>
-                                </svg>
-
-                            </span>
-
-                            <div class="icon-home">
-
-                                <svg version="1.1" id="stop-drone-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 76 76" style="enable-background:new 0 0 76 76;" xml:space="preserve">
-                            <circle class="st00" cx="38" cy="38" r="38"/>
-                            <path class="st11" d="M41.6,54.3h-5.9c-0.9,0-1.7-0.7-1.7-1.7V40.3c0-0.9,0.7-1.7,1.7-1.7h5.9c0.9,0,1.7,0.7,1.7,1.7v12.4
-                                C43.3,53.6,42.5,54.3,41.6,54.3z"/>
-                            <line class="st22" x1="13.7" y1="57.2" x2="63.6" y2="57.2"/>
-                            <polygon class="st33" points="38.6,16.1 16.2,34.8 23,34.8 23,53.5 54.1,53.5 54.1,34.8 60.6,34.8 "/>
-                            </svg>
-                                <span>
-                                Rentrer
-                            </span>
-                            </div>
-                        </div>
+                        <div class="lottie lottie-battery"></div>
+                        <div class="lottie-exit" @click="goToNextView"></div>
                     </div>
 
 
@@ -263,7 +197,7 @@
 
                 </nav>
                 <ul>
-                    <li @click="currentSlide = 4" class="dots-item current"></li>
+                    <li @click="currentSlide = 4" class="dots-item"></li>
                     <li @click="currentSlide = 4" class="dots-item"></li>
                     <li @click="currentSlide = 4" class="dots-item"></li>
                     <li @click="currentSlide = 4" class="dots-item"></li>
@@ -357,8 +291,11 @@
                     gn.start((data) => {
 
                         if (this.landscapeOrientation && !this.userRotateScreen) {
-                            if (data.do.gamma > -80 && data.do.gamma < 0 && data.do.beta < 100 && data.do.beta > -100) {
-                                this.posY = UMath.normalize(data.do.gamma, 0, -80);
+                            if (data.do.gamma > -90 && data.do.gamma < 0 && data.do.beta < 100 && data.do.beta > -100) {
+                                this.posY = UMath.normalize(data.do.gamma, 0, -90);
+                                this.posX = UMath.normalize(data.do.beta, -180, 180);
+                            } else if (data.do.gamma < 90 && data.do.gamma > 0 && data.do.beta < 100 && data.do.beta > -100) {
+                                this.posY = UMath.normalize(data.do.gamma, 0, 90);
                                 this.posX = UMath.normalize(data.do.beta, -180, 180);
                             }
                             /*else if (data.do.gamma < 80 && data.do.gamma > 0 && data.do.beta < 100 && data.do.beta > -100) {
@@ -378,9 +315,9 @@
                             }
 
                             // Vérife coté
-                            if (this.posX > 0.5 && !this.leftAndRight && this.unlockLeftAndRight) {
+                            if (this.posX > 0.5 && !this.leftAndRight && this.unlockLeftAndRight && !this.unlockFoward) {
                                 this.leftAndRight = true
-                            } else if (this.leftAndRight && this.posX < 0.45) {
+                            } else if (this.leftAndRight && this.posX < 0.45 && !this.unlockFoward) {
                                 this.leftAndRight = false
                                 this.unlockLeftAndRight = false;
                                 gn.end()
@@ -398,12 +335,6 @@
                 }).catch(function (e) {
                     console.log("Erreur", e);
                 });
-
-            },
-            checkMovingForward() {
-
-            },
-            checkLeftAndRight() {
 
             },
             initDragAndDrop: function () {
@@ -456,7 +387,6 @@
                     throwProps: true,
                     onThrowUpdate: true,
                     onRelease: function () {
-                        console.log("Salut");
                     },
                     bounds: {minY: 0, maxY: 300},
                     onDrag: function () {
@@ -492,11 +422,11 @@
                             }, 1)
 
                             setTimeout(() => {
-                                TweenMax.to(".dots-battery",0.5,{
-                                    autoAlpha:0
+                                TweenMax.to(".dots-battery", 0.5, {
+                                    autoAlpha: 0
                                 });
-                                TweenMax.to(".stop-drone",0.5,{
-                                    autoAlpha:1
+                                TweenMax.to(".stop-drone", 0.5, {
+                                    autoAlpha: 1
                                 });
                             }, 5000)
 
@@ -547,6 +477,37 @@
 
 <style scoped lang="scss">
     @import '../assets/scss/utils/variables';
+
+    .title {
+        color: $purple;
+        margin: 0;
+        font-size: 25px;
+        line-height: 1;
+        margin-bottom: -20px;
+    }
+
+    .lottie {
+        &-turn {
+            max-width: 370px;
+            max-height: 330px;
+        }
+        &-avance {
+            max-width: 350px;
+            max-height: 300px;
+        }
+        &-battery {
+            margin-top: 50px;
+            max-width: 200px;
+        }
+        &-exit {
+            visibility: hidden;
+            opacity: 0;
+            bottom: 20px;
+            position: absolute;
+            right: 0;
+
+        }
+    }
 
     .sliders {
         position: relative;
@@ -634,6 +595,15 @@
 
     .boxnav__item--prev, .boxnav__item--next {
         display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+    }
+
+    .boxnav__item--next {
+        left: 40px;
+
     }
 
     .boxnav {
@@ -648,6 +618,9 @@
 
     .st1 {
         fill: #DA5E60;
+    }
+    .st1_up {
+        fill: #5F86FF;
     }
 
     .st2 {
@@ -678,6 +651,9 @@
             border: 1px solid #4f65eb;
             display: inline-block;
             &.current {
+                background: #4f65eb;
+            }
+            &.current-box {
                 background: #4f65eb;
                 box-shadow: 0px 0px 43.32px 13.68px rgba(101, 137, 255, 0.65);
             }

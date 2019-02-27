@@ -3,13 +3,15 @@
         <transition name="fade" mode="out-in">
             <div class="first-introduction">
                 <p class="light">
-                    Cette expérience se déroule sur écran <br>
-                    mais se controle grâce à ton smartphone.
+                    Octave s’éveille. <br>
+                    Tu peux communiquer avec lui grâce à ton smartphone,
                 </p>
                 <p class="bold">
-                        N’oubliez pas de <strong>regarder le grand écran.</strong>
+                        <strong>
+                            mais il te parlera grâce au grand écran.
+                        </strong>
                 </p>
-                <a href="#" class="btn btn-icon green" @click="startIntroduction">J'ai compris !</a>
+                <a href="#" class="btn btn-icon blue" @click="startIntroduction">J'ai compris !</a>
             </div>
         </transition>
 
@@ -27,24 +29,58 @@
                 lookAtScreen: true,
                 useHeadPhone: false,
                 //startIntroduction: false,
+                notificationsSupported: false,
             }
         },
 
         sockets: {
         },
+
         methods: {
 
             startIntroduction() {
-                alert('Salut')
-                this.$root.$emit('bg', true);
+                this.$root.$emit('bg', {r:0.3962,g:0.2995,b:0.3042});
                 this.$socket.emit("useHeadPhone", true);
                 // this.$socket.emit("lookAtScreen", true);
                 this.$router.push('headphone');
             },
             useHeadPhone() {
 
+            },
+            askPermission() {
+                if (this.notificationsSupported) {
+                    Notification.requestPermission(result => {
+                        console.log('result from permission question', result);
+                        if (result !== 'granted') {
+                            alert('You probably do not like notifications?!');
+                        } else {
+                            console.log('A notification will be send from the service worker => This only works in production');
+                            this.showNotification()
+                        }
+                    })
+                }
+            },
+            showNotification() {
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.ready // returns a Promise, the active SW registration
+                        .then(swreg => swreg.showNotification('Notifications granted', {
+                            body: 'Here is a first notification',
+                            icon: '/img/icons/android-chrome-192x192.png',
+                            image: '/img/autumn-forest.png',
+                            vibrate: [300, 200, 300],
+                            badge: '/img/icons/plint-badge-96x96.png',
+                            // actions: [
+                            //     { action: 'confirm', title: 'Okay', icon: '/img/icons/android-chrome-192x192.png'},
+                            //     { action: 'cancel', title: 'Cancel', icon: '/img/icons/android-chrome-192x192.png'}
+                            // ],
+                        }))
+                }
+            },
+        },
+        created() {
+            if ('Notification' in window && 'serviceWorker' in navigator) {
+                this.notificationsSupported = true
             }
-
         },
 
         mounted() {
@@ -102,5 +138,8 @@
             }
         }
 
+    }
+    .btn {
+        margin-top: 40px;
     }
 </style>

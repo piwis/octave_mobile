@@ -1,8 +1,8 @@
 <template>
     <div class="understand-introduction">
         <transition name="fade" mode="out-in">
-            <span class="btn green" @click="launchChoose" v-if="show" key="1">J’ai compris</span>
-            <div v-else key="2">
+            <span class="btn green" @click="nextDiv" v-if="show" key="1">J’ai compris</span>
+            <div v-else key="2" @click="launchChoose">
                 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      viewBox="0 0 113 113" style="enable-background:new 0 0 113 113;" xml:space="preserve">
                 <g>
@@ -48,12 +48,12 @@
 
         methods: {
 
-            launchChoose() {
+            nextDiv() {
                 this.show = !this.show
                 this.$socket.emit("understandIntroduction", true)
-                setTimeout(() => {
-                    this.$router.push('choose-landscape')
-                }, 2000)
+            },
+            launchChoose() {
+                this.$router.push('choose-landscape')
             }
 
         },
@@ -87,12 +87,12 @@
     .btn {
         display: block;
         margin: 0 auto;
-        max-width: 130px;
+        max-width: 140px;
     }
     svg {
         width: 113px;
         height: 113px;
     }
-    .st0{clip-path:url(#SVGID_2_);fill:none;stroke:#6589FF;stroke-width:1.8335;stroke-miterlimit:10;}
-    .st1{clip-path:url(#SVGID_2_);fill:#AAC0FF;}
+    .st0{clip-path:url(#SVGID_2_);fill:none;stroke:#3CB879;stroke-width:1.8335;stroke-miterlimit:10;}
+    .st1{clip-path:url(#SVGID_2_);fill:#3CB879;}
 </style>

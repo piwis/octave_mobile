@@ -1,9 +1,125 @@
 <template>
     <div class="read-tuto">
 
-        <div class="show-tuto">
-            Coucou
+        <div class="slideshow">
+            <div class="slide">
+                <p class="title bold">
+                    Avancer
+                </p>
+                <div class="lottie lottie-avance">
+                </div>
+            </div>
+            <div class="slide">
+                <p class="title bold">
+                    Tourner
+                </p>
+                <div class="lottie">
+
+                </div>
+            </div>
+            <div class="slide">
+                <div class="drag-left">
+                    <svg version="1.1" id="drag-vol" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 91.3 405" style="enable-background:new 0 0 91.3 405;" xml:space="preserve">
+                <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="860.15" y1="-5614.0601" x2="860.15" y2="-5253.0601" gradientTransform="matrix(1 0 0 -1 -799 -5214.0601)">
+                    <stop  offset="0" style="stop-color:#5F86FF;stop-opacity:0"/>
+                    <stop  offset="0.5" style="stop-color:#5F86FF"/>
+                    <stop  offset="1" style="stop-color:#5F86FF;stop-opacity:0"/>
+                </linearGradient>
+                <path class="drag-vol-trait" d="M31,39h15.9c0,0,44.4,89.9,44.4,180c0,90.4-44.4,181-44.4,181H31c0,0,44.4-90.4,44.4-180.9
+                    C75.4,129.1,31,39,31,39z"/>
+                <g id="circle-vol">
+                    <circle class="st1_up" cx="39" cy="39" r="39"/>
+                    <path class="st2" d="M39.1,15.5c0.3,0,0.6,0.1,0.9,0.4l14.5,14.5c0.4,0.5,0.4,1.3-0.1,1.7s-1.1,0.4-1.6,0L39.1,18.4L25.4,32.1
+                        c-0.5,0.5-1.2,0.5-1.7,0s-0.5-1.2,0-1.7l14.6-14.5C38.4,15.6,38.7,15.5,39.1,15.5z"/>
+                    <path class="st2" d="M39,62.5c-0.3,0-0.6-0.1-0.9-0.4L23.6,47.6c-0.4-0.5-0.3-1.3,0.2-1.7c0.4-0.3,1-0.3,1.5,0L39,59.6l13.7-13.7
+                        c0.5-0.4,1.3-0.4,1.7,0.1c0.4,0.5,0.4,1.1,0,1.6L39.9,62.1C39.6,62.4,39.3,62.5,39,62.5z"/>
+                </g>
+                </svg>
+                    <div class="up">
+                        <svg version="1.1" id="top" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     viewBox="0 0 76 26" style="enable-background:new 0 0 76 26;" xml:space="preserve">
+                                <g>
+                                    <defs>
+                                        <rect id="SVGID_1_up" width="75" height="26"/>
+                                    </defs>
+                                    <clipPath id="SVGID_2_up">
+                                        <use xlink:href="#SVGID_1_up"  style="overflow:visible;"/>
+                                    </clipPath>
+                                    <polyline class="up-st0" points="23.6,20.4 5.6,24.8 1.2,7.1"/>
+                                    <path class="up-st0" d="M5.9,24.8C9.3,15.7,16.3,8,26.1,4c18.6-7.7,39.9,1,47.7,19.3"/>
+                                </g>
+                                </svg>
+                        <span>Monter</span>
+                    </div>
+                    <div class="bottom">
+                        <svg version="1.1" id="bottom" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 26 76" style="enable-background:new 0 0 26 76;" xml:space="preserve">
+<g>
+	<defs>
+		<rect id="SVGID_1_bottom" x="0" y="1" width="26" height="75"/>
+	</defs>
+	<clipPath id="SVGID_2_bottom">
+		<use xlink:href="#SVGID_1_bottom"  style="overflow:visible;"/>
+	</clipPath>
+	<polyline class="bottom-st0" points="5.6,52.4 1.2,70.4 18.9,74.8 	"/>
+	<path class="bottom-st0" d="M1.2,70.1C10.3,66.7,18,59.7,22,49.9c7.7-18.6-1-39.9-19.3-47.7"/>
+</g>
+</svg>
+                        <span>Descendre</span>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="slide niveau">
+
+                <p class="title bold">
+                    Niveau d'énergie
+                </p>
+
+                <div class="lottie lottie-battery"></div>
+                <div class="lottie-exit"></div>
+            </div>
+
+
         </div>
+        <button class="boxnav__item boxnav__item--prev">
+            <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="11.805px" height="16.805px">
+                <path fill-rule="evenodd" stroke="rgb(0, 3, 135)" stroke-width="1.87px" stroke-linecap="butt"
+                      stroke-linejoin="miter" fill="none"
+                      d="M7.646,14.935 L0.936,7.936 L7.646,0.935 "/>
+            </svg>
+        </button>
+        <button class="boxnav__item boxnav__item--next">
+            <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="11.805px" height="16.805px">
+                <path fill-rule="evenodd" stroke="rgb(0, 3, 135)" stroke-width="1.87px" stroke-linecap="butt"
+                      stroke-linejoin="miter" fill="none"
+                      d="M2.963,0.935 L9.935,7.935 L2.963,14.935 "/>
+            </svg>
+
+        </button>
+        <nav class="boxnav">
+            <div class="boxnav__item boxnav__item--label">
+                <span class="boxnav__label boxnav__label--current">1</span>
+                <span class="espace">/</span>
+                <span class="boxnav__label boxnav__label--total"></span>
+            </div>
+
+        </nav>
+        <ul>
+            <li class="dots-item current"></li>
+            <li class="dots-item"></li>
+            <li class="dots-item"></li>
+            <li class="dots-item"></li>
+        </ul>
 
     </div>
 
@@ -13,6 +129,7 @@
 
 
     import {Draggable} from 'gsap/Draggable'
+    import Slideshow from "../utils/Slider";
 
     export default {
         name: 'choose-an-landscape',
@@ -26,17 +143,96 @@
         methods: {
             showTuto() {
                 this.readTuto = true;
+            },
+            initDragAndDrop: function () {
+                // TweenMax.staggerTo(".dots-battery--item", 1, {
+                //     onStart:function() {
+                //     },
+                //     delay:1,
+                //     backgroundColor:"transparent",
+                //     onComplete:function() {
+                //     },
+                // }, 1)
+                Draggable.create(".coucou", {type: "rotation", throwProps: true});
+                var DEG = 180 / Math.PI;
 
-            }
+                var D = document.createElement('div');
+                TweenMax.set('svg', {overflow: "visible"})
+                var w = document.querySelector("svg").getBoundingClientRect().width;
+                var h = document.querySelector("svg").getBoundingClientRect().height;
+
+
+                var tl = new TimelineMax({paused: true})
+                //.from(".path2",1,{drawSVG:"0%",stroke:'orange',ease:Linear.easeNone})
+                    .to('#circle-vol', 1, {
+                        bezier: {
+                            type: "quadratic",
+                            values: [
+                                {
+                                    x: 0,
+                                    y: 0,
+                                    rotation: 0
+                                },
+                                {
+                                    x: 85,
+                                    y: 280,
+                                    rotation: 0
+                                }, {
+                                    x: 0,
+                                    y: 320,
+                                }]
+                        }, ease: Linear.easeNone
+                    }, 0);
+
+                let that = this;
+
+                var StartX, StartY;
+
+                this.drag = Draggable.create(D, {
+                    trigger: "#circle-vol",
+                    type: 'x,y',
+                    throwProps: true,
+                    onThrowUpdate: true,
+                    onRelease: function () {
+                        console.log("Salut");
+                    },
+                    bounds: {minY: 0, maxY: 300},
+                    onDrag: function () {
+                        Update(this.y, that)
+                    },
+                });
+
+                function Update(y, that) {
+                    let thatDrag = that;
+                    let percent = Math.abs(y / 270);
+                    tl.progress(percent)
+                    if (percent > 0.5 && percent < 1) {
+                        // DESCENTE
+                        thatDrag.userDragToBottom = true
+                    } else if (percent < 0.5) {
+                        thatDrag.userDragToTop = true
+                    }
+                };
+
+                TweenLite.to(this.drag[0].target, 1, {
+                    x: 0, y: 135.0, onComplete: () => {
+                        tl.progress(.5)
+                    }
+                })
+
+            },
         },
         mounted() {
+            this.slide = new Slideshow(document.querySelector('.slideshow'));
+            this.initDragAndDrop()
         },
     }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style scoped lang="scss">
     @import '../assets/scss/utils/variables';
+
 
     .read-tuto {
         position: absolute;
@@ -45,6 +241,438 @@
         width: 100%;
         height: 100%;
         z-index: 200;
+    }
+    .title {
+        color: $purple;
+        margin: 0;
+        font-size: 25px;
+        line-height: 1;
+        margin-bottom: -20px;
+    }
+
+    .lottie {
+        &-avance {
+            max-width: 350px;
+            max-height: 300px;
+        }
+        &-battery {
+            margin-top: 30px;
+            max-width: 200px;
+        }
+        &-exit {
+            max-width: 100px;
+            visibility: hidden;
+            opacity: 0;
+            bottom: 20px;
+            position: absolute;
+            right: 0;
+
+        }
+    }
+
+    .sliders {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+
+    .slider-numbers {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+    }
+
+    .slide {
+        width: 100%;
+        height: 100%;
+    }
+
+    .introduction-tuto {
+        text-align: center;
+    }
+
+    svg {
+        margin: 0 auto;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s, visibility .5s;
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    #canvas {
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+    .draggerBounds {
+        z-index: 101;
+        position: relative;
+        left: 30px;
+        width: 50px;
+        height: 250px;
+        background: grey;
+        margin: 20px;
+    }
+
+    .dragger {
+        width: 50px;
+        height: 50px;
+        background: red;
+        text-align: center;
+        line-height: 50px;
+        position: absolute;
+    }
+
+    .slideshow {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /*max-width: 700px;*/
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        .slide {
+            padding-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+            position: absolute;
+            opacity: 0;
+        }
+        .slide--current {
+            opacity: 1;
+            z-index: 100;
+            position: relative;
+        }
+    }
+
+    .boxnav__item--prev, .boxnav__item--next {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+    }
+
+    .boxnav__item--next {
+        left: 40px;
+
+    }
+
+    .boxnav {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+    }
+
+    .st0 {
+        fill: none;
+    }
+
+    .st1 {
+        fill: #DA5E60;
+    }
+    .st1_up {
+        fill: #5F86FF;
+    }
+
+    .st2 {
+        fill: #FF7F81;
+    }
+
+    .st3 {
+        fill: #FFFFFF;
+    }
+
+    ul {
+        position: absolute;
+        width: 100%;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 0;
+        z-index: 2000;
+        li {
+            width: calc(100% / 4);
+            margin: 0 5px;
+            border-radius: 20px;
+            height: 8px;
+            border: 1px solid #4f65eb;
+            display: inline-block;
+            &.current {
+                background: #4f65eb;
+            }
+            &.current-box {
+                background: #4f65eb;
+                box-shadow: 0px 0px 43.32px 13.68px rgba(101, 137, 255, 0.65);
+            }
+        }
+    }
+
+    svg {
+        padding: 0 20px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        max-width: 300px;
+        width: 100%;
+    }
+
+    .transition-slide {
+        height: 100%;
+    }
+
+    .stop-drone {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        display: flex;
+        flex-flow: column;
+        align-items: flex-end;
+        opacity: 0;
+        visibility: hidden;
+        #stop-drone-svg {
+            margin: 0;
+        }
+        .stop-arrow {
+
+            display: flex;
+            position: relative;
+            right: 17px;
+            margin-bottom: 15px;
+            svg {
+                margin: 0;
+            }
+            span {
+                font-size: 24px;
+                line-height: 1;
+                position: relative;
+                top: -20px;
+                left: -20px;
+            }
+        }
+        svg {
+            width: 76px;
+            height: 76px;
+            padding: 0;
+        }
+        span {
+            margin-top: 10px;
+            @include f-muli-bold;
+            color: $purple;
+        }
+        .icon-home {
+            #icon-home {
+                flex-flow: column;
+                align-items: flex-end;
+
+            }
+            span {
+                display: block;
+            }
+        }
+    }
+
+    .st00 {
+        fill: $purple;
+    }
+
+    .st11 {
+        fill: #FFFFFF;
+    }
+
+    .st22 {
+        fill: none;
+        stroke: #FFFFFF;
+        stroke-width: 1.2873;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+
+    .st33 {
+        fill: none;
+        stroke: #FFFFFF;
+        stroke-width: 1.9309;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+
+    .st23 {
+        clip-path: url(#SVGID_2_);
+        fill: none;
+        stroke: #6589FF;
+        stroke-width: 2.9582;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+
+    .dots {
+        &-battery {
+            width: 20px;
+            &--item {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                background-color: $purple;
+                border: 1px solid $purple;
+                border-radius: 14px;
+                margin: 0 5px;
+                &.pulse {
+                    animation: pulse 2s infinite; /* IE 10+, Fx 29+ */
+                    animation-timing-function: ease;
+                }
+                @keyframes pulse {
+                    0% {
+                        background: $purple;
+                    }
+                    50% {
+                        background: transparent;
+                    }
+                    100% {
+                        background: $purple;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .st00 {
+        fill: #FF7F81;
+    }
+
+    .st11 {
+        fill: #FFFFFF;
+    }
+
+    .st22 {
+        fill: none;
+        stroke: #FFFFFF;
+        stroke-width: 1.2873;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+
+    .st33 {
+        fill: none;
+        stroke: #FFFFFF;
+        stroke-width: 1.9309;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+
+    #drag-vol {
+        width: 94px;
+        max-height: 320px;
+        height: 100%;
+        padding: 0;
+        position: relative;
+    }
+
+    .drag-vol-trait {
+        opacity: 0.8;
+        fill: url(#SVGID_1_);
+        enable-background: new;
+    }
+
+    .st1 {
+        fill: #FF767D;
+    }
+
+    .st2 {
+        fill: #FFFFFF;
+    }
+
+    .drag-left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 0;
+        max-height: 405px;
+        height: 100%;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .up, .bottom {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        position: absolute;
+        right: -180px;
+        span {
+            margin-left: 20px;
+            @include f-muli-bold
+        }
+    }
+
+    .up {
+        top: 30%;
+    }
+
+    .bottom {
+        bottom: 20%;
+    }
+
+    #bottom, #top {
+        padding: 0;
+    }
+
+    #bottom {
+        height: 76px;
+        width: 26px;
+    }
+
+    #top {
+        height: 26px;
+        width: 76px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        transform-origin: center;
+    }
+
+    .up-st0 {
+        clip-path: url(#SVGID_2_up);
+        fill: none;
+        stroke: #4C6DFB;
+        stroke-width: 2.3851;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+
+    .bottom-st0 {
+        clip-path: url(#SVGID_2_bottom);
+        fill: none;
+        stroke: #4C6DFB;
+        stroke-width: 2.3851;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
     }
 
 </style>

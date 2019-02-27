@@ -3,18 +3,18 @@
 
 
         <transition name="fade" mode="out-in">
-            <div v-if="loader">
+            <div key="1" v-if="loader">
                 <Loader text="Je me prépare ..."></Loader>
             </div>
-            <div class="content" v-else>
+            <div key="2" class="content" v-else>
                 <div class="drag-content">
                     <div class="drag-left">
                         <svg version="1.1" id="drag-vol" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      viewBox="0 0 91.3 405" style="enable-background:new 0 0 91.3 405;" xml:space="preserve">
                 <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="860.15" y1="-5614.0601" x2="860.15" y2="-5253.0601" gradientTransform="matrix(1 0 0 -1 -799 -5214.0601)">
-                    <stop  offset="0" style="stop-color:#FF7F81;stop-opacity:0"/>
-                    <stop  offset="0.5" style="stop-color:#FF7F81"/>
-                    <stop  offset="1" style="stop-color:#FF7F81;stop-opacity:0"/>
+                    <stop  offset="0" style="stop-color:#3CB879;stop-opacity:0"/>
+                    <stop  offset="0.5" style="stop-color:#3CB879"/>
+                    <stop  offset="1" style="stop-color:#3CB879;stop-opacity:0"/>
                 </linearGradient>
                 <path class="drag-vol-trait" d="M31,39h15.9c0,0,44.4,89.9,44.4,180c0,90.4-44.4,181-44.4,181H31c0,0,44.4-90.4,44.4-180.9
                     C75.4,129.1,31,39,31,39z"/>
@@ -36,12 +36,17 @@
                 </div>
                 <span class="test"></span>
                 <div class="right">
-                    <transition name="fade" mode="out-in">
-                        <img :src="svg" alt="" v-if="!cityChoosen">
-                        <img :src="cityChoosen.img" alt="" v-else>
-                    </transition>
+                    <transition-group name="fade" mode="out-in">
+                        <img key="1" :src="svg" alt="" v-if="!cityChoosen">
+                        <div class="mask" key="2" v-else>
+                            <span class="cercle cercle1"></span>
+                            <span class="cercle cercle2"></span>
+                            <img :src="cityChoosen.img" alt="" class="client">
+                        </div>
+                    </transition-group>
 
-                    <a class="btn green" @click="goToDrone">On y va !</a>
+                <a key="3" class="btn green" @click="goToDrone" v-if="!meteo">On y va !</a>
+                <a key="4" class="btn grey" v-else-if="meteo">Oups, il pleut...</a>
                 </div>
             </div>
         </transition>
@@ -58,7 +63,8 @@
     import img1 from "@/assets/img/territoires/oisans-choose.png"
     import img2 from "@/assets/img/territoires/test.png"
     import imgRigth from "@/assets/img/bg-right.png"
-    import imgTest from "@/assets/img/image-test.png"
+    import imgTest from "@/assets/img/fond-paysage.png"
+    import cercle1 from "@/assets/img/cercle.png"
 
     export default {
         name: 'understand-introduction-view',
@@ -74,6 +80,7 @@
                 cityId: null,
                 svg: imgRigth,
                 loader: false,
+                meteo:false,
                 citys: [
                     {
                         name: "Oisans",
@@ -91,7 +98,8 @@
                         name: "Portes des Alpes",
                         img: imgTest
                     },
-                ]
+                ],
+                cercle: cercle1,
             }
         },
         sockets: {
@@ -145,8 +153,9 @@
                                     x: 85,
                                     y: 280,
                                     rotation: 0
-                                }, {
-                                    x: 20,
+                                },
+                                {
+                                    x: 10,
                                     y: 320,
                                 }]
                         }, ease: Linear.easeNone
@@ -167,17 +176,20 @@
                         var y = 0;
                         var index = null;
 
+                        document.querySelector("#circle-vol").classList.remove("grey")
                         if (progress >= 0 && progress <= 0.25) {
+
                             y = 0.02962962962962963;
+                            document.querySelector("#circle-vol").classList.add("grey")
                             index = 0;
                         } else if (progress >= 0.25 && progress <= 0.5) {
-                            y = 0.31851851851851853;
+                            y = 0.35;
                             index = 1;
                         } else if (progress >= 0.5 && progress <= 0.75) {
-                            y = 0.6370370370370371
+                            y = 0.67
                             index = 2;
                         } else {
-                            y = 0.937037037037037
+                            y = 0.98
                             index = 3;
                         }
 
@@ -187,18 +199,34 @@
 
                         TweenLite.to([this.target, "#circle-vol"], 0.5, {
                             y: 320 * y, onComplete: () => {
-                                tl.progress(y)
-                                let test = document.querySelector(".test");
-                                let items = document.querySelectorAll(".drag-left-content li");
-                                var width = items[index].getBoundingClientRect().right - document.querySelector("#circle-vol").getBoundingClientRect().left
-                                var left = document.querySelector("#circle-vol").getBoundingClientRect().left
-                                var top = document.querySelector("#circle-vol").getBoundingClientRect().top
+                                setTimeout(() => {
 
-                                console.log(width);
+                                    let test = document.querySelector(".test");
+                                    let items = document.querySelectorAll(".drag-left-content li");
+                                    var width = items[index].getBoundingClientRect().right - document.querySelector("#circle-vol").getBoundingClientRect().left
+                                    var left = document.querySelector("#circle-vol").getBoundingClientRect().left
+                                    var top = document.querySelector("#circle-vol").getBoundingClientRect().top
 
-                                test.style.width = width + "px"
-                                test.style.left = left + "px"
-                                test.style.top = top + "px"
+                                    if(index == 0) {
+                                        that.meteo = true;
+                                        test.style.borderColor = "grey"
+                                    } else {
+                                        that.meteo = false;
+                                        test.style.borderColor = "#3CB879"
+                                    }
+                                    if(index == 2) {
+                                        width += 30
+                                    }
+
+
+                                    test.style.width = width + "px"
+                                    test.style.left = left + "px"
+                                    test.style.top = top + "px"
+
+                                    TweenMax.to(".test", 1, {
+                                        autoAlpha:1,
+                                    })
+                                }, 200)
 
                             }
                         })
@@ -210,6 +238,9 @@
                 });
 
                 function Update(y, that) {
+                    TweenMax.to(".test", 1, {
+                        autoAlpha:0,
+                    })
                     let thatDrag = that;
                     let percent = Math.abs(y / 270);
                     progress = percent
@@ -233,7 +264,7 @@
                 // On attand le emit du drone
                 setTimeout(() => {
                     setTimeout(() => {
-                        //this.$router.push("commande-drone")
+                        this.$router.push("commande-drone")
                     }, 2000)
                 }, 2000)
 
@@ -256,13 +287,72 @@
         display: flex;
         flex-flow: wrap;
     }
+
+    .client {
+        /*-webkit-mask: url("../assets/img/cercle.png");*/
+        /*mask: url("../assets/img/cercle.png");*/
+        /*-webkit-mask-position: 100px center;*/
+        /*mask-position: 100px center;*/
+        /*-webkit-mask-repeat: no-repeat;*/
+        /*mask-repeat: no-repeat;*/
+        /*-webkit-mask-size: 120% 140%;*/
+        /*mask-size: 120% 140%;*/
+    }
+    .mask {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
     .test {
         position: absolute;
-        border: 1px solid red;
+        border: 1px solid #3CB879;
         height: 61px;
         border-radius: 41px;
         z-index: -1;
     }
+    .cercle {
+        position: absolute;
+        right: -50%;
+        top: 0;
+        width: 400px;
+        height: 400px;
+        transform: scale(1.4);
+        opacity: 0.5;
+        background-image: url(../assets/img/cercle-white.png);
+
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        -webkit-animation: rotation 70s linear infinite;
+        animation: rotation 70s linear infinite;
+
+        $elements: 3;
+        @for $i from 0 to $elements {
+            &:nth-child(#{$i + 1}) {
+                animation-delay: 20*$i#{s};
+            }
+        }
+        &.circle1 {
+
+        }
+        &.circle2 {
+            top: 40px;
+            right: -40%;
+
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0) scale(1.4);
+            }
+            100% {
+                transform: rotate(360deg) scale(1.4);
+            }
+        }
+
+    }
+
 
     .drag-content {
         display: flex;
@@ -318,10 +408,11 @@
             position: relative;
             width: 43%;
             height: 100%;
+            text-align: right;
             img {
                 width: 100%;
                 height: 100%;
-                max-width: 599px;
+                max-width: 330px;
             }
 
         }
@@ -367,7 +458,7 @@
     }
 
     .st1 {
-        fill: #FF767D;
+        fill: #3CB879;
     }
 
     .st2 {
@@ -383,6 +474,23 @@
         -ms-transform: translateY(-50%);
         -o-transform: translateY(-50%);
         transform: translateY(-50%);
+    }
+
+    #circle-vol {
+        &.grey {
+            circle {
+                fill: grey;
+            }
+        }
+
+        circle {
+            -webkit-transition: fill 500ms ease;
+            -moz-transition: fill 500ms ease;
+            -ms-transition: fill 500ms ease;
+            -o-transition: fill 500ms ease;
+            transition: fill 500ms ease;
+        }
+
     }
 
 

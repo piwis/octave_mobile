@@ -22,6 +22,30 @@
         data() {
             return {
                 transitionBg: true,
+                index: 0,
+                images: [
+                    'https://68.media.tumblr.com/ba9e2dcf1289131bfae913ff85cc8e46/tumblr_omrhdiHNlD1u8in0ho1_1280.jpg',
+                    'https://jp.vuejs.org/images/logo.png',
+                    'https://jsfiddle.net/img/logo@2x.png'
+                ],
+                isLoad: false
+            }
+        },
+        created() {
+            this.loadImg()
+        },
+        methods: {
+            loadImg() {
+                this.isLoad = false
+                this.$nextTick(() => {
+                    this.url = this.images[this.index];
+                    this.index = (this.index < this.images.length - 1) ? this.index + 1 : 0
+                    console.log("Salut");
+                })
+            },
+            loaded() {
+                //わかりやすくするためsetTimeout処理入れてます。
+                this.isLoad = true
             }
         },
         mounted() {

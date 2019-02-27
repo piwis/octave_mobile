@@ -3,11 +3,10 @@
         <div class="third-introduction">
 
             <transition name="fade" mode="out-in">
-
-                <div class="isere" v-if="isereHasRead" @click="nextView()">
+                <div key="1" class="isere" v-if="isereHasRead" @click="nextView()">
                     <img :src="img" alt="">
                 </div>
-                <div class="btn red" @click="startIntroduction" v-else>
+                <div key="2" class="btn red pulse" @click="startIntroduction" v-else>
                     <span>
                         On y va !
                     </span>
@@ -39,15 +38,14 @@
 
         methods: {
             nextView() {
-
                 this.isereHasRead = false;
-                alert("Salut")
                 this.$socket.emit("isereNextView", true)
 
             },
             startIntroduction() {
                 this.$socket.emit("isereView", true)
-                this.$router.push('introduction-tuto')
+                this.$router.push('usePhone')
+                // this.$router.push('introduction-tuto')
             }
         },
 

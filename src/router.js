@@ -5,6 +5,7 @@ import QRCode from '@/views/QRCodeView'
 import Introduction from '@/views/IntroductionView'
 import HeadPhone from '@/views/HeadPhoneView'
 import Isere from '@/views/IsereView'
+import UsePhone from '@/views/UseYourPhoneView'
 import IntroductionTuto from '@/views/IntroductionTutoView'
 import UnderStandIntroduction from '@/views/UnderStandIntroductionView'
 import ChooseLandscape from '@/views/ChooseLandscapeView'
@@ -32,6 +33,11 @@ export default new Router({
             path: '/headphone',
             name: 'HeadPhone',
             component: HeadPhone
+        },
+        {
+            path: '/usePhone',
+            name: 'UsePhone',
+            component: UsePhone
         },
         {
             path: '/isere',
