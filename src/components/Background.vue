@@ -239,32 +239,18 @@
 
             changeColorOfMaterial(color) {
 
-                // BLUE CLAIRE BG b9deff
-
-                // Violet B6AFFD
-                // Violet clair CEDDFE
-
-                this.ambientLight = new THREE.AmbientLight(0xFEC0C3);
-                TweenMax.to([this.smokeMaterial.color, this.smokeLigthMaterial.color], 1, {
+                TweenMax.to([this.smokeMaterial.color, this.smokeLigthMaterial.color,this.ambientLight.color], 1, {
                     r: color.r,
                     g: color.g,
                     b: color.b,
                 })
-
-
             }
         },
         mounted() {
 
             this.init();
-
-            this.$root.$on('bg', (data) => {
-
+            this.$root.$on('transitionBackground', (data) => {
                 this.changeColorOfMaterial(data);
-                // this.transitionBg = !this.transitionBg;
-                // setTimeout(() => {
-                //     document.querySelector(".add-class").classList.add('start-animation')
-                // }, 100)
             })
 
 

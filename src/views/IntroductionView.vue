@@ -21,6 +21,8 @@
 <script>
 
 
+    import {ColorData} from "../assets/datas/ColorData";
+
     export default {
         name: 'introduction-view',
 
@@ -39,7 +41,7 @@
         methods: {
 
             startIntroduction() {
-                this.$root.$emit('bg', {r:0.3962,g:0.2995,b:0.3042});
+                this.$root.$emit('transitionBackground', ColorData.COLOR.RED);
                 this.$socket.emit("useHeadPhone", true);
                 // this.$socket.emit("lookAtScreen", true);
                 this.$router.push('headphone');
