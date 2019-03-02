@@ -289,6 +289,8 @@
                 this.loader = true;
                 this.$socket.emit("chooseLandscape", this.cityId)
                 this.$socket.emit("loadDrone", true)
+                this.$socket.emit("loadDrone", true)
+                this.$socket.emit("startDrone", true)
                 // On attand le emit du drone
                 setTimeout(() => {
                     setTimeout(() => {
