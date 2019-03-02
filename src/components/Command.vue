@@ -261,7 +261,7 @@
                     this.backHome = false
                     this.droneBack = true
                     this.endDrone = true
-                    this.$socket.emit("stopByUserDrone", true)
+                    this.$socket.emit("landingDrone", true)
                     this.$emit("backHomeDrone", true)
                     setTimeout(() => {
                         this.$router.push('download')
