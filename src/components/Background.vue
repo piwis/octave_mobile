@@ -85,7 +85,6 @@
                 this.smokeParticles = [];
                 this.smokeParticlesLigth = [];
 
-                // Coté
                 for (var p = 0; p < 10; p++) {
                     var particle = new THREE.Mesh(smokeGeo, this.smokeMaterial);
                     particle.scale.x = 600;
@@ -118,12 +117,12 @@
                     }
                     if (p === 3 || p === 4 || p === 5) {
                         if (p === 3) {
-                            posX = (w / 2) + 130
+                            posX = (w / 2) + 250
                             posY = h / 2 - 100
                             posZ = 600
                         } else if (p === 4) {
-                            posX = (w / 2) + 50
-                            posY = h / 2 + 50
+                            posX = (w / 2) + 100
+                            posY = h / 2 + 100
                             posZ = 600
                         }
                     }
@@ -161,6 +160,8 @@
                     this.scene.add(particle);
                     this.smokeParticles.push(particle);
                 }
+
+                // MILIEUX
                 for (var p = 0; p < 3; p++) {
                     var particle = new THREE.Mesh(smokeGeo, this.smokeLigthMaterial);
                     particle.scale.x = 600;
@@ -179,7 +180,6 @@
                     if(p === 0) {
                         posX = 0
                         posY = -100
-
                     } else if(p === 1) {
                         posX = 200
                         posY = -100
@@ -199,8 +199,6 @@
                     this.scene.add(particle);
                     this.smokeParticlesLigth.push(particle);
                 }
-
-                // MILIEUX
 
 
                 document.querySelector(".background-vue").appendChild(this.renderer.domElement);
@@ -229,20 +227,21 @@
                 this.renderer.render(this.scene, this.camera);
             },
             onWindowResize() {
-                // Update canvas renderer size
                 this.renderer.setSize(window.innerWidth, window.innerHeight);
-
-                // Resize camera aspect
                 this.camera.aspect = window.innerWidth / window.innerHeight;
                 this.camera.updateProjectionMatrix();
             },
 
             changeColorOfMaterial(color) {
 
-                TweenMax.to([this.smokeMaterial.color, this.smokeLigthMaterial.color,this.ambientLight.color], 1, {
+                TweenMax.to([this.smokeMaterial.color,this.ambientLight.color], 1, {
                     r: color.r,
                     g: color.g,
                     b: color.b,
+                })
+
+                TweenMax.to(this.smokeLigthMaterial, 1, {
+                    opacity: 0,
                 })
             }
         },

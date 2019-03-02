@@ -42,8 +42,6 @@
         },
 
         sockets: {
-
-
             startIntroduction: function (data) {
 
             }
@@ -52,9 +50,11 @@
 
             nextDiv() {
                 this.show = !this.show
-                this.$socket.emit("understandIntroduction", true)
+                this.$socket.emit("understandIntroductionOne", true)
             },
             launchChoose() {
+
+                this.$socket.emit("understandIntroductionTwo", true)
                 this.$router.push('choose-landscape')
             }
 
@@ -74,7 +74,7 @@
         }
 
     };
-</script>bloc-landscape--item-square
+</script>
 
 
 <style scoped>
