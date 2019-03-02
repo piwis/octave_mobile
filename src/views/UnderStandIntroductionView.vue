@@ -26,12 +26,17 @@
 
 <script>
 
+    import imgTest from "@/assets/img/fond-paysage.png"
+    import porte from "@/assets/img/territoires/paysage_porte_alpes_select.png"
+    import gresivaudan from "@/assets/img/territoires/paysage_gresivaudan_select.png"
+    import vercors from "@/assets/img/territoires/paysage_vercors_select.png"
     export default {
         name: 'understand-introduction-view',
 
         data() {
             return {
                 show: true,
+                imgs: [porte,gresivaudan,vercors,porte],
                 //startIntroduction: false,
             }
         },
@@ -40,12 +45,9 @@
 
 
             startIntroduction: function (data) {
-                // emit
-                //this.$router.push('introduction')
 
             }
         },
-
         methods: {
 
             nextDiv() {
@@ -60,7 +62,15 @@
 
         mounted() {
 
-
+            this.imgs.forEach((item,index) => {
+                var img = new Image();
+                img.onload = function(){
+                    console.log("LOAD");
+                };
+    
+                img.src = item;
+            })
+            
         }
 
     };

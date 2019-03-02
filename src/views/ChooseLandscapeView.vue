@@ -20,10 +20,13 @@
                     C75.4,129.1,31,39,31,39z"/>
                 <g id="circle-vol">
                     <circle class="st1" cx="39" cy="39" r="39"/>
-                    <path class="st2" d="M39.1,15.5c0.3,0,0.6,0.1,0.9,0.4l14.5,14.5c0.4,0.5,0.4,1.3-0.1,1.7s-1.1,0.4-1.6,0L39.1,18.4L25.4,32.1
+                    <path class="st2 haut-deux" d="M39.1,15.5c0.3,0,0.6,0.1,0.9,0.4l14.5,14.5c0.4,0.5,0.4,1.3-0.1,1.7s-1.1,0.4-1.6,0L39.1,18.4L25.4,32.1
                         c-0.5,0.5-1.2,0.5-1.7,0s-0.5-1.2,0-1.7l14.6-14.5C38.4,15.6,38.7,15.5,39.1,15.5z"/>
-                    <path class="st2" d="M39,62.5c-0.3,0-0.6-0.1-0.9-0.4L23.6,47.6c-0.4-0.5-0.3-1.3,0.2-1.7c0.4-0.3,1-0.3,1.5,0L39,59.6l13.7-13.7
+                    <path class="st2 bas-deux" d="M39,62.5c-0.3,0-0.6-0.1-0.9-0.4L23.6,47.6c-0.4-0.5-0.3-1.3,0.2-1.7c0.4-0.3,1-0.3,1.5,0L39,59.6l13.7-13.7
                         c0.5-0.4,1.3-0.4,1.7,0.1c0.4,0.5,0.4,1.1,0,1.6L39.9,62.1C39.6,62.4,39.3,62.5,39,62.5z"/>
+                    <path class="haut" d="M39.75,27.53 C40.165497,27.5343501 40.5632229,27.6991735 40.86,27.99 L59.64,46.77 C60.2557974,47.3830361 60.258036,48.3792025 59.6449999,48.9949999 C59.0319639,49.6107974 58.0357975,49.613036 57.42,49 L39.75,31.31 L22.08,49 C21.4669639,49.6157975 20.4707975,49.6180361 19.855,49.005 C19.2392025,48.3919639 19.2369639,47.3957975 19.85,46.78 L38.64,28 C38.9327226,27.701878 39.3322012,27.5327293 39.75,27.53 Z" id="Shape" fill="#FFFFFF"></path>
+                    <path class="bas" d="M39.7,49.5c-0.4,0-0.8-0.2-1.1-0.5L19.9,30.2c-0.6-0.6-0.6-1.6,0-2.2c0.6-0.6,1.6-0.6,2.2,0
+			l17.7,17.7L57.4,28c0.6-0.6,1.6-0.6,2.2,0c0.6,0.6,0.6,1.6,0,2.2L40.9,49C40.6,49.3,40.2,49.5,39.7,49.5z" fill="#FFFFFF"/>
                 </g>
                 </svg>
                         <ul class="drag-left-content">
@@ -36,14 +39,16 @@
                 </div>
                 <span class="test"></span>
                 <div class="right">
-                    <transition-group name="fade" mode="out-in">
-                        <img key="1" :src="svg" alt="" v-if="!cityChoosen">
-                        <div class="mask" key="2" v-else>
+                    <transition name="fade" mode="out-in">
+                        <img key="10" :src="svg" alt="" v-if="!cityChoosen">
+                        <div class="mask" key="20" v-else>
                             <span class="cercle cercle1"></span>
                             <span class="cercle cercle2"></span>
-                            <img :src="cityChoosen.img" alt="" class="client">
+                            <transition name="fade" mode="out-in">
+                                <img key="1" :src="cityChoosen.img" alt="" class="client">
+                            </transition>
                         </div>
-                    </transition-group>
+                    </transition>
 
                 <a key="3" class="btn green" @click="goToDrone" v-if="!meteo">On y va !</a>
                 <a key="4" class="btn grey" v-else-if="meteo">Oups, il pleut...</a>
@@ -64,6 +69,9 @@
     import img2 from "@/assets/img/territoires/test.png"
     import imgRigth from "@/assets/img/bg-right.png"
     import imgTest from "@/assets/img/fond-paysage.png"
+    import porte from "@/assets/img/territoires/paysage_porte_alpes_select.png"
+    import gresivaudan from "@/assets/img/territoires/paysage_gresivaudan_select.png"
+    import vercors from "@/assets/img/territoires/paysage_vercors_select.png"
     import cercle1 from "@/assets/img/cercle.png"
 
     export default {
@@ -88,15 +96,15 @@
                     },
                     {
                         name: "Grésivaudan",
-                        img: imgTest
+                        img: gresivaudan
                     },
                     {
                         name: "Vercors",
-                        img: imgTest
+                        img: vercors
                     },
                     {
                         name: "Portes des Alpes",
-                        img: imgTest
+                        img: porte
                     },
                 ],
                 cercle: cercle1,
@@ -173,6 +181,7 @@
                     onThrowUpdate: true,
                     onRelease: function () {
 
+
                         var y = 0;
                         var index = null;
 
@@ -235,16 +244,35 @@
                     onDrag: function () {
                         Update(this.y, that)
                     },
+                    getDirection: function() {
+
+                    },
                 });
 
+                let oldPercent = 0;
+
                 function Update(y, that) {
+
                     TweenMax.to(".test", 1, {
                         autoAlpha:0,
                     })
+
+                    document.querySelector(".haut-deux").classList.add("remove")
+                    document.querySelector(".bas-deux").classList.add("remove")
                     let thatDrag = that;
                     let percent = Math.abs(y / 270);
-                    progress = percent
                     tl.progress(percent)
+                    setTimeout(() => {
+                        progress = percent
+                    }, 10)
+                    if((progress - percent) > 0) {
+                        document.querySelector(".bas").classList.remove("opacity")
+                        document.querySelector(".haut").classList.add("opacity")
+                    } else {
+                        document.querySelector(".bas").classList.add("opacity")
+                        document.querySelector(".haut").classList.remove("opacity")
+
+                    }
                 };
 
                 // TweenLite.to(this.drag[0].target, 1, {
@@ -313,7 +341,7 @@
     }
     .cercle {
         position: absolute;
-        right: -50%;
+        right: -30%;
         top: 0;
         width: 400px;
         height: 400px;
@@ -327,7 +355,9 @@
         background-position: center;
         -webkit-animation: rotation 70s linear infinite;
         animation: rotation 70s linear infinite;
-
+        &:nth-of-type(2) {
+            right: -40%;
+        }
         $elements: 3;
         @for $i from 0 to $elements {
             &:nth-child(#{$i + 1}) {
@@ -339,7 +369,7 @@
         }
         &.circle2 {
             top: 40px;
-            right: -40%;
+            right: -30%;
 
         }
 
@@ -411,6 +441,8 @@
             height: 100%;
             text-align: right;
             img {
+                position: relative;
+                z-index: 1000;
                 width: 100%;
                 height: 100%;
                 max-width: 330px;
@@ -467,6 +499,7 @@
     }
 
     .btn {
+        z-index: 2000;
         position: absolute;
         left: 0;
         top: 50%;
@@ -490,6 +523,23 @@
             -ms-transition: fill 500ms ease;
             -o-transition: fill 500ms ease;
             transition: fill 500ms ease;
+        }
+        
+        path {
+            -webkit-transition: opacity 500ms ease;
+            -moz-transition: opacity 500ms ease;
+            -ms-transition: opacity 500ms ease;
+            -o-transition: opacity 500ms ease;
+            transition: opacity 500ms ease;
+            &.haut, &.bas {
+                opacity: 0;
+            }
+            &.remove {
+                opacity: 0;
+            }
+            &.opacity {
+                opacity: 1;
+            }
         }
 
     }

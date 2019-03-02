@@ -197,7 +197,7 @@
 
                 </nav>
                 <ul>
-                    <li @click="currentSlide = 4" class="dots-item"></li>
+                    <li @click="currentSlide = 4" class="dots-item current pulse"></li>
                     <li @click="currentSlide = 4" class="dots-item"></li>
                     <li @click="currentSlide = 4" class="dots-item"></li>
                     <li @click="currentSlide = 4" class="dots-item"></li>
@@ -307,11 +307,13 @@
                             if (this.posY > 0.5 && !this.foward && this.unlockFoward) {
                                 this.foward = true
                             } else if (this.foward && this.posY < 0.3) {
-                                this.foward = false
-                                this.unlockFoward = false
                                 // EMIT SOCKET
                                 this.$socket.emit("movingIntroduction", true)
                                 this.slide.navigateDots(1)
+                                setTimeout(() => {
+                                    this.foward = false
+                                    this.unlockFoward = false
+                                }, 1500)
                             }
 
                             // Vérife coté
@@ -913,6 +915,9 @@
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-miterlimit: 10;
+    }
+    .boxnav {
+        display: none;
     }
 
 </style>
