@@ -91,6 +91,7 @@
 
             },
             isUnlock() {
+                this.$socket.emit('startDrone', true)   
                 this.$socket.emit('startDroneView', true)
                 this.$router.push("commande")
             }
