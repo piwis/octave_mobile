@@ -62,7 +62,7 @@
                 tl.fromTo(".draw", 10, {drawSVG: 0}, {drawSVG: "40%"}, 0);
                 setTimeout(() => {
                     tl.stop();
-                    TweenMax.to(".draw", 2, {drawSVG: "50%"}, 0);
+                    TweenMax.to(".draw", 2, {drawSVG: "100%"}, 0);
                 }, 1000)
                 // DRONE START
             } else {

@@ -36,6 +36,7 @@
                 material: null,
                 mesh: null,
                 cubeSineDriver: null,
+                oldBackground: null,
                 delta: null,
                 clock: null,
                 smokeParticles: [],
@@ -46,7 +47,7 @@
             init() {
                 this.clock = new THREE.Clock();
                 this.renderer = new THREE.WebGLRenderer({alpha: true, antialias: false});
-                this.renderer.setClearColor(0xFFFFFF, 1.0);
+                // this.renderer.setClearColor(0xFFFFFF, 1.0);
                 this.oldColor = 0xFEF4EB;
                 // this.renderer.setClearColor(0xb9e3c3, 1);
                 this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -251,6 +252,9 @@
                 TweenMax.to(this.smokeLigthMaterial, 1, {
                     opacity: 0,
                 })
+            },
+            changeBackground(color) {
+                document.querySelector(".app-main").style.background = color;
             }
         },
         mounted() {
@@ -263,8 +267,9 @@
             this.$root.$on('opacityBackground', (data) => {
                 this.changeOpacityOfMaterial(data);
             })
-
-
+            this.$root.$on('background', (color) => {
+                this.changeBackground(color);
+            })
         }
         ,
     }

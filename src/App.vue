@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <main>
+    <main class="app-main">
       <transition name="fade"
                   mode="out-in">
         <router-view></router-view>
@@ -13,6 +13,7 @@
 <script>
     import courseData from "./assets/datas/courseData";
     import Background from '@/components/Background'
+    import imgMontange from "./assets/img/isere.png"
 
     export default {
         name: 'app',
@@ -50,6 +51,24 @@
         },
         mounted() {
             this.$socket.emit("userPhone", true)
+
+            this.queue = new createjs.LoadQueue();
+            this.queue.installPlugin(createjs.Sound);
+            this.queue.on('progress', onLoaderProgress, this);
+            this.queue.on("complete", handleComplete, this);
+            // this.queue.loadManifest()
+            this.queue.loadFile({id:"image", src:imgMontange});
+
+            function handleComplete() {
+
+                // HIDE LOADER
+                // this.instance = createjs.Sound.play("sound");
+                // this.fromToVolume(this.instance);
+            }
+
+            function onLoaderProgress(e) {
+                console.log(e.progress * 100);
+            }
         }
     }
 </script>
@@ -70,6 +89,9 @@
     color: #2c3e50;
     width: 100%;
     height: 100%;
+    &.green {
+      background: #EEF9F3;
+    }
   }
   main {
     position: relative;
@@ -78,6 +100,11 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    -webkit-transition: background 500ms ease;
+    -moz-transition: background 500ms ease;
+    -ms-transition: background 500ms ease;
+    -o-transition: background 500ms ease;
+    transition: background 500ms ease;
   }
   main > div {
     height: 100%;
@@ -132,7 +159,6 @@
   .dots-item {
     &.pulse {
       box-shadow: 0px 0px 50.6px 4.4px rgba(36, 27, 214, 0.65);
-
     }
   }
 </style>

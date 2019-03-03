@@ -286,8 +286,6 @@
             },
 
             goToDrone() {
-
-
                 this.loader = true;
                 this.$socket.emit("chooseLandscape", this.cityId)
                 this.$socket.emit("loadDrone", true)
@@ -299,14 +297,15 @@
                         this.$router.push("commande-drone")
                     }, 2000)
                 }, 2000)
-
             }
-
-
         },
 
+        created() {
+            setTimeout(() => {
+                this.$root.$emit('background', "#F0F9F4");
+            })
+        },
         mounted() {
-
             this.initDrag();
         }
 

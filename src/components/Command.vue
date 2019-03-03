@@ -168,16 +168,16 @@
                 TweenLite.to(this.drag[0].target, 1, {
                     x: 0, y: 135.0, onComplete: () => {
                         tl.progress(.5)
+                        TweenMax.to('.drag-left', 1, {
+                            autoAlpha: 1,
+                        })
+                        TweenMax.to('.stop-drone', 1, {
+                            autoAlpha: 1,
+                        })
+                        TweenMax.to('.icon-tuto', 1, {
+                            autoAlpha: 1,
+                        })
                     }
-                })
-                TweenMax.to('.drag-left',1, {
-                    autoAlpha: 1,
-                })
-                TweenMax.to('.stop-drone',1, {
-                    autoAlpha: 1,
-                })
-                TweenMax.to('.icon-tuto',1, {
-                    autoAlpha: 1,
                 })
 
             },
@@ -224,9 +224,8 @@
                             }
 
 
-
                             this.$socket.emit("sendGyro", {
-                                "forward":  this.posY === this.lastPosY ? 0.0 : this.posY,
+                                "forward": this.posY === this.lastPosY ? 0.0 : this.posY,
                                 "upOrDown": this.top / 2,
                                 "rotation": this.normalizeX
                             })
@@ -248,6 +247,7 @@
             },
             backHomeDrone() {
                 // Emit qui stop le drone en vol
+                this.hideCommand()
                 this.droneBackHome = true
                 this.backHome = true
                 this.$socket.emit("stopWaitDrone", true)
@@ -266,10 +266,33 @@
                     // Emit la personne va rependre le controle + ecran de fin
                 }
             },
+            hideCommand() {
+                TweenMax.to('.drag-left', 0.5, {
+                    autoAlpha: 0,
+                })
+                TweenMax.to('.stop-drone', 0.5, {
+                    autoAlpha: 0,
+                })
+                TweenMax.to('.icon-tuto', 0.5, {
+                    autoAlpha: 0,
+                })
+            },
+            displayCommand() {
+                TweenMax.to('.drag-left', 1, {
+                    autoAlpha: 1,
+                })
+                TweenMax.to('.stop-drone', 1, {
+                    autoAlpha: 1,
+                })
+                TweenMax.to('.icon-tuto', 1, {
+                    autoAlpha: 1,
+                })
+            },
+
             showTutoFunction() {
 
                 TweenMax.to('.read-tuto', 1, {
-                    autoAlpha:1,
+                    autoAlpha: 1,
                 })
                 this.$socket.emit("readTuto", true)
                 this.gn.stop()
@@ -277,7 +300,7 @@
             hideTuto() {
 
                 TweenMax.to('.read-tuto', 1, {
-                    autoAlpha:0,
+                    autoAlpha: 0,
                 })
 
             },
@@ -372,18 +395,22 @@
         -o-transform: translateY(-50%);
         transform: translateY(-50%);
     }
+
     .drag-vol-trait {
         opacity: 0.8;
         fill: url(#SVGID_1_);
         enable-background: new;
     }
-    .drag-left, .stop-drone , .icon-tuto {
+
+    .drag-left, .stop-drone, .icon-tuto {
         opacity: 0;
         visibility: hidden;
     }
+
     .st1 {
         fill: #FF767D;
     }
+
     .st2 {
         fill: #FFFFFF;
     }
@@ -420,9 +447,11 @@
     .st00 {
         fill: #FF7F81;
     }
+
     .st11 {
         fill: #FFFFFF;
     }
+
     .st22 {
         fill: none;
         stroke: #FFFFFF;
@@ -431,6 +460,7 @@
         stroke-linejoin: round;
         stroke-miterlimit: 10;
     }
+
     .st33 {
         fill: none;
         stroke: #FFFFFF;

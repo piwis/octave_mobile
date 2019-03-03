@@ -87,7 +87,7 @@
 
 
         </div>
-        <button class="boxnav__item boxnav__item--prev">
+        <span class="boxnav__item boxnav__item--prev">
             <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -96,8 +96,8 @@
                       stroke-linejoin="miter" fill="none"
                       d="M7.646,14.935 L0.936,7.936 L7.646,0.935 "/>
             </svg>
-        </button>
-        <button class="boxnav__item boxnav__item--next">
+        </span>
+        <span class="boxnav__item boxnav__item--next">
             <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -107,7 +107,7 @@
                       d="M2.963,0.935 L9.935,7.935 L2.963,14.935 "/>
             </svg>
 
-        </button>
+        </span>
         <ul>
             <li class="dots-item current pulse"></li>
             <li class="dots-item"></li>
@@ -359,6 +359,18 @@
     .boxnav__item--prev, .boxnav__item--next {
         position: absolute;
         z-index: 10000;
+        svg {
+            max-width: auto;
+            width: auto;
+            padding: 0;
+            -webkit-transform: scale(2);
+            -moz-transform: scale(2);
+            -ms-transform: scale(2);
+            -o-transform: scale(2);
+            transform: scale(2);
+        }
+    }
+    .boxnav__item--next {
     }
 
     .boxnav__item--next {
