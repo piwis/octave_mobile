@@ -30,6 +30,7 @@
     import porte from "@/assets/img/territoires/paysage_porte_alpes_select.png"
     import gresivaudan from "@/assets/img/territoires/paysage_gresivaudan_select.png"
     import vercors from "@/assets/img/territoires/paysage_vercors_select.png"
+    import {ColorData} from "../assets/datas/ColorData";
     export default {
         name: 'understand-introduction-view',
 
@@ -51,17 +52,24 @@
             nextDiv() {
                 this.show = !this.show
                 this.$socket.emit("understandIntroductionOne", true)
+                setTimeout(() => {
+                    this.$socket.emit("understandIntroductionTwo", true)
+                    this.$router.push('choose-landscape')
+                }, 6000)
             },
             launchChoose() {
-
                 this.$socket.emit("understandIntroductionTwo", true)
                 this.$router.push('choose-landscape')
             }
 
         },
 
+        created() {
+            this.$root.$emit('transitionBackground', ColorData.COLOR.GREENLIGTH);
+            this.$root.$emit('background', "#F0F9F4");
+            this.$root.$emit('opacityBackground', 0);
+        },
         mounted() {
-
             this.imgs.forEach((item,index) => {
                 var img = new Image();
                 img.onload = function(){

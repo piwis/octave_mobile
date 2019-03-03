@@ -59,6 +59,7 @@
     import ReadTuto from '@/components/ReadTuto'
     import * as UMath from "../utils/UMath";
     import Loader from '@/components/Loader'
+    import {ColorData} from "../assets/datas/ColorData";
 
     export default {
         name: 'choose-an-landscape',
@@ -311,6 +312,8 @@
 
 
         },
+        created() {
+        },
         mounted() {
 
             if (window.orientation === 90 || window.orientation === -90) {
@@ -340,7 +343,7 @@
     .read-tuto {
         opacity: 0;
         visibility: hidden;
-        background: rgba(242, 246, 255, 0.4);
+        background: rgba(242, 246, 255, 0.8);
     }
 
     .choose-an-landscape {

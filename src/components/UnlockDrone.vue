@@ -15,8 +15,10 @@
             <path class="st2" d="M30.4,106.3c0,0.2-0.1,0.4-0.2,0.6l-9.3,9.3c-0.3,0.3-0.8,0.2-1.1-0.1c-0.3-0.3-0.3-0.7,0-1l8.8-8.8l-8.8-8.8
                 c-0.3-0.3-0.3-0.8,0-1.1c0.3-0.3,0.8-0.3,1.1,0l9.3,9.4C30.3,105.9,30.4,106.1,30.4,106.3z"/>
         </g>
-
         </svg>
+        <p class="bold">
+            Décoller !
+        </p>
     </div>
 
 </template>
@@ -167,12 +169,16 @@
     }
 
     #Calque_1 {
-        width: 222.8px;
-        height: 131px;
+        max-width: 250px;
     }
 
     #circle {
         position: relative;
         z-index: 10000;
+    }
+    .bold {
+        font-size: 30px;
+        color: #FEA2A7;
+        margin-bottom: 0;
     }
 </style>

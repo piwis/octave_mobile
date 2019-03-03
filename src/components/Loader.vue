@@ -18,6 +18,7 @@
 <script>
 
     import {TimelineMax} from "gsap"
+    import {ColorData} from "../assets/datas/ColorData";
 
     export default {
 
@@ -56,7 +57,6 @@
 
         },
         mounted() {
-
             if (this.texte === "Je me prépare ...") {
                 var tl = new TimelineMax();
                 tl.fromTo(".draw", 10, {drawSVG: 0}, {drawSVG: "40%"}, 0);

@@ -169,43 +169,43 @@
                 }
 
                 // MILIEUX
-                // for (var p = 0; p < 3; p++) {
-                //     var particle = new THREE.Mesh(smokeGeo, this.smokeLigthMaterial);
-                //     particle.scale.x = 600;
-                //     particle.scale.y = 600
-                //
-                //     particle.scale.set(1, 1, 1);
-                //
-                //     let posX = 0;
-                //     let posY = 0;
-                //     let posZ = 0;
-                //
-                //     let w = window.innerWidth
-                //     let h = window.innerHeight
-                //
-                //     // BON POUR LES PLACEMENT
-                //     if (p === 0) {
-                //         posX = 0
-                //         posY = -100
-                //     } else if (p === 1) {
-                //         posX = 200
-                //         posY = -100
-                //
-                //     } else if (p === 2) {
-                //         posX = -200
-                //         posY = -100
-                //     }
-                //
-                //     // X Va vers la droite en positif
-                //     // Y Va vers la haut en positif
-                //     // Z Profondeur
-                //     particle.position.set(posX, posY, 800);
-                //     particle.rotation.z = 600;
-                //     // particle.position.set(Math.random() * 500 - 250, Math.random() * 500 - 250, Math.random() * 1000 - 100);
-                //     // particle.rotation.z = Math.random() * 360;
-                //     this.scene.add(particle);
-                //     this.smokeParticlesLigth.push(particle);
-                // }
+                for (var p = 0; p < 3; p++) {
+                    var particle = new THREE.Mesh(smokeGeo, this.smokeLigthMaterial);
+                    particle.scale.x = 600;
+                    particle.scale.y = 600
+
+                    particle.scale.set(1, 1, 1);
+
+                    let posX = 0;
+                    let posY = 0;
+                    let posZ = 0;
+
+                    let w = window.innerWidth
+                    let h = window.innerHeight
+
+                    // BON POUR LES PLACEMENT
+                    if (p === 0) {
+                        posX = 0
+                        posY = -100
+                    } else if (p === 1) {
+                        posX = 200
+                        posY = -100
+
+                    } else if (p === 2) {
+                        posX = -200
+                        posY = -100
+                    }
+
+                    // X Va vers la droite en positif
+                    // Y Va vers la haut en positif
+                    // Z Profondeur
+                    particle.position.set(posX, posY, 800);
+                    particle.rotation.z = 600;
+                    // particle.position.set(Math.random() * 500 - 250, Math.random() * 500 - 250, Math.random() * 1000 - 100);
+                    // particle.rotation.z = Math.random() * 360;
+                    this.scene.add(particle);
+                    this.smokeParticlesLigth.push(particle);
+                }
 
 
                 document.querySelector(".background-vue").appendChild(this.renderer.domElement);
@@ -254,7 +254,7 @@
                 })
             },
             changeBackground(color) {
-                document.querySelector(".app-main").style.background = color;
+                document.querySelector(".background-vue").style.background = color;
             }
         },
         mounted() {

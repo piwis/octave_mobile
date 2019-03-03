@@ -83,6 +83,7 @@
 
 <script>
     import * as UMath from '../utils/UMath';
+    import {ColorData} from "../assets/datas/ColorData";
 
 
     export default {
@@ -96,6 +97,7 @@
         },
         methods: {
             goToTuto() {
+                clearTimeout(this.time);
                 this.$socket.emit("turnIntroduction", true)
                 this.$router.push("introduction-tuto")
 			}
@@ -103,6 +105,11 @@
         created() {
         },
         mounted() {
+            this.$root.$emit('transitionBackground', ColorData.COLOR.REDLIGTH);
+            this.time = setTimeout(() => {
+                this.$socket.emit("turnIntroduction", true)
+                this.$router.push("introduction-tuto")
+            }, 6000)
         },
     }
 </script>

@@ -92,7 +92,7 @@
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                     width="11.805px" height="16.805px">
-                <path fill-rule="evenodd" stroke="rgb(0, 3, 135)" stroke-width="1.87px" stroke-linecap="butt"
+                <path fill-rule="evenodd" stroke="rgb(95, 134, 255)" stroke-width="1.87px" stroke-linecap="butt"
                       stroke-linejoin="miter" fill="none"
                       d="M7.646,14.935 L0.936,7.936 L7.646,0.935 "/>
             </svg>
@@ -102,7 +102,7 @@
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                     width="11.805px" height="16.805px">
-                <path fill-rule="evenodd" stroke="rgb(0, 3, 135)" stroke-width="1.87px" stroke-linecap="butt"
+                <path fill-rule="evenodd" stroke="rgb(95, 134, 255)" stroke-width="1.87px" stroke-linecap="butt"
                       stroke-linejoin="miter" fill="none"
                       d="M2.963,0.935 L9.935,7.935 L2.963,14.935 "/>
             </svg>
@@ -363,11 +363,11 @@
             max-width: auto;
             width: auto;
             padding: 0;
-            -webkit-transform: scale(2);
-            -moz-transform: scale(2);
-            -ms-transform: scale(2);
-            -o-transform: scale(2);
-            transform: scale(2);
+            -webkit-transform: scale(2.7);
+            -moz-transform: scale(2.7);
+            -ms-transform: scale(2.7);
+            -o-transform: scale(2.7);
+            transform: scale(2.7);
         }
     }
     .boxnav__item--next {
@@ -375,7 +375,7 @@
 
     .boxnav__item--next {
         top: 50%;
-        right: 30px;
+        right: 36px;
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
@@ -385,7 +385,7 @@
     }
     .boxnav__item--prev {
         top: 50%;
-        left: 30px;
+        left: 36px;
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
         -ms-transform: translateY(-50%);

@@ -29,6 +29,8 @@
 
 <script>
     
+    import {ColorData} from "../assets/datas/ColorData";
+
     export default {
         name: 'headPhone-view',
 
@@ -51,6 +53,8 @@
         },
 
         mounted() {
+            this.$root.$emit('transitionBackground', ColorData.COLOR.REDLIGTH);
+            this.$root.$emit('background', "#FFF6EF");
 
         }
 

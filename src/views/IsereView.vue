@@ -39,21 +39,25 @@
 
         methods: {
             nextView() {
+                clearTimeout(this.time);
                 this.isereHasRead = false;
                 this.$socket.emit("isereNextView", true)
-
             },
             startIntroduction() {
                 this.$socket.emit("isereView", true)
                 this.$root.$emit('transitionBackground', ColorData.COLOR.PURPLE);
-                this.$root.$emit('opacityBackground', 0);
+                this.$root.$emit('background', "#EEF5FF");
                 this.$router.push('usePhone')
-                // this.$router.push('introduction-tuto')
             }
         },
 
         mounted() {
             this.$socket.emit("startIntroduction", true)
+
+            this.time = setTimeout(() => {
+                this.isereHasRead = false;
+                this.$socket.emit("isereNextView", true)
+            }, 7500)
         }
 
     };

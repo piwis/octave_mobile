@@ -95,6 +95,7 @@
                     <div class="slide">
                         <p class="title bold">
                             Tourner
+                            {{this.posX}}
                         </p>
                         <div class="lottie lottie-turn">
 
@@ -300,15 +301,10 @@
                                 this.posY = UMath.normalize(data.do.gamma, 0, 90);
                                 this.posX = UMath.normalize(data.do.beta, -180, 180);
                             }
-                            /*else if (data.do.gamma < 80 && data.do.gamma > 0 && data.do.beta < 100 && data.do.beta > -100) {
-                                                           console.log("Salut");
-                                                           this.posY = UMath.normalize(data.do.gamma, 0, 80);
-                                                           this.posX = UMath.normalize(data.do.beta, -180, 180);
-                                                       }*/
 
-                            if (this.posY > 0.5 && !this.foward && this.unlockFoward) {
+                            if (this.posY > 0.8 && !this.foward && this.unlockFoward) {
                                 this.foward = true
-                            } else if (this.foward && this.posY < 0.3) {
+                            } else if (this.foward && this.posY < 0.5) {
                                 // EMIT SOCKET
                                 this.slide.navigateDots(1)
                                 this.foward = false
@@ -321,7 +317,7 @@
                             // Vérife coté
                             if (this.posX > 0.5 && !this.leftAndRight && this.unlockLeftAndRight && !this.unlockFoward) {
                                 this.leftAndRight = true
-                            } else if (this.leftAndRight && this.posX < 0.45 && !this.unlockFoward) {
+                            } else if (this.leftAndRight && this.posX < 0.47 && !this.unlockFoward) {
                                 this.leftAndRight = false
                                 this.unlockLeftAndRight = false;
                                 gn.end()
@@ -451,7 +447,6 @@
             },
 
             goToNextView() {
-                this.$root.$emit('transitionBackground', ColorData.COLOR.GREENLIGTH);
                 this.$socket.emit("stopIntroduction", true)
                 this.$router.push('understand-introduction-tuto')
                 // EMIT
@@ -473,6 +468,8 @@
             }
         },
         mounted() {
+            this.$root.$emit('opacityBackground', 0);
+            this.$root.$emit('background', "#F2F6FF");
             this.activeSlide()
             this.rotationScreen();
         }

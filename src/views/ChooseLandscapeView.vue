@@ -41,11 +41,9 @@
                 </div>
                 <span class="test"></span>
                 <div class="right">
+                    <img key="10" :src="svg" alt="">
                     <transition name="fade" mode="out-in">
-                        <img key="10" :src="svg" alt="" v-if="!cityChoosen">
-                        <div class="mask" key="20" v-else>
-                            <span class="cercle cercle1"></span>
-                            <span class="cercle cercle2"></span>
+                        <div class="mask" key="20" v-if="cityChoosen">
                             <transition name="fade" mode="out-in">
                                 <img key="1" :src="cityChoosen.img" alt="" class="client">
                             </transition>
@@ -75,6 +73,7 @@
     import gresivaudan from "@/assets/img/territoires/paysage_gresivaudan_select.png"
     import vercors from "@/assets/img/territoires/paysage_vercors_select.png"
     import cercle1 from "@/assets/img/cercle.png"
+    import {ColorData} from "../assets/datas/ColorData";
 
     export default {
         name: 'understand-introduction-view',
@@ -289,8 +288,10 @@
                 this.loader = true;
                 this.$socket.emit("chooseLandscape", this.cityId)
                 this.$socket.emit("loadDrone", true)
-                this.$socket.emit("loadDrone", true)
                 this.$socket.emit("startDrone", true)
+                this.$root.$emit('transitionBackground', ColorData.COLOR.REDLIGTH);
+                this.$root.$emit('background', "#FFF6EF");
+                this.$root.$emit('opacityBackground', 0);
                 // On attand le emit du drone
                 setTimeout(() => {
                     setTimeout(() => {
@@ -301,9 +302,9 @@
         },
 
         created() {
-            setTimeout(() => {
-                this.$root.$emit('background', "#F0F9F4");
-            })
+            this.$root.$emit('transitionBackground', ColorData.COLOR.GREENLIGTH);
+            this.$root.$emit('opacityBackground', 0);
+            this.$root.$emit('background', "#F0F9F4");
         },
         mounted() {
             this.initDrag();
@@ -333,7 +334,9 @@
     .mask {
         width: 100%;
         height: 100%;
-        position: relative;
+        position: absolute;
+        right: -30px;
+        top: 0;
     }
     .test {
         position: absolute;
@@ -406,6 +409,7 @@
                     display: flex;
                     align-items: center;
                     height: calc(100% / 3);
+                    color: #3CB879;
                     &.grey {
                         color: grey;
                         &:after {
@@ -511,6 +515,11 @@
         -ms-transform: translateY(-50%);
         -o-transform: translateY(-50%);
         transform: translateY(-50%);
+        &.green {
+            left: 20px;
+            width: 100%;
+            max-width: 110px;
+        }
     }
 
     #circle-vol {
