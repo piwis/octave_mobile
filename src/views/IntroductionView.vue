@@ -41,7 +41,8 @@
         methods: {
 
             startIntroduction() {
-                this.$root.$emit('transitionBackground', ColorData.COLOR.RED);
+                this.$root.$emit('transitionBackground', ColorData.COLOR.REDLIGTH);
+                this.$root.$emit('opacityBackground', 0);
                 this.$socket.emit("useHeadPhone", true);
                 // this.$socket.emit("lookAtScreen", true);
                 this.$router.push('headphone');

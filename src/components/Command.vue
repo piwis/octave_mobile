@@ -1,8 +1,5 @@
 <template>
     <div class="start-drone">
-
-        <!--Avance {{this.posY}} <br>-->
-        <!--Normal {{this.normalise}} <br>-->
         <transition-group name="fade" mode="out-in">
             <div key="1" v-if="!droneBack">
                 <div class="drag-left">

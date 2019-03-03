@@ -20,6 +20,7 @@
 
 
     import imgMontange from "../assets/img/isere.png"
+    import {ColorData} from "../assets/datas/ColorData";
 
     export default {
         name: 'isere-view',
@@ -44,6 +45,8 @@
             },
             startIntroduction() {
                 this.$socket.emit("isereView", true)
+                this.$root.$emit('transitionBackground', ColorData.COLOR.PURPLE);
+                this.$root.$emit('opacityBackground', 0);
                 this.$router.push('usePhone')
                 // this.$router.push('introduction-tuto')
             }

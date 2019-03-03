@@ -28,7 +28,7 @@ class Slide {
         Object.assign(this.settings, settings);
 
 
-        if(this.settings.pos === 0) {
+        if(this.settings.pos === 3) {
             this.lottie2 = lottie.loadAnimation({
                 container: document.querySelector(".lottie-exit"),
                 renderer: 'svg',
@@ -36,6 +36,7 @@ class Slide {
                 loop: true,
                 animationData: jsonLottie[2]
             })
+            console.log(this.lottie2);
         }
         this.DOM.titleWrap = this.DOM.el.querySelector('.slide-item-number');
 
@@ -63,7 +64,6 @@ class Slide {
 
     stopLottie() {
         this.lottie.stop();
-
     }
 
     playLottie() {
@@ -102,8 +102,6 @@ class Slide {
                 onComplete: () => {
 
                     if (action === "show" && this.DOM.el.querySelector(".lottie") !== null) {
-                        console.log(this.settings.pos);
-
                         if (this.settings.pos === 3) {
                             this.lottie.play();
 

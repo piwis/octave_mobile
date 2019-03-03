@@ -215,6 +215,7 @@
     import {TweenMax} from 'gsap'
     import Slideshow from "../utils/Slider";
     import * as UMath from "../utils/UMath";
+    import {ColorData} from "../assets/datas/ColorData";
 
 
     var GyroNorm = require('gyronorm');
@@ -237,6 +238,7 @@
                 landscapeOrientation: false,
                 unlockFoward: true,
                 unlockLeftAndRight: true,
+                emitDrag: false,
                 posX: 0,
                 posY: 0,
             }
@@ -308,10 +310,10 @@
                                 this.foward = true
                             } else if (this.foward && this.posY < 0.3) {
                                 // EMIT SOCKET
-                                this.$socket.emit("movingIntroduction", true)
                                 this.slide.navigateDots(1)
+                                this.foward = false
                                 setTimeout(() => {
-                                    this.foward = false
+                                    this.$socket.emit("movingIntroduction", true)
                                     this.unlockFoward = false
                                 }, 1500)
                             }
@@ -408,11 +410,13 @@
                     }
                     if (that.userDragToTop && that.userDragToBottom) {
                         // Next Slide pour
-                        thatDrag.$socket.emit("movingIntroduction", true)
-                        thatDrag.slide.navigate('right')
-                        thatDrag.slide.navigateDots(3)
+                        if(!thatDrag.emitDrag) {
+                            thatDrag.$socket.emit("movingIntroduction", true)
+                            thatDrag.slide.navigate('right')
+                            thatDrag.slide.navigateDots(3)
+                            thatDrag.emitDrag = true
+                        }
                         setTimeout(() => {
-                            console.log("Salut");
                             TweenMax.staggerTo(".dots-battery--item", 1, {
                                 onStart: function () {
                                     console.log("Dtos");
@@ -447,7 +451,7 @@
             },
 
             goToNextView() {
-
+                this.$root.$emit('transitionBackground', ColorData.COLOR.GREENLIGTH);
                 this.$socket.emit("stopIntroduction", true)
                 this.$router.push('understand-introduction-tuto')
                 // EMIT

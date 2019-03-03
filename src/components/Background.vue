@@ -16,6 +16,7 @@
     import * as THREE from 'three';
     import {TweenMax} from "gsap"
     import imgSmoke from "../assets/img/smoke.png"
+
     export default {
         name: 'background-vue',
         data() {
@@ -102,16 +103,16 @@
                     // BON POUR LES PLACEMENT
                     if (p === 0 || p === 1 || p === 2) {
                         if (p === 0) {
-                            posX = -(w / 2) - 200
+                            posX = -(w / 2) - 600
                             posY = h / 2 - 100
                             posZ = 600
-                        } else if (p === 2) {
-                            posX = -(w / 2) - 50
-                            posY = h / 2 - 50
+                        } else if (p === 1) {
+                            posX = -(w / 2) * 1.5
+                            posY = 30
                             posZ = 600
                         } else {
-                            posX = -(w / 2)
-                            posY = h / 2
+                            posX = -(w / 2) - 100
+                            posY = (h / 2)
                             posZ = 600
                         }
                     }
@@ -124,6 +125,10 @@
                             posX = (w / 2) + 100
                             posY = h / 2 + 100
                             posZ = 600
+                        } else {
+                            posX = (w / 2) + 100
+                            posY = h / 2 + 100
+                            posZ = 600
                         }
                     }
                     if (p === 6 || p === 7 || p === 8 || p === 9 || p === 10) {
@@ -133,11 +138,12 @@
                             posZ = 600
                         } else if (p === 7) {
                             posX = 0
-                            posY = -(h / 2) - 140
+                            posY = -(h / 2) - 120
+                            // center bottom
                             posZ = 800
                         } else if (p === 8) {
-                            posX = (w / 2)
-                            posY = -(h / 2)
+                            posX = (w / 2) - 50
+                            posY = -(h / 2) - 50
                             posZ = 800
                         } else if (p === 9) {
                             posX = -(w / 2) + 100
@@ -162,48 +168,50 @@
                 }
 
                 // MILIEUX
-                for (var p = 0; p < 3; p++) {
-                    var particle = new THREE.Mesh(smokeGeo, this.smokeLigthMaterial);
-                    particle.scale.x = 600;
-                    particle.scale.y = 600
-
-                    particle.scale.set(1, 1, 1);
-
-                    let posX = 0;
-                    let posY = 0;
-                    let posZ = 0;
-
-                    let w = window.innerWidth
-                    let h = window.innerHeight
-
-                    // BON POUR LES PLACEMENT
-                    if(p === 0) {
-                        posX = 0
-                        posY = -100
-                    } else if(p === 1) {
-                        posX = 200
-                        posY = -100
-
-                    } else if(p === 2) {
-                        posX = -200
-                        posY = -100
-                    }
-
-                    // X Va vers la droite en positif
-                    // Y Va vers la haut en positif
-                    // Z Profondeur
-                    particle.position.set(posX, posY, 800);
-                    particle.rotation.z = 600;
-                    // particle.position.set(Math.random() * 500 - 250, Math.random() * 500 - 250, Math.random() * 1000 - 100);
-                    // particle.rotation.z = Math.random() * 360;
-                    this.scene.add(particle);
-                    this.smokeParticlesLigth.push(particle);
-                }
+                // for (var p = 0; p < 3; p++) {
+                //     var particle = new THREE.Mesh(smokeGeo, this.smokeLigthMaterial);
+                //     particle.scale.x = 600;
+                //     particle.scale.y = 600
+                //
+                //     particle.scale.set(1, 1, 1);
+                //
+                //     let posX = 0;
+                //     let posY = 0;
+                //     let posZ = 0;
+                //
+                //     let w = window.innerWidth
+                //     let h = window.innerHeight
+                //
+                //     // BON POUR LES PLACEMENT
+                //     if (p === 0) {
+                //         posX = 0
+                //         posY = -100
+                //     } else if (p === 1) {
+                //         posX = 200
+                //         posY = -100
+                //
+                //     } else if (p === 2) {
+                //         posX = -200
+                //         posY = -100
+                //     }
+                //
+                //     // X Va vers la droite en positif
+                //     // Y Va vers la haut en positif
+                //     // Z Profondeur
+                //     particle.position.set(posX, posY, 800);
+                //     particle.rotation.z = 600;
+                //     // particle.position.set(Math.random() * 500 - 250, Math.random() * 500 - 250, Math.random() * 1000 - 100);
+                //     // particle.rotation.z = Math.random() * 360;
+                //     this.scene.add(particle);
+                //     this.smokeParticlesLigth.push(particle);
+                // }
 
 
                 document.querySelector(".background-vue").appendChild(this.renderer.domElement);
 
-                window.addEventListener("resize", this.onWindowResize.bind(this));
+                var supportsOrientationChange = "onorientationchange" in window,
+                    orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+                window.addEventListener(orientationEvent, this.onWindowResize.bind(this), false);
                 this.animate()
             },
             animate() {
@@ -233,13 +241,13 @@
             },
 
             changeColorOfMaterial(color) {
-
-                TweenMax.to([this.smokeMaterial.color,this.ambientLight.color], 1, {
+                TweenMax.to([this.smokeMaterial.color, this.ambientLight.color], 1, {
                     r: color.r,
                     g: color.g,
                     b: color.b,
                 })
-
+            },
+            changeOpacityOfMaterial(value) {
                 TweenMax.to(this.smokeLigthMaterial, 1, {
                     opacity: 0,
                 })
@@ -248,8 +256,12 @@
         mounted() {
 
             this.init();
+
             this.$root.$on('transitionBackground', (data) => {
                 this.changeColorOfMaterial(data);
+            })
+            this.$root.$on('opacityBackground', (data) => {
+                this.changeOpacityOfMaterial(data);
             })
 
 
