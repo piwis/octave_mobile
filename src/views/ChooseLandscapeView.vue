@@ -288,7 +288,6 @@
                 this.loader = true;
                 this.$socket.emit("chooseLandscape", this.cityId)
                 this.$socket.emit("loadDrone", true)
-                this.$socket.emit("startDrone", true)
                 this.$root.$emit('transitionBackground', ColorData.COLOR.REDLIGTH);
                 this.$root.$emit('background', "#FFF6EF");
                 this.$root.$emit('opacityBackground', 0);
