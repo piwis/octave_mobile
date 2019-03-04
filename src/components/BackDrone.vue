@@ -1,22 +1,34 @@
 <template>
     <div class="close-drone">
-		<span class="close bold" @click="annulerBackHome">
-			Annuler
-		</span>
-        <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 222.8 131" style="enable-background:new 0 0 222.8 131;" xml:space="preserve">
-<linearGradient id="Forme_791_2_" gradientUnits="userSpaceOnUse" x1="1313.3785" y1="5313.522" x2="1112.6957" y2="5378.7275" gradientTransform="matrix(1 0 0 -1 -1088 5412.6758)">
-	<stop  offset="0" style="stop-color:#FF7F81;stop-opacity:0"/>
-	<stop  offset="0.5" style="stop-color:#FF7F81"/>
-</linearGradient>
-<path id="Forme_791_1_" class="st0" d="M21,24.1L21,24.1c0,3.3,2.8,5.9,6.1,5.6C177.8,17.2,210.7,131,210.7,131h12.1
-	C181.9,9.3,53.2,15.7,26,18.5C23.2,18.8,21,21.2,21,24.1z"/>
-<g id="circle">
-	<circle class="st1" cx="24.3" cy="24.3" r="24.3"/>
-	<path class="st2" d="M29.8,24.4c0,0.2-0.1,0.4-0.2,0.6l-9.3,9.3c-0.3,0.3-0.8,0.2-1.1-0.1c-0.3-0.3-0.3-0.7,0-1l8.8-8.8l-8.8-8.8
-		c-0.3-0.3-0.3-0.8,0-1.1c0.3-0.3,0.8-0.3,1.1,0l9.3,9.4C29.7,24,29.8,24.2,29.8,24.4z"/>
-</g>
-</svg>
+
+		<transition name="fade" mode="out-in">
+			<div class="bloc1" key="1"  v-if="!droneBackHome">
+				<span class="close bold" @click="annulerBackHome">
+					Annuler
+				</span>
+				<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 222.8 131" style="enable-background:new 0 0 222.8 131;" xml:space="preserve">
+		<linearGradient id="Forme_791_2_" gradientUnits="userSpaceOnUse" x1="1313.3785" y1="5313.522" x2="1112.6957" y2="5378.7275" gradientTransform="matrix(1 0 0 -1 -1088 5412.6758)">
+			<stop  offset="0" style="stop-color:#FF7F81;stop-opacity:0"/>
+			<stop  offset="0.5" style="stop-color:#FF7F81"/>
+		</linearGradient>
+		<path id="Forme_791_1_" class="st0" d="M21,24.1L21,24.1c0,3.3,2.8,5.9,6.1,5.6C177.8,17.2,210.7,131,210.7,131h12.1
+			C181.9,9.3,53.2,15.7,26,18.5C23.2,18.8,21,21.2,21,24.1z"/>
+		<g id="circle">
+			<circle class="st1" cx="24.3" cy="24.3" r="24.3"/>
+			<path class="st2" d="M29.8,24.4c0,0.2-0.1,0.4-0.2,0.6l-9.3,9.3c-0.3,0.3-0.8,0.2-1.1-0.1c-0.3-0.3-0.3-0.7,0-1l8.8-8.8l-8.8-8.8
+				c-0.3-0.3-0.3-0.8,0-1.1c0.3-0.3,0.8-0.3,1.1,0l9.3,9.4C29.7,24,29.8,24.2,29.8,24.4z"/>
+		</g>
+		</svg>
+
+				<p class="bold">
+					Renter ?
+				</p>
+			</div>
+			<div key="2" v-else-if="droneBackHome" class="droneBack">
+				<Loader text="Je rentre ..."></Loader>
+			</div>
+		</transition>
     </div>
 </template>
 
@@ -24,12 +36,18 @@
 
 
     import {Draggable} from 'gsap/Draggable'
+    import Loader from '@/components/Loader'
 
     export default {
         name: 'choose-an-landscape',
         props: ['landscape'],
+
+        components: {
+            Loader
+        },
         data() {
             return {
+                droneBackHome: false,
                 show: false,
                 city: this.landscape
             }
@@ -90,7 +108,13 @@
 
             },
             goHome () {
-                this.$emit('clicked', true)
+
+                this.droneBackHome = true;
+                this.$socket.emit("landingDrone", true)
+                this.$emit("backHomeDrone", true)
+                setTimeout(() => {
+                    this.$router.push('download')
+                }, 3000)
             },
             annulerBackHome() {
                 this.$emit('clicked', true)
@@ -120,6 +144,13 @@
         justify-content: center;
     }
 
+	.bold {
+		font-size: 20px;
+		color: #FF767D;
+		margin-bottom: 0;
+	}
+	#Calque_1 {
+	}
     .st0 {
         fill: url(#Forme_791_2_);
     }
@@ -133,8 +164,8 @@
     }
 
     #Calque_1 {
-        width: 222.8px;
-        height: 131px;
+		width: 100%;
+		max-width: 250px;
     }
 
     #circle {

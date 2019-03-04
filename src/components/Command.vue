@@ -1,8 +1,7 @@
 <template>
     <div class="start-drone">
         <transition-group name="fade" mode="out-in">
-            <div key="1" v-if="!droneBack">
-                {{this.posY}}
+            <div key="1" v-show="!droneBack">
                 <div class="drag-left">
                     <svg version="1.1" id="drag-vol" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      viewBox="0 0 91.3 405" style="enable-background:new 0 0 91.3 405;" xml:space="preserve">
@@ -41,9 +40,7 @@
                     <BackDrone v-show="backHome" @clicked="annulerBackHome"></BackDrone>
                 </transition>
             </div>
-            <div key="3" v-else-if="droneBack && droneBackHome" class="droneBack">
-                <Loader text="Je rentre ..."></Loader>
-            </div>
+
         </transition-group>
 
         <ReadTuto class="read-tuto"/>
@@ -266,11 +263,6 @@
                     this.backHome = false
                     this.droneBack = true
                     this.endDrone = true
-                    this.$socket.emit("landingDrone", true)
-                    this.$emit("backHomeDrone", true)
-                    setTimeout(() => {
-                        this.$router.push('download')
-                    }, 2000)
                     // Emit la personne va rependre le controle + ecran de fin
                 }
             },
@@ -320,8 +312,13 @@
 
         },
         created() {
+            setTimeout(() => {
+                this.$root.$emit('transitionBackground', ColorData.COLOR.REDLIGTH);
+                this.$root.$emit('opacityBackground', 0);
+            })
         },
         mounted() {
+
 
             if (window.orientation === 90 || window.orientation === -90) {
                 this.landscapeOrientation = true;
