@@ -113,42 +113,22 @@
                     C75.4,129.1,31,39,31,39z"/>
                 <g id="circle-vol">
                     <circle class="st1_up" cx="39" cy="39" r="39"/>
-                    <path class="st2" d="M39.1,15.5c0.3,0,0.6,0.1,0.9,0.4l14.5,14.5c0.4,0.5,0.4,1.3-0.1,1.7s-1.1,0.4-1.6,0L39.1,18.4L25.4,32.1
-                        c-0.5,0.5-1.2,0.5-1.7,0s-0.5-1.2,0-1.7l14.6-14.5C38.4,15.6,38.7,15.5,39.1,15.5z"/>
-                    <path class="st2" d="M39,62.5c-0.3,0-0.6-0.1-0.9-0.4L23.6,47.6c-0.4-0.5-0.3-1.3,0.2-1.7c0.4-0.3,1-0.3,1.5,0L39,59.6l13.7-13.7
-                        c0.5-0.4,1.3-0.4,1.7,0.1c0.4,0.5,0.4,1.1,0,1.6L39.9,62.1C39.6,62.4,39.3,62.5,39,62.5z"/>
+                    <path class="st2 haut-deux" d="M39.1,15.5c0.3,0,0.6,0.1,0.9,0.4l14.5,14.5c0.4,0.5,0.4,1.3-0.1,1.7s-1.1,0.4-1.6,0L39.1,18.4L25.4,32.1
+                    c-0.5,0.5-1.2,0.5-1.7,0s-0.5-1.2,0-1.7l14.6-14.5C38.4,15.6,38.7,15.5,39.1,15.5z"/>
+                    <path class="st2 bas-deux" d="M39,62.5c-0.3,0-0.6-0.1-0.9-0.4L23.6,47.6c-0.4-0.5-0.3-1.3,0.2-1.7c0.4-0.3,1-0.3,1.5,0L39,59.6l13.7-13.7
+                    c0.5-0.4,1.3-0.4,1.7,0.1c0.4,0.5,0.4,1.1,0,1.6L39.9,62.1C39.6,62.4,39.3,62.5,39,62.5z"/>
+                    <path class="haut" d="M39.75,27.53 C40.165497,27.5343501 40.5632229,27.6991735 40.86,27.99 L59.64,46.77 C60.2557974,47.3830361 60.258036,48.3792025 59.6449999,48.9949999 C59.0319639,49.6107974 58.0357975,49.613036 57.42,49 L39.75,31.31 L22.08,49 C21.4669639,49.6157975 20.4707975,49.6180361 19.855,49.005 C19.2392025,48.3919639 19.2369639,47.3957975 19.85,46.78 L38.64,28 C38.9327226,27.701878 39.3322012,27.5327293 39.75,27.53 Z" id="Shape" fill="#FFFFFF"></path>
+                    <path class="bas" d="M39.7,49.5c-0.4,0-0.8-0.2-1.1-0.5L19.9,30.2c-0.6-0.6-0.6-1.6,0-2.2c0.6-0.6,1.6-0.6,2.2,0
+                    l17.7,17.7L57.4,28c0.6-0.6,1.6-0.6,2.2,0c0.6,0.6,0.6,1.6,0,2.2L40.9,49C40.6,49.3,40.2,49.5,39.7,49.5z" fill="#FFFFFF"/>
+
                 </g>
                 </svg>
                             <div class="up">
-                                <svg version="1.1" id="top" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                     viewBox="0 0 76 26" style="enable-background:new 0 0 76 26;" xml:space="preserve">
-                                <g>
-                                    <defs>
-                                        <rect id="SVGID_1_up" width="75" height="26"/>
-                                    </defs>
-                                    <clipPath id="SVGID_2_up">
-                                        <use xlink:href="#SVGID_1_up"  style="overflow:visible;"/>
-                                    </clipPath>
-                                    <polyline class="up-st0" points="23.6,20.4 5.6,24.8 1.2,7.1"/>
-                                    <path class="up-st0" d="M5.9,24.8C9.3,15.7,16.3,8,26.1,4c18.6-7.7,39.9,1,47.7,19.3"/>
-                                </g>
-                                </svg>
+                                <span class="top bold"></span>
                                 <span>Monter</span>
                             </div>
-                            <div class="bottom">
-                                <svg version="1.1" id="bottom" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 26 76" style="enable-background:new 0 0 26 76;" xml:space="preserve">
-<g>
-	<defs>
-		<rect id="SVGID_1_bottom" x="0" y="1" width="26" height="75"/>
-	</defs>
-	<clipPath id="SVGID_2_bottom">
-		<use xlink:href="#SVGID_1_bottom"  style="overflow:visible;"/>
-	</clipPath>
-	<polyline class="bottom-st0" points="5.6,52.4 1.2,70.4 18.9,74.8 	"/>
-	<path class="bottom-st0" d="M1.2,70.1C10.3,66.7,18,59.7,22,49.9c7.7-18.6-1-39.9-19.3-47.7"/>
-</g>
-</svg>
+                            <div class="bottom bold">
+                                <span class="bot"></span>
                                 <span>Descendre</span>
 
                             </div>
@@ -382,6 +362,7 @@
                 let that = this;
 
                 var StartX, StartY;
+                var progress = 0;
 
                 this.drag = Draggable.create(D, {
                     trigger: "#circle-vol",
@@ -400,10 +381,16 @@
                     let thatDrag = that;
                     let percent = Math.abs(y / 270);
                     tl.progress(percent)
+                    document.querySelector(".haut-deux").classList.add("remove")
+                    document.querySelector(".bas-deux").classList.add("remove")
                     if (percent > 0.5 && percent < 1) {
                         // DESCENTE
+                        document.querySelector(".bas").classList.add("opacity")
+                        document.querySelector(".haut").classList.remove("opacity")
                         thatDrag.userDragToBottom = true
                     } else if (percent < 0.5) {
+                        document.querySelector(".bas").classList.remove("opacity")
+                        document.querySelector(".haut").classList.add("opacity")
                         thatDrag.userDragToTop = true
                     }
                     if (that.userDragToTop && that.userDragToBottom) {
@@ -483,6 +470,35 @@
 <style scoped lang="scss">
     @import '../assets/scss/utils/variables';
 
+    span {
+        .top {
+            width: 36px;
+            height: 78px;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAABOCAMAAACQcy+oAAAAilBMVEUAAABIYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv8iO/f8AAAALXRSTlMABPnxRxL10YHKejgO2IggGwnr5t+pnI5AK+PFr5VqVU8kvbq0dGAvY1qjoW/YOf6PAAABs0lEQVRIx42U23KrMAxFwSbcoQQIhFzJvWm7/v/3zpxOOw11aktPDCxLmy3JnhFDd/dcsW/h5GCWCVBkVuawAeqdb2NmWyCMcxszTzXQVTbGv66A080qKIiAKLAywxlorr4V6j5Fzx0eaQCV9IEVfOUrwsX4d1W/obn3CQBNOrMku3hePr5pICz/4PwI/flpfo0sLQqg/35MgGR4ih1Rh8fRUbtn1A0WPx0tgcUzW97hYaiyFqLKpCrF+nGITrA6mFgJ+8ff3j7F8ppiYkAMK7PoDj4mL1KIcsPagnrqeg9nw98Ryum5M6RGzTXqZaq1AGPpMuPoTVEY7sbr3/27QOw5w0/+q3BGBm+eOxYgSHaATpRM+SJlmSBZxFFApSAoOUAlSFbwIaC21AJqLxL2IrLfC3kVOXYWUBsSAdWxElAlWkDFQgpRxVDUokY0roWAWnMSUDVbNzSDi5sKYCmyK5eIj0SySjd1Fck60viSqe/dqXoY3No1R5FZgROqQslmvEtsCGDjhPIWXQnWlZ0Tukjq7aGduaClQt+cUIhy+jmGcBdc32oUQDoQ3Fit4Cr1fy/NP0NkMSloAektAAAAAElFTkSuQmCC');
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .bot {
+            display: inline-block;
+            margin-left: 10px!important;
+            width: 36px;
+            height: 78px;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAABOCAMAAACQcy+oAAAAk1BMVEUAAABIYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv88a7ACAAAAMHRSTlMAA/vl9YmBSA/SevjgvCAbEwjy67CpnFArzcnFkGJWPTgk8Ni1opZ0bV1CLwxp2jbJEQvQAAABvElEQVRIx42W13LbQAxFrV2KXaJZxKZerWbn/P/XJfE4HmdFG9gncucMAKJc8Gng5OGT4tSkU5mKoQhUmGlkrPEwFxm7/sECBZZQ3GRsZUifZewFKkXaKniVqTClyGQs0Pk8wlqmMo9eYcwHRW7DgonC2BhamZrCWGFsgh3J1EWVjGejcjkn0qXsrirmVREYvChclpw04auKNFN95AmrKrinS5iK2mk8qqhaFX1Fp6A6DgrKY6nq/KlCoUDR+AtKRVh7zjLUQqYQdVVYkaYHN7DRNGoiO9xCrTHFVBPVUYRGHYlryp+3j9vDd65+Qfz/zS1hn7sj7FoP9xg3V40roKMKYjfQN8rQ6RgObkLPcHarHIWu+pe85c5A22xA/Fdf/Z/Abl0oS5h/lb8JpFthw61TiB4b9Aazz5d8bGB2H9oi5tN+k0JyHtbqxb/HHujbocpH7N5/HO7LCChfB5tz+S7oYXMsAG8cDjeRxV4WnQGw8V+jw6Y+jjdrvh+EHYDpF0H+syCC5+eiEhwAuxTH7toBUSAOy8UCh5vE5XEB1Jm4LU8GPP8uikL1USDhrHtgv5EVOUW1Wtt69Xj5G6xFNArUcJxhAAAAAElFTkSuQmCC');
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .top, .bot {
+            -webkit-transform: scale(0.7);
+            -moz-transform: scale(0.7);
+            -ms-transform: scale(0.7);
+            -o-transform: scale(0.7);
+            transform: scale(0.7);
+        }
+    }
     .title {
         color: $purple;
         margin: 0;
@@ -490,7 +506,6 @@
         line-height: 1;
         margin-bottom: -20px;
     }
-
     .lottie {
         &-turn {
             max-width: 370px;
@@ -519,22 +534,18 @@
         height: 100%;
         width: 100%;
     }
-
     .slider-numbers {
         position: absolute;
         right: 30px;
         top: 30px;
     }
-
     .slide {
         width: 100%;
         height: 100%;
     }
-
     .introduction-tuto {
         text-align: center;
     }
-
     svg {
         margin: 0 auto;
     }
@@ -822,13 +833,6 @@
         stroke-miterlimit: 10;
     }
 
-    #drag-vol {
-        width: 94px;
-        max-height: 320px;
-        height: 100%;
-        padding: 0;
-        position: relative;
-    }
 
     .drag-vol-trait {
         opacity: 0.8;
@@ -849,7 +853,7 @@
         align-items: center;
         justify-content: center;
         position: absolute;
-        left: 0;
+        left: 30px;
         max-height: 405px;
         height: 100%;
         top: 50%;
@@ -859,13 +863,23 @@
         -o-transform: translateY(-50%);
         transform: translateY(-50%);
     }
+    #drag-vol {
+        width: 94px;
+        max-height: 360px;
+        height: 100%;
+        padding: 0;
+        position: relative;
+    }
+
 
     .up, .bottom {
+        font-size: 17px;
+        color: #4867FF;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         position: absolute;
-        right: -180px;
+        right: -160px;
         span {
             margin-left: 20px;
             @include f-muli-bold
@@ -877,6 +891,7 @@
     }
 
     .bottom {
+        right: -190px;
         bottom: 20%;
     }
 
@@ -898,6 +913,13 @@
         -o-transform: rotate(45deg);
         transform: rotate(45deg);
         transform-origin: center;
+    }
+    #bottom {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
     }
 
     .up-st0 {

@@ -104,42 +104,43 @@
                     // BON POUR LES PLACEMENT
                     if (p === 0 || p === 1 || p === 2) {
                         if (p === 0) {
-                            posX = -(w / 2) - 600
-                            posY = h / 2 - 100
+                            posX = -(w / 2) - 100
+                            posY = h / 2 * 2
                             posZ = 600
                         } else if (p === 1) {
-                            posX = -(w / 2) * 1.5
-                            posY = 30
+                            posX = -(w / 2) * 1.7
+                            posY = h / 2
                             posZ = 600
                         } else {
-                            posX = -(w / 2) - 100
-                            posY = (h / 2)
+                            posX = -(w / 2) * 1.8
+                            posY = (h / 2) + 100
                             posZ = 600
                         }
                     }
                     if (p === 3 || p === 4 || p === 5) {
+                        // droite
                         if (p === 3) {
-                            posX = (w / 2) + 250
-                            posY = h / 2 - 100
+                            posX = (w / 2) * 2
+                            posY = h / 2 - 10
                             posZ = 600
                         } else if (p === 4) {
-                            posX = (w / 2) + 100
-                            posY = h / 2 + 100
+                            posX = (w / 2) * 1.7
+                            posY = h / 2 * 0.4
                             posZ = 600
                         } else {
-                            posX = (w / 2) + 100
-                            posY = h / 2 + 100
+                            posX = (w / 2) * 1.5
+                            posY = h / 2 * 1.3
                             posZ = 600
                         }
                     }
                     if (p === 6 || p === 7 || p === 8 || p === 9 || p === 10) {
                         if (p === 6) {
-                            posX = -(w / 2) - 200
+                            posX = -(w / 2) * 1.6
                             posY = -(h / 2) - 200
                             posZ = 600
                         } else if (p === 7) {
                             posX = 0
-                            posY = -(h / 2) - 120
+                            posY = -(h / 2) * 1.8
                             // center bottom
                             posZ = 800
                         } else if (p === 8) {
@@ -169,43 +170,43 @@
                 }
 
                 // MILIEUX
-                for (var p = 0; p < 3; p++) {
-                    var particle = new THREE.Mesh(smokeGeo, this.smokeLigthMaterial);
-                    particle.scale.x = 600;
-                    particle.scale.y = 600
-
-                    particle.scale.set(1, 1, 1);
-
-                    let posX = 0;
-                    let posY = 0;
-                    let posZ = 0;
-
-                    let w = window.innerWidth
-                    let h = window.innerHeight
-
-                    // BON POUR LES PLACEMENT
-                    if (p === 0) {
-                        posX = 0
-                        posY = -100
-                    } else if (p === 1) {
-                        posX = 200
-                        posY = -100
-
-                    } else if (p === 2) {
-                        posX = -200
-                        posY = -100
-                    }
-
-                    // X Va vers la droite en positif
-                    // Y Va vers la haut en positif
-                    // Z Profondeur
-                    particle.position.set(posX, posY, 800);
-                    particle.rotation.z = 600;
-                    // particle.position.set(Math.random() * 500 - 250, Math.random() * 500 - 250, Math.random() * 1000 - 100);
-                    // particle.rotation.z = Math.random() * 360;
-                    this.scene.add(particle);
-                    this.smokeParticlesLigth.push(particle);
-                }
+                // for (var p = 0; p < 3; p++) {
+                //     var particle = new THREE.Mesh(smokeGeo, this.smokeLigthMaterial);
+                //     particle.scale.x = 600;
+                //     particle.scale.y = 600
+                //
+                //     particle.scale.set(1, 1, 1);
+                //
+                //     let posX = 0;
+                //     let posY = 0;
+                //     let posZ = 0;
+                //
+                //     let w = window.innerWidth
+                //     let h = window.innerHeight
+                //
+                //     // BON POUR LES PLACEMENT
+                //     if (p === 0) {
+                //         posX = 0
+                //         posY = -100
+                //     } else if (p === 1) {
+                //         posX = 200
+                //         posY = -100
+                //
+                //     } else if (p === 2) {
+                //         posX = -200
+                //         posY = -100
+                //     }
+                //
+                //     // X Va vers la droite en positif
+                //     // Y Va vers la haut en positif
+                //     // Z Profondeur
+                //     particle.position.set(posX, posY, 800);
+                //     particle.rotation.z = 600;
+                //     // particle.position.set(Math.random() * 500 - 250, Math.random() * 500 - 250, Math.random() * 1000 - 100);
+                //     // particle.rotation.z = Math.random() * 360;
+                //     this.scene.add(particle);
+                //     this.smokeParticlesLigth.push(particle);
+                // }
 
 
                 document.querySelector(".background-vue").appendChild(this.renderer.domElement);

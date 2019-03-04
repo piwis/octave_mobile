@@ -161,4 +161,21 @@
       box-shadow: 0px 0px 50.6px 4.4px rgba(36, 27, 214, 0.65);
     }
   }
+  path {
+    -webkit-transition: opacity 500ms ease;
+    -moz-transition: opacity 500ms ease;
+    -ms-transition: opacity 500ms ease;
+    -o-transition: opacity 500ms ease;
+    transition: opacity 500ms ease;
+    &.haut, &.bas {
+      opacity: 0;
+    }
+    &.remove {
+      opacity: 0;
+    }
+    &.opacity {
+      opacity: 1;
+    }
+  }
+
 </style>

@@ -50,7 +50,7 @@
         },
 
         mounted() {
-            this.$root.$emit('transitionBackground', ColorData.COLOR.REDLIGTH);
+            this.$root.$emit('transitionBackground', ColorData.COLOR.RED);
             this.$root.$emit('background', "#EEF5FF");
             this.$socket.emit("startIntroduction", true)
 

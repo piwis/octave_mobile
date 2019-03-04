@@ -258,21 +258,22 @@
                         autoAlpha:0,
                     })
 
-                    // document.querySelector(".haut-deux").classList.add("remove")
-                    // document.querySelector(".bas-deux").classList.add("remove")
                     let thatDrag = that;
                     let percent = Math.abs(y / 270);
                     tl.progress(percent)
                     setTimeout(() => {
                         progress = percent
                     }, 10)
+
+
+                    // document.querySelector(".haut-deux").classList.add("remove")
+                    // document.querySelector(".bas-deux").classList.add("remove")
                     if((progress - percent) > 0) {
                         // document.querySelector(".bas").classList.remove("opacity")
                         // document.querySelector(".haut").classList.add("opacity")
                     } else {
                         // document.querySelector(".bas").classList.add("opacity")
                         // document.querySelector(".haut").classList.remove("opacity")
-
                     }
                 };
 
@@ -534,23 +535,6 @@
             -ms-transition: fill 500ms ease;
             -o-transition: fill 500ms ease;
             transition: fill 500ms ease;
-        }
-        
-        path {
-            -webkit-transition: opacity 500ms ease;
-            -moz-transition: opacity 500ms ease;
-            -ms-transition: opacity 500ms ease;
-            -o-transition: opacity 500ms ease;
-            transition: opacity 500ms ease;
-            &.haut, &.bas {
-                opacity: 0;
-            }
-            &.remove {
-                opacity: 0;
-            }
-            &.opacity {
-                opacity: 1;
-            }
         }
 
     }
