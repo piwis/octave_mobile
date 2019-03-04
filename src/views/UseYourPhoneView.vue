@@ -105,7 +105,8 @@
         created() {
         },
         mounted() {
-            this.$root.$emit('transitionBackground', ColorData.COLOR.REDLIGTH);
+            this.$root.$emit('background', "#EEF5FF");
+            this.$root.$emit('transitionBackground', ColorData.COLOR.PURPLE);
             this.time = setTimeout(() => {
                 this.$socket.emit("turnIntroduction", true)
                 this.$router.push("introduction-tuto")

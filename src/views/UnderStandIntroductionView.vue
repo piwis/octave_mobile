@@ -65,7 +65,7 @@
         },
 
         created() {
-            this.$root.$emit('transitionBackground', ColorData.COLOR.GREENLIGTH);
+            this.$root.$emit('transitionBackground', ColorData.COLOR.GREEN);
             this.$root.$emit('background', "#F0F9F4");
             this.$root.$emit('opacityBackground', 0);
         },

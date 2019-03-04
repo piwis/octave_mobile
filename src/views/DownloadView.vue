@@ -56,7 +56,6 @@
     import {ColorData} from "../assets/datas/ColorData";
     import borneImg from "@/assets/img/borne.png"
 
-
     export default {
         name: 'download-view',
 

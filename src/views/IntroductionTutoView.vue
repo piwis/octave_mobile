@@ -95,7 +95,6 @@
                     <div class="slide">
                         <p class="title bold">
                             Tourner
-                            {{this.posX}}
                         </p>
                         <div class="lottie lottie-turn">
 
@@ -307,9 +306,12 @@
                             } else if (this.foward && this.posY < 0.5) {
                                 // EMIT SOCKET
                                 this.slide.navigateDots(1)
-                                this.foward = false
-                                setTimeout(() => {
+                                if(this.foward) {
                                     this.$socket.emit("movingIntroduction", true)
+                                }
+                                this.foward = false
+
+                                setTimeout(() => {
                                     this.unlockFoward = false
                                 }, 1500)
                             }

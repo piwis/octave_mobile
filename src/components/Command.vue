@@ -2,6 +2,7 @@
     <div class="start-drone">
         <transition-group name="fade" mode="out-in">
             <div key="1" v-if="!droneBack">
+                {{this.posY}}
                 <div class="drag-left">
                     <svg version="1.1" id="drag-vol" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      viewBox="0 0 91.3 405" style="enable-background:new 0 0 91.3 405;" xml:space="preserve">
@@ -37,7 +38,7 @@
                     ?
                 </p>
                 <transition name="fade" mode="out-in">
-                    <BackDrone v-show="backHome" @clicked="goHome"></BackDrone>
+                    <BackDrone v-show="backHome" @clicked="annulerBackHome"></BackDrone>
                 </transition>
             </div>
             <div key="3" v-else-if="droneBack && droneBackHome" class="droneBack">
@@ -86,7 +87,8 @@
                 posY: 0,
                 posZ: 0,
                 landscapeOrientation: false,
-                city: this.landscape
+                city: this.landscape,
+                canEmitToDrone: true,
             }
         },
         sockets: {
@@ -206,7 +208,7 @@
                 this.gn = new GyroNorm();
                 this.gn.init(args).then(() => {
                     this.gn.start((data) => {
-                        if (this.landscapeOrientation) {
+                        if (this.landscapeOrientation && this.canEmitToDrone) {
                             if (data.do.gamma > -90 && data.do.gamma < 0 && data.do.beta < 100 && data.do.beta > -100) {
                                 this.posY = UMath.normalize(data.do.gamma, 0, -90);
                                 this.posX = UMath.normalize(data.do.beta, -180, 180);
@@ -235,8 +237,6 @@
                             this.lastPosY = this.posY
 
 
-                        } else {
-                            this.posX = data.do.gamma
                         }
 
 
@@ -249,10 +249,17 @@
             backHomeDrone() {
                 // Emit qui stop le drone en vol
                 this.hideCommand()
+                this.canEmitToDrone = false
                 this.droneBackHome = true
                 this.backHome = true
                 this.$socket.emit("stopWaitDrone", true)
-                this.gn.stop()
+            },
+            annulerBackHome() {
+
+                this.canEmitToDrone = true
+                this.backHome = false;
+                this.displayCommand();
+
             },
             goHome(value) {
                 if (value) {
@@ -295,7 +302,7 @@
                 TweenMax.to('.read-tuto', 1, {
                     autoAlpha: 1,
                 })
-                this.$socket.emit("readTuto", true)
+                //this.$socket.emit("readTuto", true)
                 this.gn.stop()
             },
             hideTuto() {
@@ -508,6 +515,9 @@
         border-radius: 40px;
         line-height: 1;
         font-size: 30px;
+    }
+    .annuler {
+
     }
 
 </style>

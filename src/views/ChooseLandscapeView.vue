@@ -92,20 +92,20 @@
                 meteo:false,
                 citys: [
                     {
-                        name: "Oisans",
-                        img: imgTest
-                    },
-                    {
-                        name: "Grésivaudan",
-                        img: gresivaudan
-                    },
-                    {
                         name: "Vercors",
                         img: vercors
                     },
                     {
+                        name: "Oisans",
+                        img: imgTest
+                    },
+                    {
                         name: "Portes des Alpes",
                         img: porte
+                    },
+                    {
+                        name: "Grésivaudan",
+                        img: gresivaudan
                     },
                 ],
                 cercle: cercle1,
@@ -302,7 +302,7 @@
         },
 
         created() {
-            this.$root.$emit('transitionBackground', ColorData.COLOR.GREENLIGTH);
+            this.$root.$emit('transitionBackground', ColorData.COLOR.GREEN);
             this.$root.$emit('opacityBackground', 0);
             this.$root.$emit('background', "#F0F9F4");
         },

@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:200,300,700');
 $dark-blue: #0b075a;
 $white: #FFFFFF;
 $black: #000000;
@@ -11,6 +10,7 @@ $screen-xs: 480px;
 $screen-xs-max: 640px;
 $screen-sm: 991px;
 
+@import url('https://fonts.googleapis.com/css?family=Muli:200,300,700');
 @mixin f-muli-light() {
   font-family: "Muli";
   font-weight: 200;

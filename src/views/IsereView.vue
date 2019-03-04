@@ -45,13 +45,13 @@
             },
             startIntroduction() {
                 this.$socket.emit("isereView", true)
-                this.$root.$emit('transitionBackground', ColorData.COLOR.PURPLE);
-                this.$root.$emit('background', "#EEF5FF");
                 this.$router.push('usePhone')
             }
         },
 
         mounted() {
+            this.$root.$emit('transitionBackground', ColorData.COLOR.REDLIGTH);
+            this.$root.$emit('background', "#EEF5FF");
             this.$socket.emit("startIntroduction", true)
 
             this.time = setTimeout(() => {
