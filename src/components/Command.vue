@@ -1,5 +1,7 @@
 <template>
     <div class="start-drone">
+        {{this.posY}} <br>
+        {{this.normalizeX}}
         <transition-group name="fade" mode="out-in">
             <div key="1" v-show="!droneBack">
                 <div class="drag-left">
@@ -209,9 +211,16 @@
                             if (data.do.gamma > -90 && data.do.gamma < 0 && data.do.beta < 100 && data.do.beta > -100) {
                                 this.posY = UMath.normalize(data.do.gamma, 0, -90);
                                 this.posX = UMath.normalize(data.do.beta, -180, 180);
+                                this.posY = UMath.normalize(this.posY, 1, 0.6)
                             } else if (data.do.gamma < 90 && data.do.gamma > 0 && data.do.beta < 100 && data.do.beta > -100) {
                                 this.posY = UMath.normalize(data.do.gamma, 0, 90);
                                 this.posX = UMath.normalize(data.do.beta, -180, 180);
+                                this.posY = UMath.normalize(this.posY, 1, 0.6)
+                            }
+
+
+                            if(this.posY < 0) {
+                                this.posY = 0
                             }
 
                             let objectRotation = null;
@@ -222,10 +231,8 @@
                                 // EMIT DROITE
                                 this.normalizeX = UMath.normalize(this.posX, 0, 0.5);
                             }
-
-
                             this.$socket.emit("sendGyro", {
-                                "forward": this.posY === this.lastPosY ? 0.0 : this.posY,
+                                "forward": this.posY === this.lastPosY ? 0.0 : this.normalizeX < -0.08 || this.normalizeX > 0.08 ? 0 : this.posY,
                                 "upOrDown": this.top / 2,
                                 "rotation": this.normalizeX
                             })
@@ -319,13 +326,11 @@
         },
         mounted() {
 
-
             if (window.orientation === 90 || window.orientation === -90) {
                 this.landscapeOrientation = true;
             } else {
                 this.landscapeOrientation = false;
             }
-
             this.pilotDrone();
             this.rotationScreen();
             this.initGyroscope();
