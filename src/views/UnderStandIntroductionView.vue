@@ -66,9 +66,11 @@
         },
 
         created() {
-            this.$root.$emit('transitionBackground', ColorData.COLOR.GREEN);
-            this.$root.$emit('background', "#F0F9F4");
-            this.$root.$emit('opacityBackground', 0);
+            setTimeout(() => {
+                this.$root.$emit('transitionBackground', ColorData.COLOR.GREENLIGTH);
+                this.$root.$emit('background', "#F0F9F4");
+                this.$root.$emit('opacityBackground', 0);
+            })
         },
         mounted() {
             this.imgs.forEach((item,index) => {
@@ -112,6 +114,6 @@
         width: 113px;
         height: 113px;
     }
-    .st0{clip-path:url(#SVGID_2_);fill:none;stroke:#3CB879;stroke-width:1.8335;stroke-miterlimit:10;}
-    .st1{clip-path:url(#SVGID_2_);fill:#3CB879;}
+    .st0{clip-path:url(#SVGID_2_);fill:none;stroke:#2DB289;stroke-width:1.8335;stroke-miterlimit:10;}
+    .st1{clip-path:url(#SVGID_2_);fill:#69CFAC;}
 </style>

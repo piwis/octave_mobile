@@ -52,9 +52,11 @@
             }
         },
 
-        mounted() {
-            this.$root.$emit('transitionBackground', ColorData.COLOR.REDLIGTH);
+        created() {
+            this.$root.$emit('transitionBackground', ColorData.COLOR.RED);
             this.$root.$emit('background', "#FFF6EF");
+        },
+        mounted() {
 
         }
 

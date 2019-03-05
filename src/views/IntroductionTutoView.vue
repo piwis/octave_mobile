@@ -133,7 +133,6 @@
 
                             </div>
                         </div>
-
                     </div>
                     <div class="slide niveau">
 
@@ -144,7 +143,6 @@
                         <div class="lottie lottie-battery"></div>
                         <div class="lottie-exit" @click="goToNextView"></div>
                     </div>
-
 
                 </div>
                 <button class="boxnav__item boxnav__item--prev">
@@ -456,9 +454,13 @@
                 this.userRotateScreen = false
             }
         },
+        created() {
+            setTimeout(() => {
+                this.$root.$emit('opacityBackground', 0);
+                this.$root.$emit('background', "#F2F6FF");
+            })
+        },
         mounted() {
-            this.$root.$emit('opacityBackground', 0);
-            this.$root.$emit('background', "#F2F6FF");
             this.activeSlide()
             this.rotationScreen();
         }

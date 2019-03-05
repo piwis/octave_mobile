@@ -84,9 +84,13 @@
             if ('Notification' in window && 'serviceWorker' in navigator) {
                 this.notificationsSupported = true
             }
+            setTimeout(() => {
+                this.$root.$emit('background', "#F2F6FF");
+            })
         },
 
         mounted() {
+
         }
 
     };

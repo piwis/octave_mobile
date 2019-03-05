@@ -49,11 +49,11 @@
             }
         },
 
-        mounted() {
+        created() {
             this.$root.$emit('transitionBackground', ColorData.COLOR.RED);
-            this.$root.$emit('background', "#EEF5FF");
             this.$socket.emit("startIntroduction", true)
-
+        },
+        mounted() {
             this.time = setTimeout(() => {
                 this.isereHasRead = false;
                 this.$socket.emit("isereNextView", true)

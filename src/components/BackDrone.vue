@@ -112,9 +112,6 @@
                 this.droneBackHome = true;
                 this.$socket.emit("landingDrone", true)
                 this.$emit("backHomeDrone", true)
-                setTimeout(() => {
-                    this.$router.push('download')
-                }, 3000)
             },
             annulerBackHome() {
                 this.$emit('clicked', true)

@@ -103,10 +103,13 @@
 			}
 		},
         created() {
+            setTimeout(() => {
+                this.$root.$emit('background', "#EEF5FF");
+                this.$root.$emit('transitionBackground', ColorData.COLOR.PURPLE);
+			})
         },
         mounted() {
-            this.$root.$emit('background', "#EEF5FF");
-            this.$root.$emit('transitionBackground', ColorData.COLOR.PURPLE);
+
             this.time = setTimeout(() => {
                 this.$socket.emit("turnIntroduction", true)
                 this.$router.push("introduction-tuto")

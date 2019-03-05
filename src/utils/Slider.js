@@ -216,6 +216,9 @@ export default class Slideshow {
     // Set the current slide and initialize some events.
     init() {
         this.slides[this.current].setCurrent();
+        TweenMax.to(".boxnav__item--prev", 0.5,{
+            autoAlpha: 0,
+        })
         this.initEvents();
     }
 
@@ -271,6 +274,23 @@ export default class Slideshow {
             this.current < this.slidesTotal - 1 ? this.current + 1 : 0 :
             this.current > 0 ? this.current - 1 : this.slidesTotal - 1;
 
+
+        if(nextSlidePos === 0) {
+            TweenMax.to(".boxnav__item--prev", 0.5,{
+                autoAlpha: 0,
+            })
+            TweenMax.to(".boxnav__item--next", 0.5,{
+                autoAlpha: 1,
+            })
+        } else if(nextSlidePos === this.slidesTotal - 1) {
+            TweenMax.to(".boxnav__item--next", 0.5,{
+                autoAlpha: 0,
+            })
+        } else {
+            TweenMax.to(".boxnav__item--prev", 0.5,{
+                autoAlpha: 1,
+            })
+        }
         // Close the details boxes (if open) and then hide the current slide and show the next/previous one.
         this.closeDetailsBoxes().then(() => {
             // Update the current page element.

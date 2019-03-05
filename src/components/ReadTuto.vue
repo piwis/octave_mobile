@@ -3,7 +3,7 @@
 
         <p class="icon-close" @click="closeTuto">
         </p>
-        <div class="slideshow">
+        <div class="slideshow read-tuto">
             <div class="slide">
                 <p class="title bold">
                     Avancer
@@ -23,7 +23,7 @@
                 <div class="drag-left">
                     <svg version="1.1" id="drag-vol" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      viewBox="0 0 91.3 405" style="enable-background:new 0 0 91.3 405;" xml:space="preserve">
-                <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="860.15" y1="-5614.0601" x2="860.15" y2="-5253.0601" gradientTransform="matrix(1 0 0 -1 -799 -5214.0601)">
+                <linearGradient id="SVGID_1_2" gradientUnits="userSpaceOnUse" x1="860.15" y1="-5614.0601" x2="860.15" y2="-5253.0601" gradientTransform="matrix(1 0 0 -1 -799 -5214.0601)">
                     <stop  offset="0" style="stop-color:#5F86FF;stop-opacity:0"/>
                     <stop  offset="0.5" style="stop-color:#5F86FF"/>
                     <stop  offset="1" style="stop-color:#5F86FF;stop-opacity:0"/>
@@ -39,50 +39,24 @@
                 </g>
                 </svg>
                     <div class="up">
-                        <svg version="1.1" id="top" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                     viewBox="0 0 76 26" style="enable-background:new 0 0 76 26;" xml:space="preserve">
-                                <g>
-                                    <defs>
-                                        <rect id="SVGID_1_up" width="75" height="26"/>
-                                    </defs>
-                                    <clipPath id="SVGID_2_up">
-                                        <use xlink:href="#SVGID_1_up"  style="overflow:visible;"/>
-                                    </clipPath>
-                                    <polyline class="up-st0" points="23.6,20.4 5.6,24.8 1.2,7.1"/>
-                                    <path class="up-st0" d="M5.9,24.8C9.3,15.7,16.3,8,26.1,4c18.6-7.7,39.9,1,47.7,19.3"/>
-                                </g>
-                                </svg>
+                        <span class="top bold"></span>
                         <span>Monter</span>
                     </div>
-                    <div class="bottom">
-                        <svg version="1.1" id="bottom" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 26 76" style="enable-background:new 0 0 26 76;" xml:space="preserve">
-<g>
-	<defs>
-		<rect id="SVGID_1_bottom" x="0" y="1" width="26" height="75"/>
-	</defs>
-	<clipPath id="SVGID_2_bottom">
-		<use xlink:href="#SVGID_1_bottom"  style="overflow:visible;"/>
-	</clipPath>
-	<polyline class="bottom-st0" points="5.6,52.4 1.2,70.4 18.9,74.8 	"/>
-	<path class="bottom-st0" d="M1.2,70.1C10.3,66.7,18,59.7,22,49.9c7.7-18.6-1-39.9-19.3-47.7"/>
-</g>
-</svg>
+                    <div class="bottom bold">
+                        <span class="bot"></span>
                         <span>Descendre</span>
-
                     </div>
                 </div>
 
             </div>
 
             <div class="slide niveau">
-
-                <p class="title bold">
-                    Niveau d'énergie
-                </p>
-
-                <div class="lottie lottie-battery"></div>
                 <div class="lottie-exit"></div>
+
+                <span class="back-house pulse">
+                    <p class="bold">Arrêter</p>
+                    <p class="bold">Rentrer</p>
+                </span>
             </div>
 
 
@@ -615,7 +589,7 @@
 
     .drag-vol-trait {
         opacity: 0.8;
-        fill: url(#SVGID_1_);
+        fill: url(#SVGID_1_2);
         enable-background: new;
     }
 
@@ -648,7 +622,7 @@
         flex-wrap: wrap;
         align-items: center;
         position: absolute;
-        right: -180px;
+        right: -160px;
         span {
             margin-left: 20px;
             @include f-muli-bold
@@ -661,6 +635,7 @@
 
     .bottom {
         bottom: 20%;
+        right: -190px;
     }
 
     #bottom, #top {
@@ -724,5 +699,125 @@
         background-repeat: no-repeat;
         background-position: center;
     }
+    span {
+        &.top {
+            width: 36px;
+            height: 78px;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAABOCAMAAACQcy+oAAAAilBMVEUAAABIYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv8iO/f8AAAALXRSTlMABPnxRxL10YHKejgO2IggGwnr5t+pnI5AK+PFr5VqVU8kvbq0dGAvY1qjoW/YOf6PAAABs0lEQVRIx42U23KrMAxFwSbcoQQIhFzJvWm7/v/3zpxOOw11aktPDCxLmy3JnhFDd/dcsW/h5GCWCVBkVuawAeqdb2NmWyCMcxszTzXQVTbGv66A080qKIiAKLAywxlorr4V6j5Fzx0eaQCV9IEVfOUrwsX4d1W/obn3CQBNOrMku3hePr5pICz/4PwI/flpfo0sLQqg/35MgGR4ih1Rh8fRUbtn1A0WPx0tgcUzW97hYaiyFqLKpCrF+nGITrA6mFgJ+8ff3j7F8ppiYkAMK7PoDj4mL1KIcsPagnrqeg9nw98Ryum5M6RGzTXqZaq1AGPpMuPoTVEY7sbr3/27QOw5w0/+q3BGBm+eOxYgSHaATpRM+SJlmSBZxFFApSAoOUAlSFbwIaC21AJqLxL2IrLfC3kVOXYWUBsSAdWxElAlWkDFQgpRxVDUokY0roWAWnMSUDVbNzSDi5sKYCmyK5eIj0SySjd1Fck60viSqe/dqXoY3No1R5FZgROqQslmvEtsCGDjhPIWXQnWlZ0Tukjq7aGduaClQt+cUIhy+jmGcBdc32oUQDoQ3Fit4Cr1fy/NP0NkMSloAektAAAAAElFTkSuQmCC');
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        &.bot {
+            display: inline-block;
+            margin-left: 10px!important;
+            width: 36px;
+            height: 78px;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAABOCAMAAACQcy+oAAAAk1BMVEUAAABIYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv88a7ACAAAAMHRSTlMAA/vl9YmBSA/SevjgvCAbEwjy67CpnFArzcnFkGJWPTgk8Ni1opZ0bV1CLwxp2jbJEQvQAAABvElEQVRIx42W13LbQAxFrV2KXaJZxKZerWbn/P/XJfE4HmdFG9gncucMAKJc8Gng5OGT4tSkU5mKoQhUmGlkrPEwFxm7/sECBZZQ3GRsZUifZewFKkXaKniVqTClyGQs0Pk8wlqmMo9eYcwHRW7DgonC2BhamZrCWGFsgh3J1EWVjGejcjkn0qXsrirmVREYvChclpw04auKNFN95AmrKrinS5iK2mk8qqhaFX1Fp6A6DgrKY6nq/KlCoUDR+AtKRVh7zjLUQqYQdVVYkaYHN7DRNGoiO9xCrTHFVBPVUYRGHYlryp+3j9vDd65+Qfz/zS1hn7sj7FoP9xg3V40roKMKYjfQN8rQ6RgObkLPcHarHIWu+pe85c5A22xA/Fdf/Z/Abl0oS5h/lb8JpFthw61TiB4b9Aazz5d8bGB2H9oi5tN+k0JyHtbqxb/HHujbocpH7N5/HO7LCChfB5tz+S7oYXMsAG8cDjeRxV4WnQGw8V+jw6Y+jjdrvh+EHYDpF0H+syCC5+eiEhwAuxTH7toBUSAOy8UCh5vE5XEB1Jm4LU8GPP8uikL1USDhrHtgv5EVOUW1Wtt69Xj5G6xFNArUcJxhAAAAAElFTkSuQmCC');
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        &.top, &.bot {
+            -webkit-transform: scale(0.7);
+            -moz-transform: scale(0.7);
+            -ms-transform: scale(0.7);
+            -o-transform: scale(0.7);
+            transform: scale(0.7);
+        }
+    }
+    .back-house {
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background: #4f65eb;
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        right: 30px;
+        bottom: 70px;
+        border-radius: 100%;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 53px;
+            height: 43px;
+            background-image: url("data:image/svg+xml,%3Csvg width='55px' height='47px' viewBox='0 0 55 47' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='home_bleu' transform='translate(1.000000, 2.000000)'%3E%3Crect id='Rectangle-path' fill='%23FFFFFF' fill-rule='nonzero' x='21.8789916' y='23.5915966' width='9.68067227' height='16.4235294' rx='1.67'%3E%3C/rect%3E%3Cpath d='M0.662184874,43.0268908 L52.8235294,43.0268908' id='Shape' stroke='%23FFFFFF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3Cpolygon id='Shape' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' points='26.7193277 0.0621848739 3.26386555 19.6117647 10.410084 19.6117647 10.410084 39.1008403 42.9008403 39.1008403 42.9008403 19.5848739 49.7042017 19.5848739'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        &:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            border-radius: 100%;
+            box-shadow: 0px 0px 50.6px 4.4px rgba(36, 27, 214, 0.65);
+
+        }
+        &.pulse {
+            &:after {
+                animation: pulse 2s infinite; /* IE 10+, Fx 29+ */
+                animation-timing-function: linear;
+            }
+            @keyframes pulse {
+                0% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+        p {
+            &.bold {
+                color: #4f65eb;
+                &:nth-of-type(1) {
+                    position: absolute;
+                    width: 142px;
+                    display: flex;
+                    left: -90px;
+                    font-size: 20px;
+                    bottom: 90px;
+                    &:after {
+                        content: '';
+                        margin-top: 10px;
+                        margin-left: 30px;
+                        display: inline-block;
+                        width: 50px;
+                        height: 45px;
+                        -webkit-background-size: cover;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAABECAMAAADgDwi+AAAAhFBMVEUAAAAtV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/ItV/Kus8h9AAAAK3RSTlMA+vfyNn9OkUIu62QJBO8ZxqI8KNyWXVkd49bPvq+ny7WZdG5USSMSvY6DlcSGCgAAAalJREFUWMOt1tlu4kAQQNFq7+AdG8weICyZuf//f+M4g1qQB0SXr/xoHaksd6klxhTrbR12k1zcM9wzH8d06agceaidR5kLk5VN0oV15d8hb3fOxLW86eZrfiriRhTdFvuCoa+LaMov9c9wm0hUZelmcKqZ6JrtBqculc5kcIqFKAsq+nY3rZMWwCrQMuUBMKlo+zRAqGaCFTBXM+VmFCbbAvE4zKeeqYCLmrmtwb+qmWsBVa5mIuCvqPsDplErWQuVqJsBCz2zhzZXK0sPUlEXwypXK6WBSNTV8KVXAqDRMxsI9coJ1nqlHGekDzjplRAOoxwmP1crmQeBqKtGOUtziPVKCttRPu9UryyBTK3kBq6iroXZKGfgrFcOo/wwe6frwzItn7fm6dcLr8pXTCcituPTuptMaV8rHo9M3CuPCIW8rMMyv5XABxPJ6xaWscq7iGWs4oCInM3AWMUB6YsGxioOiGWscke8HnmTKQKr/EcSkbcZP7CKRRyYu5JYxIkZlMSziBPzrVjEldlDrUFkGMT0jwoZmD6LqBhfu7+T73EC0ZZiOnnqH1sLPHZeFdGGAAAAAElFTkSuQmCC');
+
+                    }
+                }
+                &:nth-of-type(2) {
+                    position: absolute;
+                    bottom: -25px;
+                    margin: 0;
+                    left: 13px;
+                }
+            }
+        }
+
+
+    }
+
 
 </style>

@@ -162,11 +162,11 @@
     }
   }
   path {
-    -webkit-transition: opacity 500ms ease;
-    -moz-transition: opacity 500ms ease;
-    -ms-transition: opacity 500ms ease;
-    -o-transition: opacity 500ms ease;
-    transition: opacity 500ms ease;
+    -webkit-transition: opacity 300ms ease;
+    -moz-transition: opacity 300ms ease;
+    -ms-transition: opacity 300ms ease;
+    -o-transition: opacity 300ms ease;
+    transition: opacity 300ms ease;
     &.haut, &.bas {
       opacity: 0;
     }
