@@ -59,6 +59,8 @@
                 nextStep: false,
                 borne: false,
                 borneImg: borneImg,
+                firstClick:true,
+                secondClick:true,
 
             }
         },
@@ -66,12 +68,18 @@
 
         methods: {
             download() {
-                this.downloadVideo = true
-                this.$socket.emit("letsGoIntroduction", true)
+                if(this.firstClick) {
+                    this.downloadVideo = true
+                    this.$socket.emit("letsGoIntroduction", true)
+                    this.firstClick = false
+                }
             },
             nextView() {
-                this.$socket.emit("letsGoIntroduction", true)
-                this.borne = true;
+                if(this.secondClick) {
+                    this.$socket.emit("letsGoIntroduction", true)
+                    this.borne = true;
+                    this.secondClick = false
+                }
             }
         },
 

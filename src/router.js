@@ -13,6 +13,7 @@ import CommandDrone from '@/views/CommandDroneView'
 import Command from '@/components/Command'
 import Download from '@/views/DownloadView'
 import Video from '@/views/VideoView'
+import Demo from '@/views/DemoSwitchDrone'
 
 Vue.use(Router)
 
@@ -78,6 +79,11 @@ export default new Router({
             path: '/video',
             name: 'video',
             component: Video
+        },
+        {
+            path: '/demo',
+            name: 'demo',
+            component: Demo
         },
     ]
 })
