@@ -63,12 +63,12 @@
                     }
                 );
                 setTimeout(() => {
-                    // tl.stop();
-                    // TweenMax.to(".draw", 2, {
-                    //     drawSVG: "100%", onComplete: () => {
-                    //         this.$router.push("commande-drone")
-                    // }
-                    // }, 0);
+                    tl.stop();
+                    TweenMax.to(".draw", 2, {
+                        drawSVG: "100%", onComplete: () => {
+                            this.$router.push("commande-drone")
+                    }
+                    }, 0);
                 }, 1000)
                 // DRONE START
             } else {
