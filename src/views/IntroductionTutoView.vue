@@ -1,5 +1,8 @@
 <template>
     <div class="introduction-tuto">
+        <!--<span style="position: absolute;top: 20px; left:50px">-->
+            <!--{{this.posX}}-->
+        <!--</span>-->
         <transition-group name="fade" mode="out-in" class="transition-slide">
 
             <div key="1" v-show="userRotateScreen">
@@ -284,30 +287,29 @@
                             } else if (this.foward && this.posY < 0.5) {
                                 // EMIT SOCKET
                                 this.slide.navigateDots(1)
-                                if(this.foward) {
+                                if (this.foward) {
                                     this.$socket.emit("movingIntroduction", true)
                                 }
                                 this.foward = false
-
-                                setTimeout(() => {
-                                    this.unlockFoward = false
-                                }, 1500)
+                                this.unlockFoward = false
                             }
 
                             // Vérife coté
-                            if (this.posX > 0.5 && !this.leftAndRight && this.unlockLeftAndRight && !this.unlockFoward) {
+                            if (this.posX > 0.53 && !this.leftAndRight && this.unlockLeftAndRight && !this.unlockFoward) {
                                 this.leftAndRight = true
-                            } else if (this.leftAndRight && this.posX < 0.47 && !this.unlockFoward) {
-                                this.leftAndRight = false
-                                this.unlockLeftAndRight = false;
-                                gn.end()
-                                this.$socket.emit("movingIntroduction", true)
-                                this.slide.navigate('right')
-                                this.slide.navigateDots(2)
+                            } else if (this.leftAndRight && this.posX < 0.45 && !this.unlockFoward) {
+                                if (this.leftAndRight) {
+                                    setTimeout(() => {
+                                        this.leftAndRight = false
+                                        this.$socket.emit("movingIntroduction", true)
+                                        this.slide.navigate('right')
+                                        this.slide.navigateDots(2)
+                                        console.log("JE LOCK");
+                                    }, 1000)
+                                    gn.end()
+                                }
 
                             }
-                        } else {
-                            this.posX = data.do.gamma
                         }
 
 
@@ -318,14 +320,6 @@
 
             },
             initDragAndDrop: function () {
-                // TweenMax.staggerTo(".dots-battery--item", 1, {
-                //     onStart:function() {
-                //     },
-                //     delay:1,
-                //     backgroundColor:"transparent",
-                //     onComplete:function() {
-                //     },
-                // }, 1)
                 Draggable.create(".coucou", {type: "rotation", throwProps: true});
                 var DEG = 180 / Math.PI;
 
@@ -336,7 +330,6 @@
 
 
                 var tl = new TimelineMax({paused: true})
-                //.from(".path2",1,{drawSVG:"0%",stroke:'orange',ease:Linear.easeNone})
                     .to('#circle-vol', 1, {
                         bezier: {
                             type: "quadratic",
@@ -393,7 +386,7 @@
                     }
                     if (that.userDragToTop && that.userDragToBottom) {
                         // Next Slide pour
-                        if(!thatDrag.emitDrag) {
+                        if (!thatDrag.emitDrag) {
                             thatDrag.$socket.emit("movingIntroduction", true)
                             thatDrag.slide.navigate('right')
                             thatDrag.slide.navigateDots(3)
@@ -472,6 +465,12 @@
 <style scoped lang="scss">
     @import '../assets/scss/utils/variables';
 
+    .test {
+        position: absolute;
+        right: 40px;
+        top: 0;
+    }
+
     span {
         .top {
             width: 36px;
@@ -484,7 +483,7 @@
         }
         .bot {
             display: inline-block;
-            margin-left: 10px!important;
+            margin-left: 10px !important;
             width: 36px;
             height: 78px;
             background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAABOCAMAAACQcy+oAAAAk1BMVEUAAABIYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv9IYv88a7ACAAAAMHRSTlMAA/vl9YmBSA/SevjgvCAbEwjy67CpnFArzcnFkGJWPTgk8Ni1opZ0bV1CLwxp2jbJEQvQAAABvElEQVRIx42W13LbQAxFrV2KXaJZxKZerWbn/P/XJfE4HmdFG9gncucMAKJc8Gng5OGT4tSkU5mKoQhUmGlkrPEwFxm7/sECBZZQ3GRsZUifZewFKkXaKniVqTClyGQs0Pk8wlqmMo9eYcwHRW7DgonC2BhamZrCWGFsgh3J1EWVjGejcjkn0qXsrirmVREYvChclpw04auKNFN95AmrKrinS5iK2mk8qqhaFX1Fp6A6DgrKY6nq/KlCoUDR+AtKRVh7zjLUQqYQdVVYkaYHN7DRNGoiO9xCrTHFVBPVUYRGHYlryp+3j9vDd65+Qfz/zS1hn7sj7FoP9xg3V40roKMKYjfQN8rQ6RgObkLPcHarHIWu+pe85c5A22xA/Fdf/Z/Abl0oS5h/lb8JpFthw61TiB4b9Aazz5d8bGB2H9oi5tN+k0JyHtbqxb/HHujbocpH7N5/HO7LCChfB5tz+S7oYXMsAG8cDjeRxV4WnQGw8V+jw6Y+jjdrvh+EHYDpF0H+syCC5+eiEhwAuxTH7toBUSAOy8UCh5vE5XEB1Jm4LU8GPP8uikL1USDhrHtgv5EVOUW1Wtt69Xj5G6xFNArUcJxhAAAAAElFTkSuQmCC');
@@ -501,6 +500,7 @@
             transform: scale(0.7);
         }
     }
+
     .title {
         color: $purple;
         margin: 0;
@@ -508,6 +508,7 @@
         line-height: 1;
         margin-bottom: -20px;
     }
+
     .lottie {
         &-turn {
             max-width: 370px;
@@ -536,18 +537,22 @@
         height: 100%;
         width: 100%;
     }
+
     .slider-numbers {
         position: absolute;
         right: 30px;
         top: 30px;
     }
+
     .slide {
         width: 100%;
         height: 100%;
     }
+
     .introduction-tuto {
         text-align: center;
     }
+
     svg {
         margin: 0 auto;
     }
@@ -637,6 +642,7 @@
     .st1 {
         fill: #DA5E60;
     }
+
     .st1_up {
         fill: #5F86FF;
     }
@@ -835,7 +841,6 @@
         stroke-miterlimit: 10;
     }
 
-
     .drag-vol-trait {
         opacity: 0.8;
         fill: url(#SVGID_1_);
@@ -865,6 +870,7 @@
         -o-transform: translateY(-50%);
         transform: translateY(-50%);
     }
+
     #drag-vol {
         width: 94px;
         max-height: 360px;
@@ -872,7 +878,6 @@
         padding: 0;
         position: relative;
     }
-
 
     .up, .bottom {
         font-size: 17px;
@@ -916,6 +921,7 @@
         transform: rotate(45deg);
         transform-origin: center;
     }
+
     #bottom {
         -webkit-transform: rotate(45deg);
         -moz-transform: rotate(45deg);
@@ -943,6 +949,7 @@
         stroke-linejoin: round;
         stroke-miterlimit: 10;
     }
+
     .boxnav {
         display: none;
     }

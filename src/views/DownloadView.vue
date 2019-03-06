@@ -1,8 +1,8 @@
 <template>
     <div class="download-page">
 
-        <transition-group name="fade" mode="out-in">
-            <div v-if="!downloadVideo" key="1">
+        <transition name="fade" mode="out-in">
+            <div key="1" v-if="!downloadVideo">
 				<p class="ligth">Autoriser les notification de Octave <br>
 					Vous recevrez un lien pour télécharger la vidéo de votre voyage.
 				</p>
@@ -29,13 +29,13 @@
                 </g>
                 </svg>
             </div>
-            <div class="borne" key="3" v-else-if="downloadVideo && borne">
+            <div key="3" class="borne" v-else-if="downloadVideo && borne">
 				<p class="bold">
 					Merci beaucoup et à bientôt !
 				</p>
                 <img :src="borneImg" alt="">
             </div>
-        </transition-group>
+        </transition>
     </div>
 </template>
 

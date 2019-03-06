@@ -71,8 +71,6 @@
                             this.$router.push('download')
                         }
                     }, 0);
-
-                    // DRONE FINISH
                 }, 1000)
             }
 
@@ -101,16 +99,6 @@
         }
     }
 
-    load {
-        position: absolute;
-        left: 0;
-        top: 0;
-        -webkit-transform: scale(0.7);
-        -moz-transform: scale(0.7);
-        -ms-transform: scale(0.7);
-        -o-transform: scale(0.7);
-        transform: scale(0.7);
-    }
 
     #load {
         width: 100%;
@@ -118,6 +106,7 @@
         position: absolute;
         left: 0;
         top: 0;
+        overflow: visible;
     }
 
     .st00 {
@@ -125,6 +114,7 @@
         stroke: #FF7F81;
         stroke-width: 20;
     }
+
 
     p {
         @include f-muli-bold;

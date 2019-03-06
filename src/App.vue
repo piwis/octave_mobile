@@ -34,6 +34,12 @@
         },
         created() {
             this.loadImg()
+            setTimeout(() => {
+                // screen.orientation.lock();
+                // screen.lockOrientation("orientation");
+                // screen.lockOrientation("landscape-primary")
+
+            })
         },
         methods: {
             loadImg() {
@@ -45,7 +51,6 @@
                 })
             },
             loaded() {
-                //わかりやすくするためsetTimeout処理入れてます。
                 this.isLoad = true
             }
         },
@@ -60,10 +65,6 @@
             this.queue.loadFile({id:"image", src:imgMontange});
 
             function handleComplete() {
-
-                // HIDE LOADER
-                // this.instance = createjs.Sound.play("sound");
-                // this.fromToVolume(this.instance);
             }
 
             function onLoaderProgress(e) {

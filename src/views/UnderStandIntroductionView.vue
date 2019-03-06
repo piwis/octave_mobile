@@ -20,8 +20,6 @@
                 </svg>
             </div>
         </transition>
-
-
     </div>
 </template>
 

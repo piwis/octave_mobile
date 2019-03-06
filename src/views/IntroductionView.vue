@@ -89,6 +89,13 @@
             })
         },
 
+        create() {
+            setTimeout(() => {
+                alert('Salut')
+                this.$root.$emit('background', "#EEF5FF");
+                this.$root.$emit('transitionBackground', ColorData.COLOR.PURPLE);
+            })
+        },
         mounted() {
 
         }

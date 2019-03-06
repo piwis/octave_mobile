@@ -44,7 +44,7 @@
                 this.$socket.emit("isereNextView", true)
             },
             startIntroduction() {
-                this.$socket.emit("isereView", true)
+                this.$socket.emit("isereViewToUsePhone", true)
                 this.$router.push('usePhone')
             }
         },

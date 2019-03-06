@@ -109,7 +109,6 @@
 			})
         },
         mounted() {
-
             this.time = setTimeout(() => {
                 this.$socket.emit("turnIntroduction", true)
                 this.$router.push("introduction-tuto")
