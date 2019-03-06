@@ -29,7 +29,7 @@
 
         data() {
             return {
-                start:false,
+                start: false,
             }
         },
         sockets: {},
@@ -48,7 +48,16 @@
                 this.gn = new GyroNorm();
                 this.gn.init(args).then(() => {
                     this.gn.start((data) => {
-                        if(this.start) {
+                        if (this.start) {
+
+
+                            this.posX = UMath.normalize(data.do.beta, -180, 180);
+
+                            if (this.posX > 0.5) {
+                                this.normalizeX = -1 * (UMath.normalize(this.posX, 1, 0.5));
+                            } else {
+                                this.normalizeX = UMath.normalize(this.posX, 0, 0.5);
+                            }
 
                             this.$socket.emit("sendGyro", {
                                 "forward": 0,
@@ -103,6 +112,7 @@
             cursor: pointer;
         }
     }
+
     a {
         text-decoration: none;
     }
