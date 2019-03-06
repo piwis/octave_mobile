@@ -740,7 +740,6 @@
             #icon-home {
                 flex-flow: column;
                 align-items: flex-end;
-
             }
             span {
                 display: block;

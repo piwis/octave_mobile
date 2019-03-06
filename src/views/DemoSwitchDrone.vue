@@ -2,10 +2,12 @@
     <div class="start-drone">
 
         <div class="start">
-            <p @click="startDrone">Start</p>
+            <a href="#" @click="startDrone">
+                Start
+            </a>
         </div>
         <div class="start">
-            <p @click="stopDrone">Stop</p>
+            <a href="#" @click="stopDrone">Stop</a>
         </div>
     </div>
 
@@ -26,12 +28,15 @@
         name: 'demo',
 
         data() {
-            return {}
+            return {
+                start:false,
+            }
         },
         sockets: {},
 
         methods: {
             initGyroscope() {
+
                 var args = {
                     frequency: 500,
                     gravityNormalized: true,
@@ -43,35 +48,15 @@
                 this.gn = new GyroNorm();
                 this.gn.init(args).then(() => {
                     this.gn.start((data) => {
-                            if (data.do.gamma > -90 && data.do.gamma < 0 && data.do.beta < 100 && data.do.beta > -100) {
-                                this.posY = UMath.normalize(data.do.gamma, 0, -90);
-                                this.posX = UMath.normalize(data.do.beta, -180, 180);
-                                this.posY = UMath.normalize(this.posY, 1, 0.6)
-                            } else if (data.do.gamma < 90 && data.do.gamma > 0 && data.do.beta < 100 && data.do.beta > -100) {
-                                this.posY = UMath.normalize(data.do.gamma, 0, 90);
-                                this.posX = UMath.normalize(data.do.beta, -180, 180);
-                                this.posY = UMath.normalize(this.posY, 1, 0.6)
-                            }
+                        if(this.start) {
 
-                            if (this.posY < 0) {
-                                this.posY = 0
-                            }
-
-                            let objectRotation = null;
-                            if (this.posX > 0.5) {
-                                // EMIT GAUCHE
-                                this.normalizeX = -1 * (UMath.normalize(this.posX, 1, 0.5));
-                            } else {
-                                // EMIT DROITE
-                                this.normalizeX = UMath.normalize(this.posX, 0, 0.5);
-                            }
                             this.$socket.emit("sendGyro", {
-                                "forward": this.posY === this.lastPosY ? 0.0 : this.normalizeX < -0.08 || this.normalizeX > 0.08 ? 0 : this.posY,
-                                "upOrDown": this.top / 2,
-                                "rotation": this.normalizeX > 0 ? "right" : "left"
+                                "forward": 0,
+                                "upOrDown": 0,
+                                "rotation": 0,
+                                "direction": this.normalizeX
                             })
-                            this.lastPosX = this.normalizeX
-                            this.lastPosY = this.posY
+                        }
 
                     });
                 }).catch(function (e) {
@@ -80,9 +65,11 @@
 
             },
             startDrone() {
+                this.start = true;
                 this.$socket.emit('startDroneView', true)
             },
             stopDrone() {
+                this.start = false;
                 this.$socket.emit("landingDrone", true)
             },
         },
@@ -114,7 +101,9 @@
         p {
             cursor: pointer;
         }
-
+    }
+    a {
+        text-decoration: none;
     }
 
 </style>
