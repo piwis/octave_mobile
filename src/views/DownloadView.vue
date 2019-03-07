@@ -3,7 +3,7 @@
 
         <transition name="fade" mode="out-in">
             <div key="1" v-if="!downloadVideo">
-				<p class="ligth">Autoriser les notification de Octave <br>
+				<p class="ligth">Autoriser les notifications de Octave <br>
 					Vous recevrez un lien pour télécharger la vidéo de votre voyage.
 				</p>
                 <p class="bold accept" @click="download">
