@@ -230,7 +230,6 @@
                                 this.posY = UMath.normalize(this.posY, 1, 0.6)
                             }
 
-
                             if (this.posY < 0) {
                                 this.posY = 0
                             }
@@ -246,13 +245,11 @@
                             this.$socket.emit("sendGyro", {
                                 "forward": this.posY === this.lastPosY ? 0.0 : this.normalizeX < -0.08 || this.normalizeX > 0.08 ? 0 : this.posY,
                                 "upOrDown": this.top / 2,
-                                "rotation": this.normalizeX
+                                "rotation": this.normalizeX === this.lastPosX ? 0.0 : this.normalizeX
                             })
 
                             this.lastPosX = this.normalizeX
                             this.lastPosY = this.posY
-
-
                         }
 
 
