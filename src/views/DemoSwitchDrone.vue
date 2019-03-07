@@ -75,7 +75,6 @@
             },
             startDrone() {
                 this.start = true;
-                this.$socket.emit('startDrone', true)
                 this.$socket.emit('startDroneView', true)
             },
             stopDrone() {
